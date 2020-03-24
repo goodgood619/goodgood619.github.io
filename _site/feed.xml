@@ -1,1 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-25T07:01:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-25T08:32:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">굿굿</title><subtitle>MarkDown + 여러가지 공부용</subtitle><author><name>goodgood619</name></author><entry><title type="html">DFS</title><link href="http://localhost:4000/algorithm/DFS/" rel="alternate" type="text/html" title="DFS" /><published>2020-03-25T00:00:00+09:00</published><updated>2020-03-25T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/DFS</id><content type="html" xml:base="http://localhost:4000/algorithm/DFS/"></content><author><name>goodgood619</name></author><category term="DFS" /><category term="Algorithm" /><summary type="html">DFS Code (C++, Java)</summary></entry><entry><title type="html">github.io 블로그 시작하기</title><link href="http://localhost:4000/blog/test/" rel="alternate" type="text/html" title="github.io 블로그 시작하기" /><published>2020-03-25T00:00:00+09:00</published><updated>2019-04-13T22:06:00+09:00</updated><id>http://localhost:4000/blog/test</id><content type="html" xml:base="http://localhost:4000/blog/test/">&lt;p&gt;GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+GitHub Blog 서비스의 이름은 Pages이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;봄&lt;/li&gt;
+  &lt;li&gt;여름&lt;/li&gt;
+  &lt;li&gt;가을&lt;/li&gt;
+  &lt;li&gt;겨울
+    &lt;blockquote&gt;
+      &lt;p&gt;This is a blockqute.&lt;/p&gt;
+      &lt;h1 id=&quot;this-is-a-h1&quot;&gt;This is a H1&lt;/h1&gt;
+      &lt;h2 id=&quot;this-is-a-h2&quot;&gt;This is a H2&lt;/h2&gt;
+      &lt;p&gt;이것은 &lt;del&gt;cancelline&lt;/del&gt;&lt;/p&gt;
+      &lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SOME_MACRO_REFERENCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World! &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+      &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static void main(String[] args) {
+ System.out.println(&quot;test&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+      &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;인라인 코드 블럭&lt;/code&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;줄바꿈&lt;br /&gt;
+YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수 있다.
+이 글의 제목은 github.io 블로그 시작하기이고
+마지막으로 수정된 시간은 2019-04-13 08:06:00 -0500이다.&lt;/p&gt;</content><author><name>goodgood619</name></author><category term="Blog" /><summary type="html">Markdown 연습용 블로그 테스팅 글</summary></entry></feed>
