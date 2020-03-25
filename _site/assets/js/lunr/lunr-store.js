@@ -1,6 +1,6 @@
 var store = [{
         "title": "DFS",
-        "excerpt":" ","categories": ["Algorithm"],
+        "excerpt":"by C++ void dfs(int here,vector&lt;vector&lt;int&gt;&gt;&amp;graph, int *visited,vector&lt;int&gt;&amp; temp){ visited[here] = 1; printf(\"%d \",here); for(int i=0 ; i&lt;graph[here].size();i++) { int next = graph[here][i]; if(!visited[next]) { dfs(next,graph,visited,temp); } } } by Java private static void dfs(int here, ArrayList&lt;Integer&gt;[] graph, boolean[] visited) throws IOException { visited[here] = true; bw.write(String.valueOf(here)+\" \"); bw.flush(); for(int i=0;i&lt;graph[here].size();i++)...","categories": ["Algorithm"],
         "tags": ["DFS","Algorithm"],
         "url": "http://localhost:4000/algorithm/DFS/",
         "teaser": null
