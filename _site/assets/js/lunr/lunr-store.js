@@ -1,8 +1,8 @@
 var store = [{
-        "title": "DFS",
-        "excerpt":"by C++ void dfs(int here,vector&lt;vector&lt;int&gt;&gt;&amp;graph, int *visited,vector&lt;int&gt;&amp; temp){ visited[here] = 1; printf(\"%d \",here); for(int i=0 ; i&lt;graph[here].size();i++) { int next = graph[here][i]; if(!visited[next]) { dfs(next,graph,visited,temp); } } } by Java private static void dfs(int here, ArrayList&lt;Integer&gt;[] graph, boolean[] visited) throws IOException { visited[here] = true; bw.write(String.valueOf(here)+\" \"); bw.flush(); for(int i=0;i&lt;graph[here].size();i++)...","categories": ["Algorithm"],
-        "tags": ["DFS","Algorithm"],
-        "url": "http://localhost:4000/algorithm/DFS/",
+        "title": "DFS와 BFS",
+        "excerpt":"동작 방식은 저의 예전 블로그의 글을 참고해보시면 좋을거같습니다!! https://blog.naver.com/gktgnjftm/221458488876 (공을 좀 많이 들여놔서 좀 아깝더라고요 ㅎㅎ) (단 Java는 없고 , C++로만 설명이 되어있습니다!!) by C++(DFS) void dfs(int here,vector&lt;vector&lt;int&gt;&gt;&amp;graph, int *visited,vector&lt;int&gt;&amp; temp){ visited[here] = 1; printf(\"%d \",here); for(int i=0 ; i&lt;graph[here].size();i++) { int next = graph[here][i]; if(!visited[next]) { dfs(next,graph,visited,temp); } }...","categories": ["Algorithm"],
+        "tags": ["DFS","BFS","Algorithm"],
+        "url": "http://localhost:4000/algorithm/DFSandBFS/",
         "teaser": null
       },{
         "title": "github.io 블로그 시작하기",
