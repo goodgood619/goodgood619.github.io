@@ -1,0 +1,144 @@
+I"�a<p>최소 스패닝 트리는 정점이 n개인 상태에서, n-1개의 간선만을 택해 최소 거리를 만든다는 것이 핵심입니다!</p>
+
+<p>최소 스패닝 트리를 만드는 방법은 2가지가 있지만, Kruskal을 이용하여 문제를 풀수있습니다.<br />
+이 Kruskal의 구현의 핵심은 Union Find인데<br />
+Union Find의 핵심은 친구의 적은 적이라는 것입니다.<br />
+같은 그룹으로 만드는 작업 <strong>Union</strong>과 어느 그룹에 속해있는지를 빠르게 찾는 <strong>Find</strong>로 이루어져있습니다.</p>
+
+<p>자세한 동작은 여기서 보시면 좋을 것 같습니다</p>
+<blockquote>
+  <p><a href="https://blog.naver.com/gktgnjftm/221458468033">최소 스패닝 트리 관련 글</a><br />
+이미지 등을 첨부하여 내용을 정리하였습니다!</p>
+</blockquote>
+
+<p>관련 문제 :<a href="https://www.acmicpc.net/problem/1197">BOJ 최소 스패닝 트리</a></p>
+
+<h2 id="by-c">by C++</h2>
+<p><strong>구조체</strong>와 <strong>compare</strong>를 직접 만들고, <strong>priority_queue</strong>를 이용해 구현하였습니다!!</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">pos</span><span class="p">{</span>
+    <span class="kt">int</span> <span class="n">here</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">next</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">dist</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">struct</span> <span class="n">cmp</span><span class="p">{</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="n">pos</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="n">pos</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">dist</span><span class="o">!=</span><span class="n">b</span><span class="p">.</span><span class="n">dist</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">dist</span><span class="o">&gt;</span><span class="n">b</span><span class="p">.</span><span class="n">dist</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">here</span><span class="o">!=</span><span class="n">b</span><span class="p">.</span><span class="n">here</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">here</span><span class="o">&gt;</span><span class="n">b</span><span class="p">.</span><span class="n">here</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">next</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">next</span><span class="p">)</span><span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">next</span><span class="o">&gt;</span><span class="n">b</span><span class="p">.</span><span class="n">next</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="nf">Find</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">parent</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="k">return</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">],</span><span class="n">parent</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">uni</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">parent</span><span class="p">){</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">parent</span><span class="p">),</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">parent</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">v</span><span class="p">,</span><span class="n">e</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">v</span><span class="p">,</span><span class="o">&amp;</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">pos</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pos</span><span class="o">&gt;</span><span class="p">,</span><span class="n">cmp</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">v</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">parent</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">e</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">here</span><span class="p">,</span><span class="n">next</span><span class="p">,</span><span class="n">cost</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">here</span><span class="p">,</span><span class="o">&amp;</span><span class="n">next</span><span class="p">,</span><span class="o">&amp;</span><span class="n">cost</span><span class="p">);</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">here</span><span class="p">,</span><span class="n">next</span><span class="p">,</span><span class="n">cost</span><span class="p">});</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">here</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">next</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">dist</span><span class="p">;</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">heretop</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">here</span><span class="p">,</span><span class="n">parent</span><span class="p">),</span> <span class="n">nexttop</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">next</span><span class="p">,</span><span class="n">parent</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">heretop</span> <span class="o">!=</span> <span class="n">nexttop</span><span class="p">){</span>
+            <span class="n">uni</span><span class="p">(</span><span class="n">here</span><span class="p">,</span><span class="n">next</span><span class="p">,</span><span class="n">parent</span><span class="p">);</span>
+            <span class="n">ans</span> <span class="o">+=</span> <span class="n">dist</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="by-java">by Java</h2>
+<p><strong>PriorityQueue</strong> 그리고 <strong>Comparator</strong>를 아는 것이 핵심입니다!!</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.PriorityQueue</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="kt">int</span> <span class="n">e</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="nc">PriorityQueue</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span> <span class="n">pq</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PriorityQueue</span><span class="o">&lt;&gt;((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">cost</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="na">cost</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">cost</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="na">cost</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">here</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="na">here</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">here</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="na">here</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">v</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">e</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">input2</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input2</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input2</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+            <span class="kt">int</span> <span class="n">cost</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input2</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+            <span class="n">pq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">p</span><span class="o">(</span><span class="n">here</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">cost</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">pq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">here</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">next</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">cost</span><span class="o">;</span>
+            <span class="n">pq</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">find</span><span class="o">(</span><span class="n">here</span><span class="o">,</span> <span class="n">parent</span><span class="o">)</span> <span class="o">!=</span> <span class="n">find</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="n">parent</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">union</span><span class="o">(</span><span class="n">here</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">parent</span><span class="o">);</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="n">cost</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ans</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">p</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">here</span><span class="o">,</span> <span class="n">next</span><span class="o">,</span> <span class="n">cost</span><span class="o">;</span>
+
+        <span class="kd">private</span> <span class="nf">p</span><span class="o">(</span><span class="kt">int</span> <span class="n">here</span><span class="o">,</span> <span class="kt">int</span> <span class="n">next</span><span class="o">,</span> <span class="kt">int</span> <span class="n">cost</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">here</span> <span class="o">=</span> <span class="n">here</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">cost</span> <span class="o">=</span> <span class="n">cost</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">])</span> <span class="k">return</span> <span class="n">u</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">],</span> <span class="n">parent</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">,</span> <span class="kt">int</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="n">parent</span><span class="o">);</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">parent</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+        <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>궁금하신 사항은 댓글을 남겨주시면 감사하겠습니다^^<br />
+잘못 된점 이 있다면 댓글 남겨주시면 감사드리겠습니다</p>
+:ET

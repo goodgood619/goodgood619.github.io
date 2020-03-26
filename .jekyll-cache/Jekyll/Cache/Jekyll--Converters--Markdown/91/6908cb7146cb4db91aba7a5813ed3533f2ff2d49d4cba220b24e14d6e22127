@@ -1,0 +1,11 @@
+I"!<p>단절점은 <strong>무향 연결 그래프에서 특정 정점을 제거 했을때 두개의 연결 그래프로 나뉘는 정점</strong>을 단절점이라고 한다</p>
+
+<p>그림을 통해서 어떻게 가는지 한번 보자</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfMjQ3/MDAxNTQ5NDcwMTI4NjQw.tC3ciDP7UNbA8kV3ZuGtTXhf70gTq6j4Y8k358wm0_Eg.UpxOmqjZfNOnmSPORs12IyrHDUqj6tnm2ymTWQF9aUsg.PNG.gktgnjftm/image.png?type=w966" alt="test" /></p>
+
+<p>이런 무향그래프가 있다고 가정할때 아래와 같이 방문을 했다고 가정해보자</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfMjcz/MDAxNTQ5NDcwMDUxMjc4.hdOnedy2MscgDYjUXhQlVgXqkeLrIZcAIkq8KmKVVHcg.S6MYb2_bPQzj7DNsYzbcVhuOuR1elI_7B3bd984x0tkg.PNG.gktgnjftm/image.png?type=w966" alt="test2" /></p>
+
+:ET

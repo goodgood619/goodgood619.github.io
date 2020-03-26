@@ -1,0 +1,218 @@
+I"gs<p>CCW는 간략하게 CW와 CCW로 이루어진 말인것 같다</p>
+
+<p>아무튼 CCW는 평면상의 임의의 세점이 있을때 그 점들간의 위치관계를 파악할수 있다는것이다</p>
+
+<p>​경우는 3가지로 나뉘는데</p>
+
+<ol>
+  <li>반시계 방향인 경우 : 이때는 ccw값이 양수(+)값이 나온다</li>
+  <li>시계 방향인 경우 : 이때는 ccw값이 음수(-)가 나온다</li>
+  <li>일직선인 경우 : 이때는 ccw값이 0이 나온다</li>
+</ol>
+
+<p>​그림으로 간략하게 표현해 보면</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfNjgg/MDAxNTQ5MjU5NzQxODIx.7BpTiVXXUZrp-CKG54zbnxtT_EA6dNga5TFmjTq2gaUg.efKAMjRD9n_LiqCGMq0u_CrEny3F44SkKNidGti734Eg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfNjgg/MDAxNTQ5MjU5NzQxODIx.7BpTiVXXUZrp-CKG54zbnxtT_EA6dNga5TFmjTq2gaUg.efKAMjRD9n_LiqCGMq0u_CrEny3F44SkKNidGti734Eg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>위의 그림은 반시계 방향을 이루는 경우이며</p>
+
+<p>![https://postfiles.pstatic.net/MjAxOTAyMDRfMjY1/MDAxNTQ5MjU5ODU4NzA0.YmBne_-XZHEUZ6<em>qMYwoFDdHmQxCNJ82bluhhIQPeXQg.2FcAIbUhYbtQ9-uS8afd1BFDcwiy0Jjcb3LgoSt3vIIg.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDRfMjY1/MDAxNTQ5MjU5ODU4NzA0.YmBne</em>-XZHEUZ6_qMYwoFDdHmQxCNJ82bluhhIQPeXQg.2FcAIbUhYbtQ9-uS8afd1BFDcwiy0Jjcb3LgoSt3vIIg.PNG.gktgnjftm/image.png?type=w966)</p>
+
+<p>위의 그림은 시계방향을 이루는 경우이다<br />
+​나머지 한경우는 일직선이 될때의 경우이다.(따로 그림은 넣지는 않겠습니당)
+기하와 벡터를 아예 모르는 경우에서 들으면 무슨말인지를 잘 모르지만, 간단하게 생각하면
+옛날에 플래밍 법칙? 그거를 통해서 외워도 된다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfMTQ5/MDAxNTQ5MjYwMjI2MDM4.0uddf44yL5R1WfDi1HcFJktwqBHnn4suV0p8YlIsxLsg.IBd5ffEsLbo9q60XGkSfZxo6qi3XCsEBF9tg610ZjzUg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfMTQ5/MDAxNTQ5MjYwMjI2MDM4.0uddf44yL5R1WfDi1HcFJktwqBHnn4suV0p8YlIsxLsg.IBd5ffEsLbo9q60XGkSfZxo6qi3XCsEBF9tg610ZjzUg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>출처 : <a href="https://dic.kumsung.co.kr/open/outer/calendarDetail.do?headwordId=5576&amp;findYear=2014&amp;findMonth=11&amp;findDay=29&amp;weekCount=5">https://dic.kumsung.co.kr/open/outer/calendarDetail.do?headwordId=5576&amp;findYear=2014&amp;findMonth=11&amp;findDay=29&amp;weekCount=5</a></p>
+
+<p>여기서 중요한 사실 한가지가 있다면, 기준점이 되는 A와 B가 순서가 뒤바뀐다면, ccw값도 뒤바뀐다라는 점이다</p>
+
+<p>즉, A-&gt;B, C를 판단하는것과, B-&gt;A , C를 판단하는 CCW알고리즘값은 다르다는 것이다. 일명 <strong>교환법칙이 성립하지 않는다</strong>라고 봐도 된다</p>
+
+<p>그래서 ccw값을 구하는 공식은 행렬식을 이용한 공식이지만 복잡하니까, 쉽게 외울수 있는 방법을 가지고 왔다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfMTc5/MDAxNTQ5MjYwNjA5OTEx.FIMXyJrJoUN1afaCA9UefACpLVAPsQPPYfIstwpCyp4g.wfftaTlJZQCciReKr4BRBKgcO9_MAhTxgLwCjcyaoXgg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfMTc5/MDAxNTQ5MjYwNjA5OTEx.FIMXyJrJoUN1afaCA9UefACpLVAPsQPPYfIstwpCyp4g.wfftaTlJZQCciReKr4BRBKgcO9_MAhTxgLwCjcyaoXgg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<ol>
+  <li>
+    <p>파란색화살표끼리 곱하고, 빨간색화살표끼리 곱한다</p>
+  </li>
+  <li>
+    <p>그다음 파란색화살표끼리 곱한 값들의 누적값과 빨간색화살표기리 곱한 누적값을 빼주면 된다.</p>
+  </li>
+</ol>
+
+<p>​그래서 코드로 표현을 해보면</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ll</span> <span class="nf">ccw</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">y2</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">y1</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">y3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>저기서 P는 미리 헤더에 typedef pair&lt;ll,ll&gt; P; 라고 선언을 해주는 부분이다(x좌표와 y좌표를 표현해 주어야 하기때문!)</li>
+</ul>
+
+<p>이를 통해서 CCW 알고리즘을 구현을 할수 있다</p>
+
+<p>관련 문제 :</p>
+
+<p><a href="https://www.acmicpc.net/problem/11758">11758번: CCW</a></p>
+
+<p>CCW 알고리즘을 통해서 여러 가지를 해볼수 있는데, 그중에서 대표적인 것이 다각형의 면적을 구하는 일이다</p>
+
+<p>​여기서 CCW값은 단순히 방향성을 가지는 것 뿐만이 아니라 평행사변형의 넓이값을 의미하기도 한다(제가 잘못이해하고 있다면 댓글 부탁드립니당 ㅠㅠ)</p>
+
+<p>​그래서 CCW값은 벡터의 외적을 통해 나오는 값(평행사변형 넓이)인데, 그 값을 반으로 나누면 삼각형의 면적을 구할수 있다는 얘기이다</p>
+
+<p>​이 원리를 이용해서 다음과 같은 문제를 풀어볼 수 있다</p>
+
+<p>문제 :</p>
+
+<p><a href="https://www.acmicpc.net/problem/2166">2166번: 다각형의 면적</a></p>
+
+<p>접근 방법은 다음과 같다.</p>
+
+<p>1.(0,0)의 점을 A라는 기준점을 잡는다.</p>
+
+<ol>
+  <li>
+    <p>B와 C를 현재 위치의 정점, 그리고 다음 위치의 정점으로 잡는다</p>
+  </li>
+  <li>
+    <p>점 A,B,C를 통해 CCW를 돌린다.</p>
+  </li>
+  <li>
+    <p>CCW로 나온값이 음의 값인지 양의 값인지 체크를 한뒤, 음의 넓이를 누적해주는 변수와 양의 넓이를 누적해주는 변수에 저장한다</p>
+  </li>
+  <li>
+    <p>마지막에 음의 넓이-양의 넓이, or 양의 넓이-음의 넓이 를 취한 다음 , 절대값을 씌운다</p>
+  </li>
+</ol>
+
+<p>​즉, ccw를 통해서 평행사변형의 넓이를 구한다음 반으로 나누면 그 3개의 점을 통해서 이루는 삼각형의 면적을 구할수 있다는 것이다</p>
+
+<p>그런데, 그 면적이 음인지 양인지에 따라 헷갈리는데, 음이면 시계방향이라는 뜻이고, 양이면 반시계방향으로 간다는 뜻일것이다</p>
+
+<p>​근데 이문제는, 그냥 단순히 위의 두 경우를 전부다 양수화 시켜서 더해버리면, 분명히 중복하는 부분이 발생한다.</p>
+
+<p>그래서 이걸 해결하는 방법은 단순하게도, 음의 넓이와 양의 넓이를 빼주면, 중복하는 부분이 사라지게 될것이라는 생각을 떠올려야 한다!</p>
+
+<p>​그러므로 소스 코드는 다음과 같다</p>
+
+<h3 id="c">C++</h3>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;set&gt;
+#include &lt;list&gt;
+#include &lt;climits&gt;
+#include &lt;string.h&gt;
+#include &lt;deque&gt;
+#include &lt;functional&gt;
+#include &lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="cp">#define INF 1000000000
+#define mod 1000000007
+</span><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">PP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">PPP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;&gt;</span> <span class="n">PPPP</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">gox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">goy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">double</span> <span class="nf">ccw</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">y2</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">y1</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">y3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">});</span> <span class="c1">// 미리 기준점 A를 넣고 시작</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf%lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+        <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="c1">//0번점은 무조건 A, 1번지점 B,2번지점 C -&gt; 2번지점 B,3번지점 C-&gt; ... n번지점-&gt; 1번지점</span>
+    <span class="kt">double</span> <span class="n">minustotal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">plustotal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">here</span> <span class="o">==</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="n">next</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 마지막 지점에 왔을때 n번지점, 1번지점의 경우도 체크해줘야함</span>
+        <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">here</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">next</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">plustotal</span> <span class="o">+=</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 삼각형의 면적구하기(양의 경우)</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">double</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="c1">// 음의 경우는 그냥 나눌수가 없기때문에, 절대값을 취해줘야한다!</span>
+            <span class="n">temp</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">minustotal</span> <span class="o">+=</span> <span class="n">temp</span><span class="p">;</span> <span class="c1">// 음의 경우</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">double</span> <span class="n">total</span> <span class="o">=</span> <span class="n">minustotal</span> <span class="o">-</span> <span class="n">plustotal</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">total</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">total</span> <span class="o">=</span> <span class="o">-</span><span class="n">total</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%.1lf</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">total</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="java">Java</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+            <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">p</span><span class="o">(</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span><span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">])));</span>
+        <span class="o">}</span>
+        <span class="kt">double</span> <span class="n">plus</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">minus</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">p</span> <span class="n">a</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">),</span> <span class="n">b</span><span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">)%</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+            <span class="kt">long</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="k">new</span> <span class="n">p</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">),</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">plus</span> <span class="o">+=</span> <span class="o">((</span><span class="kt">double</span><span class="o">)</span><span class="n">temp</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">minus</span> <span class="o">+=</span> <span class="o">((</span><span class="kt">double</span><span class="o">)</span><span class="n">abs</span><span class="o">(</span><span class="n">temp</span><span class="o">)/</span><span class="mi">2</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%.1f"</span><span class="o">,</span><span class="n">abs</span><span class="o">(</span><span class="n">plus</span><span class="o">-</span><span class="n">minus</span><span class="o">)));</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">ccw</span><span class="o">(</span><span class="n">p</span> <span class="n">a</span><span class="o">,</span><span class="n">p</span> <span class="n">b</span><span class="o">,</span><span class="n">p</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">c</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">c</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="na">y</span><span class="o">)</span> <span class="o">-</span> <span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">a</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">c</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">b</span><span class="o">.</span><span class="na">y</span><span class="o">+</span><span class="n">a</span><span class="o">.</span><span class="na">x</span><span class="o">*</span><span class="n">c</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">p</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nf">p</span><span class="o">(</span><span class="kt">long</span> <span class="n">x</span><span class="o">,</span><span class="kt">long</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>문제를 그냥 풀때 저렇게 변수 2개를 나누지 않고, 음이면 빼고, 양이면 더해서, 나중에 음수면 절대값을 취하는 형식으로 했는데 정답이 틀렸었다.</p>
+
+<p>그래서 이런 문제로 틀리시는 분들은 저렇게 경우를 2개로 나눠서 처리하면 틀리지 않을것이기 때문에 참고하시면 좋을 것 같다</p>
+
+<p>궁금하신 사항은 댓글을 남겨주시면 감사하겠습니다^^</p>
+:ET

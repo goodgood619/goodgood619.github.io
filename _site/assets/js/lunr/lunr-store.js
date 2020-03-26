@@ -22,4 +22,46 @@ var store = [{
         "tags": ["Minimum Spanning Tree","Union Find","Kruskal","Algorithm"],
         "url": "http://localhost:4000/algorithm/%EC%B5%9C%EC%86%8C%EC%8A%A4%ED%8C%A8%EB%8B%9D%ED%8A%B8%EB%A6%AC/",
         "teaser": null
+      },{
+        "title": "LCA",
+        "excerpt":"서론 및 개인적인 생각 LCA는 최소 공통 조상을 뜻하며, 영어로는 Least Common Ancestor? 뭐 이런 의미 인거 같다 ​그럼 반대로 최대 공통 조상이란 말이 있을까라는 생각이 든다. 그런데, 사실 최대 공통조상의 정답은 너무 간단하다. 왜냐하면 항상 루트일것이기 때문이다 ​그러면 LCA를 통해서 무엇을 할수 있을것인가? 라는 고민이 문득 든다 ​이런 문제의...","categories": ["Algorithm"],
+        "tags": ["LCA","Dynamic Programming","Algorithm"],
+        "url": "http://localhost:4000/algorithm/LCA/",
+        "teaser": null
+      },{
+        "title": "LCS",
+        "excerpt":"LCS는 Longest Common Subsequence 라는 의미로 최장 공통 부분수열을 구하는 알고리즘이다. ACAYKP CAPCAK 일때 LCS를 하게 되면, 길이는 4가 나오고, ACAK라는 수열을 갖게된다 그냥 동작원리는 다른 블로그에도 잘 나와 있어서 간략하게 쓰려고 한다   0 A C A Y K P 0 0 0 0 0 0 0 0 C...","categories": ["Algorithm"],
+        "tags": ["LCS","Dynamic Programming","Algorithm"],
+        "url": "http://localhost:4000/algorithm/LCS/",
+        "teaser": null
+      },{
+        "title": "CCW교차판별",
+        "excerpt":"이번의 경우는 CCW를 통해서 교차 판별을 이루는 문제를 파악해보려 합니다 ​CCW를 하면 반시계방향인지, 시계 방향인지를 알수 있습니다. ​그러면 교차를 하려면 어떻게 형성이 되어야 할까요? ​당연히 아래 그림과 같이 형성을 해야 할것입니다 그러면 점 A와 B 그리고 C를 CCW한 값을 CCW1이라고 가정을 해보겠습니다 ​그때 CCW1의 값은 무조건 반시계방향이니까 양수일것입니다 그러면 한번더...","categories": ["Algorithm"],
+        "tags": ["CCW","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ccw%EA%B5%90%EC%B0%A8%ED%8C%90%EB%B3%84/",
+        "teaser": null
+      },{
+        "title": "CCW",
+        "excerpt":"CCW는 간략하게 CW와 CCW로 이루어진 말인것 같다 아무튼 CCW는 평면상의 임의의 세점이 있을때 그 점들간의 위치관계를 파악할수 있다는것이다 ​경우는 3가지로 나뉘는데 반시계 방향인 경우 : 이때는 ccw값이 양수(+)값이 나온다 시계 방향인 경우 : 이때는 ccw값이 음수(-)가 나온다 일직선인 경우 : 이때는 ccw값이 0이 나온다 ​그림으로 간략하게 표현해 보면 위의 그림은...","categories": ["Algorithm"],
+        "tags": ["CCW","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ccw%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "ConvexHull",
+        "excerpt":"Convex Hull (Monotone Chain 기법) 저도 컨벡스 헐을 배운지는 1주일도 안되서, 공부하고 기록의 차원이니 많이 이해해주셨으면 좋겠다. ​우선 컨벡스 헐이라는건, 간단하게 2차원 평면에 n개의 점이 흩어져 있는데, 이 n개의 점중에 몇개를 선택해서 볼록 다각형을 만들때 그 다각형안에 나머지 모든 점을 포함시키게 하는 도형을 볼록 껍질 , 컨벡스헐이라고 한다 ​이 문제를...","categories": ["Algorithm"],
+        "tags": ["CCW","ConvexHull","Stack","Algorithm"],
+        "url": "http://localhost:4000/algorithm/convexHull/",
+        "teaser": null
+      },{
+        "title": "단절점",
+        "excerpt":"단절점은 무향 연결 그래프에서 특정 정점을 제거 했을때 두개의 연결 그래프로 나뉘는 정점을 단절점이라고 한다 그림을 통해서 어떻게 가는지 한번 보자 이런 무향그래프가 있다고 가정할때 아래와 같이 방문을 했다고 가정해보자 파란글씨는 방문순서 이제 6번째로 방문한 7번 노드는 주위에 더이상 갈곳이 없으니 5번으로 돌아올것이다 근데 이때, 돌아올때 우리는 리턴해주는 값을 설정할것이다...","categories": ["Algorithm"],
+        "tags": ["단절점","graph","Algorithm"],
+        "url": "http://localhost:4000/algorithm/%EB%8B%A8%EC%A0%88%EC%A0%90/",
+        "teaser": null
+      },{
+        "title": "BitMasking DP",
+        "excerpt":"애초에 DP를 너무너무너무 못하는지라 참 쓰기가 뭐하지만 대표적인 비트마스킹 DP문제가 있습니다 https://www.acmicpc.net/problem/2098 문제를 요약하면, 1번마을에서 시작해서 다시 1번마을까지 돌아오는데, 최소 비용을 출력하는 문제이다 ​근데 문제를 보면, n 사이즈가 16이다. ​우선은 일반적으로 생각을 해보면 아 1번 마을에서 시작해서 다음 마을로 가는 경우의수가 15가지이고, 그다음은 14가지, … 1가지 이렇게 되니까 15! 즉...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","bitMask","Algorithm"],
+        "url": "http://localhost:4000/algorithm/%EB%B9%84%ED%8A%B8%EB%A7%88%EC%8A%A4%ED%82%B9DP/",
+        "teaser": null
       }]

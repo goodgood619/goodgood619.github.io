@@ -176,7 +176,7 @@
     
     
       <div class="author__bio" itemprop="description">
-        <p>열공중</p>
+        <p>열공중 그리고 post 작성 및 정리</p>
 
       </div>
     
@@ -292,7 +292,7 @@
 
 
 
-  less than 1 minute read
+  1 minute read
 
 </p>
           
@@ -332,6 +332,49 @@ GitHub Blog 서비스의 이름은 Pages이다.</p>
 YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수 있다.
 이 글의 제목은 github.io 블로그 시작하기이고
 마지막으로 수정된 시간은 2019-04-13 08:06:00 -0500이다.</p>
+
+<hr />
+
+<h1 id="wrapper-classs-and-primitivetype">Wrapper Classs and PrimitiveType</h1>
+
+<p>기본형(primitive type), 참조형(reference type)으로 나뉨
+wrapper class : 기본 자료형(Primitive Type) 에 대해서 객체로서 인식되게 포장을 했다는 뜻이미
+wrapper class를 사용하는 이유 :</p>
+
+<ol>
+  <li>객체 or 클래스가 제공하는 메소드를 사용하기 위해!!</li>
+  <li>클래스가 제공하는 상수사용(MIN_VALUE, MAX_VALUE)</li>
+  <li>숫자, 문자로의 형변환 or 진법 변환시 사용
+Boxing : Primitive Type을 Wrapper Class로 바꾸는것
+UnBoxing : Wrapper Class을 Primitive type으로 바꾸는것
+jdk 1.5이후로 auto Boxing,UnBoxing을 지원해서 표면적으로 코딩을 할때는 잘 안보일수있다.</li>
+</ol>
+
+<hr />
+
+<h1 id="sort">Sort</h1>
+
+<p>sort: Collections.sort() =&gt; Operates on List, Arrays.sort() =&gt; Operates on Array
+Primitive Type 정렬은 Dual-Pivot QuickSort를 쓰고, Object 배열들을 정렬할때는 MergeSort를 쓴다</p>
+
+<p>Arrays.sort(primitive type) -&gt;
+최악의 경우 n^2(왜냐하면, DualPivotQuickSort를 사용한다고함)
+반면에 Collections.sort(Wrapper Class)-&gt;
+알다시피 병합정렬사용해서 무조건 nlogn임</p>
+
+<hr />
+
+<h1 id="generic-type">Generic Type</h1>
+
+<p>그리고 Generic Type은 PrimitiveType 절대 안받는다, Wrapper class를 받는다
+Wrapper class는 null이 들어감</p>
+
+<p>Function&lt;T,R&gt; -&gt; T : input type, R : Output type
+Object의 자손 =&gt; Boolean, Character, Number
+Number의 자손 =&gt; Byte,Short,Integer,Long,Float,Double, BigInteger, BigDecimal(wrapper class)</p>
+
+<p>static method에서 특정 메소드를 호출시에는 그 메소드가 무조건 static method여야한다고함.. =&gt; 이유는 잘모르겠네.. 끙
+그래서, class로 만든후에 그 안에 메소드를 만들고, 인스턴스화 시키고 호출을 해봤지만, static class여야 가능하다함</p>
 
         
       </section>
@@ -429,7 +472,7 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/%EC%B5%9C%EC%86%8C%EC%8A%A4%ED%8C%A8%EB%8B%9D%ED%8A%B8%EB%A6%AC/" rel="permalink">최소스패닝트리(크루스칼)
+        <a href="/algorithm/%EB%B9%84%ED%8A%B8%EB%A7%88%EC%8A%A4%ED%82%B9DP/" rel="permalink">BitMasking DP
 </a>
       
     </h2>
@@ -439,11 +482,11 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
 
 
 
-  1 minute read
+  4 minute read
 
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">Minimum Spanning Tree with Kruskal Code (C++, Java)
+    <p class="archive__item-excerpt" itemprop="description">비트마스킹 DP 공부
 </p>
   </article>
 </div>
@@ -458,7 +501,7 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/language/%EC%9E%90%EB%B0%94%EC%9E%A5%EB%8B%A8%EC%A0%90/" rel="permalink">Java 언어의 특성 및 장단점
+        <a href="/algorithm/%EB%8B%A8%EC%A0%88%EC%A0%90/" rel="permalink">단절점
 </a>
       
     </h2>
@@ -472,7 +515,7 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
 
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">
+    <p class="archive__item-excerpt" itemprop="description">단절점 공부하기
 </p>
   </article>
 </div>
@@ -487,7 +530,7 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/algorithm/DFSandBFS/" rel="permalink">DFS와 BFS
+        <a href="/algorithm/convexHull/" rel="permalink">ConvexHull
 </a>
       
     </h2>
@@ -497,11 +540,40 @@ YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수
 
 
 
-  2 minute read
+  5 minute read
 
 </p>
     
-    <p class="archive__item-excerpt" itemprop="description">DFS &amp; BFS Code (C++, Java)
+    <p class="archive__item-excerpt" itemprop="description">ConvexHull with Monotone Chain
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/ccw%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/" rel="permalink">CCW
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">CCW 이해하기
 </p>
   </article>
 </div>

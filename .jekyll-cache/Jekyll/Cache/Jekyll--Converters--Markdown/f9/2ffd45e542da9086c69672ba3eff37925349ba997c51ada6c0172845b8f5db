@@ -1,0 +1,75 @@
+I"�<p>GitHub Blog 서비스인 github.io 블로그 시작하기로 했다.
+GitHub Blog 서비스의 이름은 Pages이다.</p>
+<ol>
+  <li>봄</li>
+  <li>여름</li>
+  <li>가을</li>
+  <li>겨울
+    <blockquote>
+      <p>This is a blockqute.</p>
+      <h1 id="this-is-a-h1">This is a H1</h1>
+      <h2 id="this-is-a-h2">This is a H2</h2>
+      <p>이것은 <del>cancelline</del></p>
+      <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">SOME_MACRO_REFERENCE</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">6</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hello World! "</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>      </div>
+      <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static void main(String[] args) {
+ System.out.println("test");
+}
+</code></pre></div>      </div>
+      <p><code class="highlighter-rouge">인라인 코드 블럭</code></p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>줄바꿈<br />
+YFM에서 정의한 제목을 이중 괄호 구문으로 본문에 추가할 수 있다.
+이 글의 제목은 github.io 블로그 시작하기이고
+마지막으로 수정된 시간은 2019-04-13 08:06:00 -0500이다.</p>
+
+<hr />
+
+<h1 id="wrapper-classs-and-primitivetype">Wrapper Classs and PrimitiveType</h1>
+
+<p>기본형(primitive type), 참조형(reference type)으로 나뉨
+wrapper class : 기본 자료형(Primitive Type) 에 대해서 객체로서 인식되게 포장을 했다는 뜻이미
+wrapper class를 사용하는 이유 :</p>
+
+<ol>
+  <li>객체 or 클래스가 제공하는 메소드를 사용하기 위해!!</li>
+  <li>클래스가 제공하는 상수사용(MIN_VALUE, MAX_VALUE)</li>
+  <li>숫자, 문자로의 형변환 or 진법 변환시 사용
+Boxing : Primitive Type을 Wrapper Class로 바꾸는것
+UnBoxing : Wrapper Class을 Primitive type으로 바꾸는것
+jdk 1.5이후로 auto Boxing,UnBoxing을 지원해서 표면적으로 코딩을 할때는 잘 안보일수있다.</li>
+</ol>
+
+<hr />
+
+<h1 id="sort">Sort</h1>
+
+<p>sort: Collections.sort() =&gt; Operates on List, Arrays.sort() =&gt; Operates on Array
+Primitive Type 정렬은 Dual-Pivot QuickSort를 쓰고, Object 배열들을 정렬할때는 MergeSort를 쓴다</p>
+
+<p>Arrays.sort(primitive type) -&gt;
+최악의 경우 n^2(왜냐하면, DualPivotQuickSort를 사용한다고함)
+반면에 Collections.sort(Wrapper Class)-&gt;
+알다시피 병합정렬사용해서 무조건 nlogn임</p>
+
+<hr />
+
+<h1 id="generic-type">Generic Type</h1>
+
+<p>그리고 Generic Type은 PrimitiveType 절대 안받는다, Wrapper class를 받는다
+Wrapper class는 null이 들어감</p>
+
+<p>Function&lt;T,R&gt; -&gt; T : input type, R : Output type
+Object의 자손 =&gt; Boolean, Character, Number
+Number의 자손 =&gt; Byte,Short,Integer,Long,Float,Double, BigInteger, BigDecimal(wrapper class)</p>
+
+<p>static method에서 특정 메소드를 호출시에는 그 메소드가 무조건 static method여야한다고함.. =&gt; 이유는 잘모르겠네.. 끙
+그래서, class로 만든후에 그 안에 메소드를 만들고, 인스턴스화 시키고 호출을 해봤지만, static class여야 가능하다함</p>
+:ET

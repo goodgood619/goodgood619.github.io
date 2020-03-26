@@ -1,0 +1,373 @@
+I"M�<p>이번의 경우는 CCW를 통해서 교차 판별을 이루는 문제를 파악해보려 합니다</p>
+
+<p>​CCW를 하면 반시계방향인지, 시계 방향인지를 알수 있습니다.</p>
+
+<p>​그러면 교차를 하려면 어떻게 형성이 되어야 할까요?</p>
+
+<p>​당연히 아래 그림과 같이 형성을 해야 할것입니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfODAg/MDAxNTQ5MjYyNzQ0MTU3.H_LsYMnVdaivNRgTfBU-4uPE_9INSb6LYgJ9TlzqPbQg.I14xuCEP8_W1zTbxSDwZtPBN4AlMxCF8puL-wmg5vMEg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfODAg/MDAxNTQ5MjYyNzQ0MTU3.H_LsYMnVdaivNRgTfBU-4uPE_9INSb6LYgJ9TlzqPbQg.I14xuCEP8_W1zTbxSDwZtPBN4AlMxCF8puL-wmg5vMEg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>그러면 점 A와 B 그리고 C를 CCW한 값을 CCW1이라고 가정을 해보겠습니다</p>
+
+<p>​그때 CCW1의 값은 무조건 반시계방향이니까 양수일것입니다</p>
+
+<p>그러면 한번더 점 A와 B, 그리고 점 D를 CCW한 값을 CCW2라고 가정을 해보겠습니다</p>
+
+<p>​그러면 CCW2는 시계방향이니까 음수 일것입니다.</p>
+
+<p>​그렇다면 CCW1*CCW2를 곱한 값이 음수면 되겠구나라고 생각을 할것입니다.</p>
+
+<p>​하지만 다음과 같은 반례가 있을수 있습니다.</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfMTAx/MDAxNTQ5MjYyOTMzMTI1.ylrp8CNAQVGdJ9wSBKzSuEgqbPy5cHzhIn3iIo_qS-og.HF5ohysufSQtfxc7NyPrILaGNCnP_GGrvrr-xyk8rh8g.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfMTAx/MDAxNTQ5MjYyOTMzMTI1.ylrp8CNAQVGdJ9wSBKzSuEgqbPy5cHzhIn3iIo_qS-og.HF5ohysufSQtfxc7NyPrILaGNCnP_GGrvrr-xyk8rh8g.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이와 같은 경우에는 CCW1*CCW2값이 음수겠지만, 교차는 하지 않습니다</p>
+
+<p>​</p>
+
+<p>그러면 CCW3을 점 C와 D 그리고 점 A를 CCW한 값</p>
+
+<p>CCW4을 점 C와 D 그리고 점 B를 CCW한 값이라고 할때</p>
+
+<p>이 두 값또한 음수가되어야 한다는 점을 이용하면 될것입니다</p>
+
+<p>​그러므로 교차 판별의 조건은 CCW1<em>CCW2&lt;0 &amp;&amp; CCW3</em>CCW4&lt;0 이라는 조건을 통해 알 수 있습니다</p>
+
+<p>​</p>
+
+<p>근데 여기서 주의 해야 할것이, 이거는 문제마다 조금 잘 읽고 판단을 해봐야 한다고 생각을 하는데,</p>
+
+<p>그냥 직선1이 직선2에 접한다. 즉 교점을 가지는데 위의 사진의 경우처럼 직선이 직선을 통과 하는 경우가 아니라, 90도 각도를 이루는 경우가 있습니다.</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfMTkw/MDAxNTQ5MjYzMTcwMTAw.MSiQ4zmQCEsSUPbKn_iPyNxgV_5o_UyVBSmGD_jK1GYg.eS34cRK58RMIZW3fChtV9Fzv5Ywnz8aE1CIcYr4d7YQg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfMTkw/MDAxNTQ5MjYzMTcwMTAw.MSiQ4zmQCEsSUPbKn_iPyNxgV_5o_UyVBSmGD_jK1GYg.eS34cRK58RMIZW3fChtV9Fzv5Ywnz8aE1CIcYr4d7YQg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이런 경우는 CCW1한값이 (점 A,B,C) 일직선이기때문에 0이 나올것입니다</p>
+
+<p>​그래서 문제를 읽었는데 접하는 것도 직선이 만나는 것이다 라고 되어있다면, 저 위의 식을 조금 수정을 해야만 합니다</p>
+
+<p><strong>​CCW1<em>CCW2&lt;=0 &amp;&amp; CCW3</em>CCW4&lt;=0</strong> 이때의 경우만 된다는 것을 알수 있겠죠</p>
+
+<p>​근데 여기서도 예외처리를 해줘야 하는 경우가 있습니다</p>
+
+<p>​만약 CCW1<em>CCW2==0 이고 그리고 CCW3</em>CCW4==0 일때를 보면</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfNyAg/MDAxNTQ5MjYzNDU4MTEy.voHG2uf93XNvGiLhlDCLz6fCyElvzgdHxPlFdbdFLfQg.UQFZwHrlOvffWLJlVmwvsUMizbOwqNlWviCtmK7MlbMg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfNyAg/MDAxNTQ5MjYzNDU4MTEy.voHG2uf93XNvGiLhlDCLz6fCyElvzgdHxPlFdbdFLfQg.UQFZwHrlOvffWLJlVmwvsUMizbOwqNlWviCtmK7MlbMg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<ol>
+  <li>x좌표가 전부 동일한 경우,그런데 y좌표가 접하지 않는경우</li>
+</ol>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDRfMTUx/MDAxNTQ5MjYzNTUyNDM4.sdO8wuXAO2zSH6p2A67GLCs5cbSLk1SOBaJet6RbIecg.FIF1ofujD55isjGVLFc33HvmNOl9xFua3FlJQ9d5f5Mg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDRfMTUx/MDAxNTQ5MjYzNTUyNDM4.sdO8wuXAO2zSH6p2A67GLCs5cbSLk1SOBaJet6RbIecg.FIF1ofujD55isjGVLFc33HvmNOl9xFua3FlJQ9d5f5Mg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<ol>
+  <li>기울기가 동일한 경우(y좌표가 전부 다 같은 경우도 포함이 됨)</li>
+</ol>
+
+<p>​이러한 경우의 예외처리를 해줘야 한다</p>
+
+<p>​그러면, 이와 같이 코딩을 해주면 간단할 것이다</p>
+
+<p>​1.  맨먼저 x좌표가 다 똑같은 경우</p>
+
+<ul>
+  <li>(a). 선분P의 최대 y좌표값과, 선분Q의 최소 y좌표값이 만나는지 안만나는지 check</li>
+  <li>(b). 선분P의 최소 y좌표값과, 선분Q의 최대 y좌표값이 만나는지 안만나는지 check</li>
+</ul>
+
+<p>​2. 기울기가 동일한 경우</p>
+
+<p>위와 마찬가지로 x좌표에 대해서 check를 해주면 된다</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">,</span> <span class="n">P</span> <span class="n">D</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x4</span> <span class="o">=</span> <span class="n">D</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y4</span> <span class="o">=</span> <span class="n">D</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span> <span class="o">&amp;&amp;</span> <span class="n">x2</span> <span class="o">==</span> <span class="n">x3</span> <span class="o">&amp;&amp;</span> <span class="n">x3</span> <span class="o">==</span> <span class="n">x4</span> <span class="o">&amp;</span> <span class="n">x4</span> <span class="o">==</span> <span class="n">x1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//x좌표 겹칠때(y좌표비교)</span>
+        <span class="kt">int</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">miny</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxy</span> <span class="o">&lt;</span> <span class="n">miny</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">maxy2</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">miny2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxy2</span> <span class="o">&lt;</span> <span class="n">miny2</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="c1">//그외 나머지(기울기가 동일하다거나, y좌표가 겹친다거나)</span>
+        <span class="kt">int</span> <span class="n">maxx</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">minx</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxx</span> <span class="o">&lt;</span> <span class="n">minx</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">maxx2</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">minx2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxx2</span> <span class="o">&lt;</span> <span class="n">minx2</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>위에 써놓은 말을 그대로 코드로 풀어썼다. 코드가 좀 길어서 난잡할수는 있습니당 ㅠㅠ</p>
+
+<p>그리고 int형으로 써놨는데, 보통 기하 문제들은 좌표값이 커서</p>
+
+<p>왠만하면 안전하게 long long형으로 꼭 하시기를 바랍니다 ㅠㅠ</p>
+
+<p>(괜히 대강 계산하고 얕봤다가 틀린경우가 있습니당 ㅠㅠ)</p>
+
+<p>그래서 이를 통해서 접하는지에 대한 여부또한 ccw 알고리즘을 응용해서 알아볼수 있다</p>
+
+<p>다음 대표적인 문제가 다음과 같다</p>
+
+<p><a href="https://www.acmicpc.net/problem/2162">2162번: 선분 그룹</a></p>
+
+<p>사실 이문제는 union-find도 알아야 풀수는 있기는 한데, 우선은 딱히 문제가 없어서 가져왔습니다</p>
+
+<p>​문제를 요약하면, n개의 선분이 주어지고, 그 선분들이 교차하면 같은 그룹들로 묶고</p>
+
+<p>그렇게 묶었을때 총 그룹의 갯수와, 가장 큰 그룹(선분의 개수가 가장 많은)의 선분갯수를 출력하는 문제이다</p>
+
+<p>​그래서, 선분이 교차하는지를 판별하고</p>
+
+<p>만약 교차한다면, 그때 교차했을때의 두 집합의 조상(루트)이 다르다면, 합치고</p>
+
+<p>같다면 합치지 않는다 라는 union -find를 이용해 접근해서 풀어보면 됩니다</p>
+
+<h3 id="c">C++</h3>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;set&gt;
+#include &lt;list&gt;
+#include &lt;climits&gt;
+#include &lt;string.h&gt;
+#include &lt;deque&gt;
+#include &lt;functional&gt;
+#include &lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="cp">#define INF 1000000000
+#define mod 1000000007
+</span><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">PP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">PPP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;&gt;</span> <span class="n">PPPP</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">gox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">goy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="p">};</span>
+<span class="c1">// 교차하거나 접하면, 선분이 겹치므로 그때 해당 선분을 union-find하면됨</span>
+<span class="c1">// 선분을 저장할때, 정보가 4개필요하므로, pair4개로 ㄱㄱ</span>
+<span class="kt">int</span> <span class="n">parent</span><span class="p">[</span><span class="mi">3005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">Size</span><span class="p">[</span><span class="mi">3005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">==</span> <span class="n">u</span><span class="p">)</span> <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">uni</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Size</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Size</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">Size</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Size</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+        <span class="n">Size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">Size</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Size</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+        <span class="n">Size</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">parent</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">ll</span> <span class="nf">ccw</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">y2</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">y1</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">y3</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">,</span> <span class="n">P</span> <span class="n">D</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x4</span> <span class="o">=</span> <span class="n">D</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y4</span> <span class="o">=</span> <span class="n">D</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span> <span class="o">&amp;&amp;</span> <span class="n">x2</span> <span class="o">==</span> <span class="n">x3</span> <span class="o">&amp;&amp;</span> <span class="n">x3</span> <span class="o">==</span> <span class="n">x4</span> <span class="o">&amp;</span> <span class="n">x4</span> <span class="o">==</span> <span class="n">x1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//x좌표 겹칠때(y좌표비교)</span>
+        <span class="kt">int</span> <span class="n">maxy</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">miny</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxy</span> <span class="o">&lt;</span> <span class="n">miny</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">maxy2</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">miny2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxy2</span> <span class="o">&lt;</span> <span class="n">miny2</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="c1">//그외 나머지(기울기가 동일하다거나, y좌표가 겹친다거나)</span>
+        <span class="kt">int</span> <span class="n">maxx</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">minx</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxx</span> <span class="o">&lt;</span> <span class="n">minx</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">maxx2</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">minx2</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxx2</span> <span class="o">&lt;</span> <span class="n">minx2</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">PPPP</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">parent</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">Size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d%d%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y2</span><span class="p">);</span>
+        <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="p">{</span> <span class="n">x1</span><span class="p">,</span><span class="n">y1</span> <span class="p">},</span> <span class="p">{</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">}</span> <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="c1">//각 선분에대해서 본인을 제외한 다른 선분끼리 ccw를 다해봐야 함(그리고 만약 인접하면 그때 union)하면될듯?</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span><span class="k">continue</span><span class="p">;</span>
+            <span class="n">PPPP</span> <span class="n">here</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="n">PPPP</span> <span class="n">next</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+            <span class="n">ll</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">here</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">here</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+            <span class="n">ll</span> <span class="n">ccw2</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">here</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">here</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+            <span class="n">ll</span> <span class="n">ccw3</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">next</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">here</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
+            <span class="n">ll</span> <span class="n">ccw4</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">next</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">here</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ccw1</span><span class="o">*</span><span class="n">ccw2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ccw3</span> <span class="o">*</span> <span class="n">ccw4</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">//1차거르기</span>
+            <span class="k">else</span> <span class="p">{</span> <span class="c1">// 이제는 교차가 되는지 안되는지를 판단해야함, 만약 교차가 안되면 여기서도 거른다</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">here</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">here</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">next</span><span class="p">.</span><span class="n">second</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">!=</span> <span class="n">find</span><span class="p">(</span><span class="n">j</span><span class="p">))</span> <span class="n">uni</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">Max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">Max</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">Max</span><span class="p">,</span> <span class="n">Size</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">Max</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="by-java">by Java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.company</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Long</span><span class="o">.</span><span class="na">max</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Long</span><span class="o">.</span><span class="na">min</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">PP</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">size</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="kt">long</span> <span class="n">x1</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">y1</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">x2</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">y2</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">PP</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="no">PP</span> <span class="n">here</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="no">PP</span> <span class="n">next</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">j</span><span class="o">);</span>
+                <span class="kt">long</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">here</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y1</span><span class="o">);</span>
+                <span class="kt">long</span> <span class="n">ccw2</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">here</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y2</span><span class="o">);</span>
+                <span class="kt">long</span> <span class="n">ccw3</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">next</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y1</span><span class="o">);</span>
+                <span class="kt">long</span> <span class="n">ccw4</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">next</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y2</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">ccw1</span> <span class="o">*</span> <span class="n">ccw2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ccw3</span> <span class="o">*</span> <span class="n">ccw4</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">ccw1</span> <span class="o">*</span> <span class="n">ccw2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ccw3</span> <span class="o">*</span> <span class="n">ccw4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">cross</span><span class="o">(</span><span class="n">here</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">here</span><span class="o">.</span><span class="na">y2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y1</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">x2</span><span class="o">,</span> <span class="n">next</span><span class="o">.</span><span class="na">y2</span><span class="o">))</span>
+                        <span class="k">continue</span><span class="o">;</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">find</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">parent</span><span class="o">)</span> <span class="o">!=</span> <span class="n">find</span><span class="o">(</span><span class="n">j</span><span class="o">,</span> <span class="n">parent</span><span class="o">))</span> <span class="n">union</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">parent</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">size</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cnt</span><span class="o">++;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">max</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="n">max</span> <span class="o">=</span> <span class="n">size</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">cnt</span> <span class="o">+</span> <span class="s">"\n"</span> <span class="o">+</span> <span class="n">max</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">union</span><span class="o">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">,</span> <span class="kt">int</span> <span class="n">v</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="nc">Size</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">u</span><span class="o">,</span> <span class="n">parent</span><span class="o">);</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">parent</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">Size</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">&lt;</span> <span class="nc">Size</span><span class="o">[</span><span class="n">v</span><span class="o">])</span> <span class="o">{</span>
+            <span class="nc">Size</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">+=</span> <span class="nc">Size</span><span class="o">[</span><span class="n">u</span><span class="o">];</span>
+            <span class="nc">Size</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="nc">Size</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">+=</span> <span class="nc">Size</span><span class="o">[</span><span class="n">v</span><span class="o">];</span>
+            <span class="nc">Size</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">parent</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">=</span> <span class="n">u</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">parent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">])</span> <span class="k">return</span> <span class="n">u</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">]</span> <span class="o">=</span> <span class="n">find</span><span class="o">(</span><span class="n">parent</span><span class="o">[</span><span class="n">u</span><span class="o">],</span> <span class="n">parent</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">cross</span><span class="o">(</span><span class="kt">long</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x3</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y3</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x4</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y4</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span> <span class="o">&amp;&amp;</span> <span class="n">x2</span> <span class="o">==</span> <span class="n">x3</span> <span class="o">&amp;&amp;</span> <span class="n">x3</span> <span class="o">==</span> <span class="n">x4</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="o">!</span><span class="n">check</span><span class="o">(</span><span class="n">y1</span><span class="o">,</span> <span class="n">y2</span><span class="o">,</span> <span class="n">y3</span><span class="o">,</span> <span class="n">y4</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="o">!</span><span class="n">check</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">x2</span><span class="o">,</span> <span class="n">x3</span><span class="o">,</span> <span class="n">x4</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">check</span><span class="o">(</span><span class="kt">long</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x3</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x4</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">maxx</span> <span class="o">=</span> <span class="n">max</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">x2</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">minx</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="n">x3</span><span class="o">,</span> <span class="n">x4</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">maxx</span> <span class="o">&lt;</span> <span class="n">minx</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="n">maxx</span> <span class="o">=</span> <span class="n">max</span><span class="o">(</span><span class="n">x3</span><span class="o">,</span> <span class="n">x4</span><span class="o">);</span>
+        <span class="n">minx</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">x2</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">maxx</span> <span class="o">&lt;</span> <span class="n">minx</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">ccw</span><span class="o">(</span><span class="kt">long</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x3</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y3</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">x1</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y1</span><span class="o">)</span> <span class="o">-</span> <span class="o">(</span><span class="n">x2</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">y3</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">PP</span> <span class="o">{</span>
+    <span class="kt">long</span> <span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">;</span>
+
+    <span class="no">PP</span><span class="o">(</span><span class="kt">long</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">long</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x1</span> <span class="o">=</span> <span class="n">x1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y1</span> <span class="o">=</span> <span class="n">y1</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y2</span> <span class="o">=</span> <span class="n">y2</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">P</span> <span class="o">{</span>
+    <span class="kt">long</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kt">long</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="no">P</span><span class="o">(</span><span class="kt">long</span> <span class="n">x</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>선분에서 각 쌍의 x y좌표 들을 가지고 있어야 하기때문에(4개의 정보)</p>
+
+<p>(구조체로 하는것이 일반적입니다ㅠㅠ) 전 pair를 너무 좋아해서.. 왠만하면 저런식으로 처리했습니다</p>
+
+<p>양해 부탁드립니다(형변환을 해줘야 하는데, 위 코드는 해주지 않았습니다. 죄송합니다)</p>
+
+<p>​교차하는지에 대한 문제도 ccw 알고리즘을 이용해서 풀수 있다는 점입니다</p>
+
+<p>궁금하신 사항은 댓글을 남겨주시면 감사하겠습니다^^</p>
+:ET

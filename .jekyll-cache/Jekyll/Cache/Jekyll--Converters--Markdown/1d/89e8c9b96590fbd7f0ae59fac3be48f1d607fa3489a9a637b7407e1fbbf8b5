@@ -1,0 +1,364 @@
+I":�<h1 id="convex-hull-monotone-chain-기법">Convex Hull (Monotone Chain 기법)</h1>
+
+<p>저도 컨벡스 헐을 배운지는 1주일도 안되서, 공부하고 기록의 차원이니 많이 이해해주셨으면 좋겠다.</p>
+
+<p>​우선 컨벡스 헐이라는건, 간단하게 2차원 평면에 n개의 점이 흩어져 있는데, 이 n개의 점중에 몇개를 선택해서 볼록 다각형을 만들때</p>
+
+<p>그 다각형안에 나머지 모든 점을 포함시키게 하는 도형을 볼록 껍질 , 컨벡스헐이라고 한다</p>
+
+<p>​이 문제를 푸는데는 3가지 기법이 있다</p>
+
+<ol>
+  <li>
+    <p>Jarvis March 기법: 제일 작은(x,y)를 찾고, 그 다음으로 작은 좌표(극단점)를 찾고, 계속 반복을 한다(사실 잘모르겠다)</p>
+  </li>
+  <li>
+    <p>Graham Scan 기법: 각도 정렬 후에, 각도 순 탐색하면서 볼록 껍질 형성</p>
+  </li>
+  <li>
+    <p>Monotone Chain 기법: X축 정렬후, 위 껍질 탐색, 아래 껍질을 만들면 된다(Graham Scan 기법과 똑같이!!)</p>
+  </li>
+</ol>
+
+<p>​사실 1번과 2번을 안하고, 3번으로만 해서 방식은 잘 모르겠다
+3번은 2번과 방법은 똑같은데, 과정을 2번한다고 보면 된다
+과정은 다음과 같다</p>
+
+<p>​</p>
+<ul>
+  <li>먼저 정렬을 한다(x좌표가 작은순서, 만약에 같다면 y좌표가 작은순서대로) -&gt; 사실상 그냥 정렬을 하는거랑 똑같다고 보면된다</li>
+</ul>
+
+<p>(2번은 하기조차 싫었던게 각도정렬을 해야 되서, 그게 너무 길어질거 같아서 안했음.. ㅠㅠ)</p>
+
+<ul>
+  <li>그다음 정렬이 되었으면, Stack 자료구조를 쓰면서 진행을 한다. (맨처음에는 첫번째 정점의 인덱스를 넣고, 두번째 정점의 인덱스를 넣는다)
+​</li>
+  <li>이때 스택에서 먼저 나온 정점을 B 정점, 그다음 나온 정점을 A 정점이라 하자(즉 2개를 뽑았다는 의미), 이때 다음 정점을 C라고 한다면,</li>
+</ul>
+
+<p>​이때 CCW를 구한 값이 일관성이 있는 경우(+이든 -이든)에만, 스택에 넣어주고, 그렇지 않다면 스택하나를 pop한다</p>
+
+<p>​이게 무슨 소리인지 한번 써보도록 하겠습니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이런 입력값이 있을때, 무조건 처음좌표와 두번째 좌표는 넣고 시작을 해야 합니다</p>
+
+<p>(즉 항상 스택의 사이즈는 2 이상이어야합니다!!!)</p>
+
+<p>그다음 C 좌표를 봅니다</p>
+
+<p>점 A,B 그리고 CCW한 값이 반시계방향 양수이므로, 우선은 넣어줍니다(우리는 CCW 양수만을 가지는 값을 선택한것입니다)</p>
+
+<p>​</p>
+
+<p>그러면 스택에는 A,B,C가 쌓일것입니다. 그렇게 다시 점 B와 C를 기준으로 다음 정점인 D를 봅니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>반시계방향이므로 D를 넣어줍니다. 이때 다시 선분CD를 기준으로 E를 볼때 시계방향이므로 유효하지 않습니다</p>
+
+<p>다시 선분 BC를 기준으로 E를 봐도 마찬가지로 시계방향입니다</p>
+
+<p>그러므로 스택에 있는 점 A,B,C에서 C를 빼주고, 다음정점인 E를 봅니다</p>
+
+<p>이때 C가 빠지기 때문에 , 선분 BC는 유효하지 않게됩니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>다시 점 A와 B를 기준으로 E를 보면 반시계방향이므로 , 올바르기 때문에 스택에 넣어줍니다</p>
+
+<p>다음은 점 B와 점 E를 기준으로 F를 봅니다 또 반시계이므로, F도 넣어줍니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이제 끝점까지 갔기 때문에, 아래껍질이 형성 되었음을 알수 있습니다</p>
+
+<p>​다시 윗껍질을 형성하려면, 맨뒷점과 맨뒷점 전을 넣고, 이제는 뒤로 가면서 형성을 시키면됩니다</p>
+
+<p>우리는 반시계방향으로 형성했기때문에, 윗껍질 또한 그런식으로 반복을 해주면 됩니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>시계 방향이므로, 점F와 점E이므로, pop을 하면 점 E가 pop이 될것입니다. 즉 선분 EF는 의미가 없다는 뜻입니다.</p>
+
+<p>그다음, 무조건 항상 스택 사이즈는 2이상 만들어야 하기때문에, 점 D를 넣어줍니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>그러면 이상태가 될것입니다</p>
+
+<p>다시 선분 FD를 기준으로 점 C를 보면 양방향이므로, 넣어줍니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이제 똑같이 선분 DC를 기준으로 B를 보는데, 시계방향이므로 점C를 빼줍니다(포인터는 스택사이즈가 2미만일때만 이동합니다!!)</p>
+
+<p>다시 선분FD를 기준으로 점 B를 보면, 반시계이므로 넣어줍니다 그러면 아래와 같이 될것입니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>다시 선분 DB를 기준으로 점A를 CCW한 값은 시계방향이므로 스택에서 점B를 빼줍니다</p>
+
+<p>그다음 다시 선분FD를 기준으로 점 A를 볼때, 반시계이므로 넣어주고, 더이상 A보다 작은 정점은 없기때문에 종료됩니다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966" alt="https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966" /></p>
+
+<p>이런식으로 볼록 껍질이 형성됨을 알수 있습니다</p>
+
+<p>​요약을 하면</p>
+
+<ol>
+  <li>
+    <p>CCW한 값이 일관성있는 값(위의 예에서는 반시계방향)이 계속 나올때마다, 스택에 넣고, 인덱스포인터를 증가(아래껍질 형성),혹은 인덱스포인터를 감소시킵니다(윗껍질 형성)</p>
+  </li>
+  <li>
+    <p>만약 1번의 경우가 아닐시에는 스택에서 pop을 하고, 만약 스택사이즈가 2미만으로 될경우에는, 현 인덱스포인터를 넣어주고</p>
+  </li>
+</ol>
+
+<p>인덱스 포인터를 증가(아래껍질)시키거나 감소(윗껍질)시켜줍니다.</p>
+
+<ul>
+  <li><strong>스택사이즈가 2미만이 아니라면 인덱스포인터는 증가하거나 감소하지 않습니다!!</strong></li>
+</ul>
+
+<p>​이 과정을 해준다면 우린 올바른 볼록껍질을 형성시킬수 있습니다</p>
+
+<p>​
+그래서 문제를 풀어보면</p>
+
+<h3 id="c">C++</h3>
+
+<p><a href="https://www.acmicpc.net/problem/1708">1708번: 볼록 껍질</a></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;set&gt;
+#include &lt;list&gt;
+#include &lt;climits&gt;
+#include &lt;string.h&gt;
+#include &lt;deque&gt;
+#include &lt;functional&gt;
+#include &lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="cp">#define INF 1000000000
+#define mod 1000000007
+</span><span class="k">typedef</span> <span class="n">pair</span> <span class="o">&lt;</span> <span class="n">ll</span><span class="p">,</span> <span class="n">ll</span> <span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">PP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">PPP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">PPPP</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">gox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">goy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">stack</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">st</span><span class="p">,</span> <span class="n">en</span><span class="p">;</span>
+<span class="n">ll</span> <span class="nf">ccw</span><span class="p">(</span><span class="n">P</span> <span class="n">A</span><span class="p">,</span> <span class="n">P</span> <span class="n">B</span><span class="p">,</span> <span class="n">P</span> <span class="n">C</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">y2</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">y1</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">y3</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%lld%lld"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+        <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="c1">//graham scan방법으로 0~v.size()-1까지 돌린다(기준은 반시계방향, 시계방향이 나오면 걔를뺀다)</span>
+    <span class="kt">int</span> <span class="n">ptr</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="c1">// 0부터 쭉 진행하기(반시계여야 값을 넣을수 있다-&gt; 즉 ccw값이 양수일때)</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// 아랫껍질 만들기</span>
+        <span class="n">ll</span> <span class="n">first</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">ll</span> <span class="n">second</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">ll</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">second</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">first</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">ptr</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ccw1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">second</span><span class="p">),</span><span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">first</span><span class="p">),</span><span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span> <span class="c1">//원상태로 만들고, ptr을 넣어줌</span>
+            <span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">second</span><span class="p">),</span><span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">first</span><span class="p">),</span><span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span> <span class="c1">//원상태로 만들고, pop해줌</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 사이즈가 1이라면 항상 2를 만들어야함!!</span>
+                <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+                <span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ll</span> <span class="n">first</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">en</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">ll</span> <span class="n">second</span> <span class="o">=</span> <span class="n">en</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+        <span class="n">en</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">ll</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">second</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">first</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="n">ptr</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ccw1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">second</span><span class="p">),</span><span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">first</span><span class="p">),</span><span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+            <span class="n">ptr</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">second</span><span class="p">),</span><span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">first</span><span class="p">),</span><span class="n">en</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">en</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">en</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+                <span class="n">ptr</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span> <span class="c1">//아랫껍질 갯수체크</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">m</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">en</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span> <span class="c1">//윗껍질 갯수체크</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">en</span><span class="p">.</span><span class="n">top</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">m</span><span class="p">[</span><span class="n">en</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">en</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="n">en</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<hr />
+
+<h3 id="by-java">by Java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">y</span> <span class="o">=</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">p</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="n">v</span><span class="o">.</span><span class="na">sort</span><span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">x</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="na">x</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">x</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="na">x</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">y</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="na">y</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">y</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">.</span><span class="na">y</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">up</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">down</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">ptr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">ptr</span> <span class="o">&lt;</span> <span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">up</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">up</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="kt">long</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">first</span><span class="o">),</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">second</span><span class="o">),</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">ptr</span><span class="o">));</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">ccw1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">second</span><span class="o">);</span>
+                <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ptr</span><span class="o">);</span>
+                <span class="n">ptr</span><span class="o">++;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">up</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">up</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ptr</span><span class="o">);</span>
+                    <span class="n">ptr</span><span class="o">++;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="n">ptr</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">3</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">ptr</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="n">down</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">down</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">down</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">down</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="kt">long</span> <span class="n">ccw1</span> <span class="o">=</span> <span class="n">ccw</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">first</span><span class="o">),</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">second</span><span class="o">),</span> <span class="n">v</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">ptr</span><span class="o">));</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">ccw1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">second</span><span class="o">);</span>
+                <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ptr</span><span class="o">);</span>
+                <span class="n">ptr</span><span class="o">--;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">down</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">down</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ptr</span><span class="o">);</span>
+                    <span class="n">ptr</span><span class="o">--;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">up</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">up</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">here</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">here</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="n">cnt</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">down</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">down</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="n">down</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">here</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">m</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">here</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="n">cnt</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">ccw</span><span class="o">(</span><span class="n">p</span> <span class="n">a</span><span class="o">,</span> <span class="n">p</span> <span class="n">b</span><span class="o">,</span> <span class="n">p</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">b</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">a</span><span class="o">.</span><span class="na">y</span><span class="o">)</span> <span class="o">-</span> <span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">a</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="na">x</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">p</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
+
+        <span class="kd">private</span> <span class="nf">p</span><span class="o">(</span><span class="kt">long</span> <span class="n">x</span><span class="o">,</span> <span class="kt">long</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>문제를 잘 읽어보면, 이게 이제 볼록껍질 관련 문제에서 중요하다고 볼수 있는데,</p>
+
+<p>다각형의 모든 점이 일직선을 이루는 경우가 없다 라는 경우가 있다.</p>
+
+<p>이 말은 뭐냐면 선분을 이루는 직선 위에 다른 점이 포함될수 없다라는 말을 의미한다.</p>
+
+<p>그렇기 때문에, 위 문제에서는 ccw가 0이되서 일직선을 이루는 경우는 체크를 해주지 않는다</p>
+
+<p>​하지만 다른 문제들을 접해보니, 볼록껍질을 이루는 직선위에 정점이 있는 경우도 체크를 해준다고 되어있다면</p>
+
+<p>ccw는 0도 포함을 시켜줘야 한다. 이 문제는 좀더 고심해 보시면 될것같다</p>
+
+<p>궁금하신 사항이 있으시면 댓글을 달아주시면 감사하겠습니다^^</p>
+:ET

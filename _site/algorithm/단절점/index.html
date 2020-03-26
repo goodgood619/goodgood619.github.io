@@ -1,0 +1,792 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>단절점 - 굿굿</title>
+<meta name="description" content="단절점 공부하기 ">
+
+
+  <meta name="author" content="goodgood619">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="굿굿">
+<meta property="og:title" content="단절점">
+<meta property="og:url" content="http://localhost:4000/algorithm/%EB%8B%A8%EC%A0%88%EC%A0%90/">
+
+
+  <meta property="og:description" content="단절점 공부하기 ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/image.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-03-26T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-03-26T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/algorithm/%EB%8B%A8%EC%A0%88%EC%A0%90/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yoon Seok Lee",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="굿굿 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          굿굿
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://goodgood619.github.io/">블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image.png" alt="goodgood619" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">goodgood619</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>열공중 그리고 post 작성 및 정리</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:gktgnjftm@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/goodgood619" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="단절점">
+    <meta itemprop="description" content="단절점 공부하기">
+    <meta itemprop="datePublished" content="2020-03-26T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-03-26T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">단절점
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>단절점은 <strong>무향 연결 그래프에서 특정 정점을 제거 했을때 두개의 연결 그래프로 나뉘는 정점</strong>을 단절점이라고 한다</p>
+
+<p>그림을 통해서 어떻게 가는지 한번 보자</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfMjQ3/MDAxNTQ5NDcwMTI4NjQw.tC3ciDP7UNbA8kV3ZuGtTXhf70gTq6j4Y8k358wm0_Eg.UpxOmqjZfNOnmSPORs12IyrHDUqj6tnm2ymTWQF9aUsg.PNG.gktgnjftm/image.png?type=w966" alt="test" /></p>
+
+<p>이런 무향그래프가 있다고 가정할때 아래와 같이 방문을 했다고 가정해보자</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfMjcz/MDAxNTQ5NDcwMDUxMjc4.hdOnedy2MscgDYjUXhQlVgXqkeLrIZcAIkq8KmKVVHcg.S6MYb2_bPQzj7DNsYzbcVhuOuR1elI_7B3bd984x0tkg.PNG.gktgnjftm/image.png?type=w966" alt="test2" /></p>
+
+<p><strong>파란글씨는 방문순서</strong><br />
+이제 6번째로 방문한 7번 노드는 주위에 더이상 갈곳이 없으니 5번으로 돌아올것이다</p>
+
+<p>근데 이때, 돌아올때 우리는 <strong>리턴해주는 값을 설정할것</strong>이다</p>
+
+<p>그 리턴해주는 값은 7번 <strong>노드와 연결된 가장 빨리 방문한 노드의 번호</strong>이다. 7번 노드에서 연결된 가장 빨리 방문한 노드는</p>
+
+<p>5번 노드이기 때문에, 5번이 방문된 순서 3 값을 반환해줄 것이다.</p>
+
+<p>그러면 이제 8번 노드로 다시 돌아오게 되는데, 여기서 단절점임을 확인해 줄수 있는것이,</p>
+
+<p>현재정점(8번노드)보다 늦게 방문한(7번노드)정점의 리턴값이 내가 방문된 순서보다 같거나 크다면 이 정점은 단절점으로 체크를 한다는 것이다</p>
+
+<p>그냥 간단하게 생각을 해보면, 단절점은 일종의 유일한 길목이라고 보면 된다. 즉, 현재정점보다 더 늦게 방문된 노드가 현재정점보다 더 일찍 방문된 노드로</p>
+
+<p>갈수 있다면, 그건 애초에 현재정점이 유일한 길목이 아니게 되는것이다. 근데 만약 같다면,(사실 절대 작지도 않을것이다)</p>
+
+<p>가장 빨리 갈수 있는 노드가 현재정점이기 때문에, 현재정점이 유일한 길목이 되게 되므로, 나를 단절점으로 보면될것이다</p>
+
+<p>(여기서 나라는 의미는 정점으로 해석하시면 좋을것 같습니다)</p>
+
+<p>​그러므로 8번노드의 입장에서 본인의 방문순서인 5보다 3이 더 작기때문에, 단절점이 아니고, 8번노드또한 가장빨리 갈수 있는 노드 번호가</p>
+
+<p>5번이므로 3을 반환해준다</p>
+
+<p>이런식으로 진행을 하다보면</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfMTEw/MDAxNTQ5NDcwNzcxNDk4.iOkt2mjhZLJ6YIwGDDYB2g622nSXN2UC0zwV3UbaIr0g.AaV8iRGvoJ6St_VWHkQiaMTyjX3NB42QEkPRR6kTBn4g.PNG.gktgnjftm/image.png?type=w966" alt="test2" /></p>
+
+<p>이렇게 5번정점을 단절점으로 체크하게 되는 경우가 생긴다. 그러면 단절점을 체크를 하고, 가장 빠른 방문순서 2(2번노드)를 반환해준다</p>
+
+<p>그러면 2번 노드 또한 본인의 방문순서와 일치하므로 단절점을 체크해준다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfNzgg/MDAxNTQ5NDcwODg1NDM3.0Qt8nlzDtXYy09wcAWRD4LA77Mrqrxm6U-tdGTADBD8g.RCS1wXJ3qr_hxPl3U7-WGG3bqxq5u9WYVA_6ojJm2FIg.PNG.gktgnjftm/image.png?type=w966" alt="test3" /></p>
+
+<p>이런 식으로 계속 진행하면 결국 끝에는 이런 그림이 나오게 된다</p>
+
+<p><img src="https://postfiles.pstatic.net/MjAxOTAyMDdfNDcg/MDAxNTQ5NDcxMDc5MDE3.bkDZat9RN-H2WpPe-J0ZCLzT7aI0yGlDNbGtNMvfyzUg.YtyxT96dorlKwkPRMi7hD878sUJ3kjB1M3sJGb4qJdEg.PNG.gktgnjftm/image.png?type=w966" alt="test4" /></p>
+
+<p>근데 단절점의 특징중 하나가 있는데, 루트에서 시작(여기서는 1번정점)한 경우는 위와 같은 방식으로 단절점을 체크하지는 않습니다</p>
+
+<p>루트가 단절점이 되려면, <strong>루트에서 방문한 노드의 갯수가 2개 이상</strong>이어야 루트가 단절점이 될수 있습니다<br />
+그러므로, 1번 정점에서 호출한 자식은 2번 정점밖에 없기 때문에, 갯수는 1개가 되고, 단절점으로 판단하지 않는다는 것입니다</p>
+
+<p>관련 문제는 다음과 같습니다. <a href="https://www.acmicpc.net/problem/11266">https://www.acmicpc.net/problem/11266</a></p>
+
+<h3 id="by-c">by C++</h3>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;math.h&gt;
+#include &lt;set&gt;
+#include &lt;list&gt;
+#include &lt;climits&gt;
+#include &lt;string.h&gt;
+#include &lt;deque&gt;
+#include &lt;functional&gt;
+#include &lt;stack&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="cp">#define INF 1000000000
+</span><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span> <span class="n">P</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">PP</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">PPP</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">gox</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">goy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span> <span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dis</span><span class="p">[</span><span class="mi">10005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">cutvertex</span><span class="p">[</span><span class="mi">10005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">here</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">ok</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">dis</span><span class="p">[</span><span class="n">here</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">t</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">here</span><span class="p">];</span>
+	<span class="kt">int</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">here</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">here</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dis</span><span class="p">[</span><span class="n">next</span><span class="p">])</span> <span class="p">{</span>
+			<span class="n">child</span><span class="o">++</span><span class="p">;</span> <span class="c1">//루트에서 호출된 자식을 카운트</span>
+			<span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">next</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span> <span class="c1">//자식들중에서 가장 먼저 방문된번호</span>
+			<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">dis</span><span class="p">[</span><span class="n">here</span><span class="p">])</span> <span class="p">{</span>
+				<span class="n">cutvertex</span><span class="p">[</span><span class="n">here</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span> <span class="c1">// 항상 최솟값 갱신</span>
+		<span class="p">}</span>
+		<span class="k">else</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">dis</span><span class="p">[</span><span class="n">next</span><span class="p">]);</span> <span class="c1">// 인접한 노드 중에 최솟값 갱신</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">child</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="n">cutvertex</span><span class="p">[</span><span class="n">here</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="c1">// 루트도 단절점이다</span>
+	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="n">a</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">;</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">first</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">second</span><span class="p">);</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">first</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+		<span class="n">a</span><span class="p">[</span><span class="n">second</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">first</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>  <span class="c1">// 여러개의 그래프가 입력될수 있기 때문에, n번씩 돌면서 다해줘야함</span>
+			<span class="n">dfs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">cutvertex</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="by-java">by Java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.StringTokenizer</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Integer</span><span class="o">.</span><span class="na">min</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">));</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">input</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;[]</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">graph</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dis</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">cut</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringTokenizer</span><span class="o">(</span><span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">());</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">()),</span> <span class="n">next</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">nextToken</span><span class="o">());</span>
+            <span class="n">graph</span><span class="o">[</span><span class="n">here</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="n">graph</span><span class="o">[</span><span class="n">next</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">here</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dis</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="n">dfs</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="n">cut</span><span class="o">,</span> <span class="n">dis</span><span class="o">,</span> <span class="n">graph</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">cut</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">e</span> <span class="o">:</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">bw</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+        <span class="n">bw</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">here</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">ok</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="n">cut</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dis</span><span class="o">,</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;[]</span> <span class="n">graph</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">dis</span><span class="o">[</span><span class="n">here</span><span class="o">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">t</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">dis</span><span class="o">[</span><span class="n">here</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">graph</span><span class="o">[</span><span class="n">here</span><span class="o">].</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">graph</span><span class="o">[</span><span class="n">here</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">dis</span><span class="o">[</span><span class="n">next</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">child</span><span class="o">++;</span>
+                <span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">(</span><span class="n">next</span><span class="o">,</span> <span class="kc">false</span><span class="o">,</span> <span class="n">cut</span><span class="o">,</span> <span class="n">dis</span><span class="o">,</span> <span class="n">graph</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="n">dis</span><span class="o">[</span><span class="n">here</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">cut</span><span class="o">[</span><span class="n">here</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="n">ret</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">min</span><span class="o">(</span><span class="n">ret</span><span class="o">,</span> <span class="n">dis</span><span class="o">[</span><span class="n">next</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">ok</span> <span class="o">&amp;&amp;</span> <span class="n">child</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="o">)</span> <span class="n">cut</span><span class="o">[</span><span class="n">here</span><span class="o">]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#graph" class="page__taxonomy-item" rel="tag">graph</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%8B%A8%EC%A0%88%EC%A0%90" class="page__taxonomy-item" rel="tag">단절점</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#algorithm" class="page__taxonomy-item" rel="tag">Algorithm</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-03-26">March 26, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%8B%A8%EC%A0%88%EC%A0%90%20http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%258B%25A8%25EC%25A0%2588%25EC%25A0%2590%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%258B%25A8%25EC%25A0%2588%25EC%25A0%2590%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Falgorithm%2F%25EB%258B%25A8%25EC%25A0%2588%25EC%25A0%2590%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/convexHull/" class="pagination--pager" title="ConvexHull
+">Previous</a>
+    
+    
+      <a href="/algorithm/%EB%B9%84%ED%8A%B8%EB%A7%88%EC%8A%A4%ED%82%B9DP/" class="pagination--pager" title="BitMasking DP
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/%EB%B9%84%ED%8A%B8%EB%A7%88%EC%8A%A4%ED%82%B9DP/" rel="permalink">BitMasking DP
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">비트마스킹 DP 공부
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/convexHull/" rel="permalink">ConvexHull
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">ConvexHull with Monotone Chain
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/ccw%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0/" rel="permalink">CCW
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">CCW 이해하기
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/ccw%EA%B5%90%EC%B0%A8%ED%8C%90%EB%B3%84/" rel="permalink">CCW교차판별
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">CCW 교차판별이해하기
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/goodgood619" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Yoon Seok Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/algorithm/%EB%8B%A8%EC%A0%88%EC%A0%90/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/algorithm/단절점"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://goodgood619-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
