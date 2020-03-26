@@ -47,7 +47,7 @@ last_modified_at: 2020-03-26
 
 ​이게 무슨 소리인지 한번 써보도록 하겠습니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966)
+![convex1](/assets/convex1.png)
 
 이런 입력값이 있을때, 무조건 처음좌표와 두번째 좌표는 넣고 시작을 해야 합니다
 
@@ -61,7 +61,7 @@ last_modified_at: 2020-03-26
 
 그러면 스택에는 A,B,C가 쌓일것입니다. 그렇게 다시 점 B와 C를 기준으로 다음 정점인 D를 봅니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966)
+![convex2](/assets/convex2.png)
 
 반시계방향이므로 D를 넣어줍니다. 이때 다시 선분CD를 기준으로 E를 볼때 시계방향이므로 유효하지 않습니다
 
@@ -71,13 +71,13 @@ last_modified_at: 2020-03-26
 
 이때 C가 빠지기 때문에 , 선분 BC는 유효하지 않게됩니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966)
+![convex3](/assets/convex3.png)
 
 다시 점 A와 B를 기준으로 E를 보면 반시계방향이므로 , 올바르기 때문에 스택에 넣어줍니다
 
 다음은 점 B와 점 E를 기준으로 F를 봅니다 또 반시계이므로, F도 넣어줍니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966)
+![convex4](/assets/convex4.png)
 
 이제 끝점까지 갔기 때문에, 아래껍질이 형성 되었음을 알수 있습니다
 
@@ -85,31 +85,31 @@ last_modified_at: 2020-03-26
 
 우리는 반시계방향으로 형성했기때문에, 윗껍질 또한 그런식으로 반복을 해주면 됩니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966)
+![convex5](/assets/convex5.png)
 
 시계 방향이므로, 점F와 점E이므로, pop을 하면 점 E가 pop이 될것입니다. 즉 선분 EF는 의미가 없다는 뜻입니다.
 
 그다음, 무조건 항상 스택 사이즈는 2이상 만들어야 하기때문에, 점 D를 넣어줍니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966)
+![convex6](/assets/convex6.png)
 
 그러면 이상태가 될것입니다
 
 다시 선분 FD를 기준으로 점 C를 보면 양방향이므로, 넣어줍니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966)
+![convex7](/assets/convex7.png)
 
 이제 똑같이 선분 DC를 기준으로 B를 보는데, 시계방향이므로 점C를 빼줍니다(포인터는 스택사이즈가 2미만일때만 이동합니다!!)
 
 다시 선분FD를 기준으로 점 B를 보면, 반시계이므로 넣어줍니다 그러면 아래와 같이 될것입니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966)
+![convex8](/assets/convex8.png)
 
 다시 선분 DB를 기준으로 점A를 CCW한 값은 시계방향이므로 스택에서 점B를 빼줍니다
 
 그다음 다시 선분FD를 기준으로 점 A를 볼때, 반시계이므로 넣어주고, 더이상 A보다 작은 정점은 없기때문에 종료됩니다
 
-![https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966](https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966)
+![convex9](/assets/convex9.png)
 
 이런식으로 볼록 껍질이 형성됨을 알수 있습니다
 

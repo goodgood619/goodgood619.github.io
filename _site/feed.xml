@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-27T00:22:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">굿굿</title><subtitle>MarkDown + 여러가지 공부용</subtitle><author><name>goodgood619</name></author><entry><title type="html">LCA</title><link href="http://localhost:4000/algorithm/LCA/" rel="alternate" type="text/html" title="LCA" /><published>2020-03-26T00:00:00+09:00</published><updated>2020-03-26T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/LCA</id><content type="html" xml:base="http://localhost:4000/algorithm/LCA/">&lt;h2 id=&quot;서론-및-개인적인-생각&quot;&gt;서론 및 개인적인 생각&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-27T00:38:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">굿굿</title><subtitle>MarkDown + 여러가지 공부용</subtitle><author><name>goodgood619</name></author><entry><title type="html">LCA</title><link href="http://localhost:4000/algorithm/LCA/" rel="alternate" type="text/html" title="LCA" /><published>2020-03-26T00:00:00+09:00</published><updated>2020-03-26T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/LCA</id><content type="html" xml:base="http://localhost:4000/algorithm/LCA/">&lt;h2 id=&quot;서론-및-개인적인-생각&quot;&gt;서론 및 개인적인 생각&lt;/h2&gt;
 
 &lt;p&gt;LCA는 최소 공통 조상을 뜻하며, 영어로는 Least Common Ancestor? 뭐 이런 의미 인거 같다&lt;/p&gt;
 
@@ -1227,7 +1227,7 @@ CAPCAK
 
 &lt;p&gt;​이게 무슨 소리인지 한번 써보도록 하겠습니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMTE3/MDAxNTQ5NDUwNzU2NDg4.9nXCsmk9LbyDDUPNWsicUtrDFCXvPdCtaS3ymMX_M58g.nwkQyZeEICxoMw2hCaBpqwnohvoj51PceFVHlAgWclAg.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex1.png&quot; alt=&quot;convex1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이런 입력값이 있을때, 무조건 처음좌표와 두번째 좌표는 넣고 시작을 해야 합니다&lt;/p&gt;
 
@@ -1241,7 +1241,7 @@ CAPCAK
 
 &lt;p&gt;그러면 스택에는 A,B,C가 쌓일것입니다. 그렇게 다시 점 B와 C를 기준으로 다음 정점인 D를 봅니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDlfMTU1/MDAxNTQ5NjQ1NDcxMjcw.PiaBI7VhhfKGbc7hD44_A0SCz5XVRyNwruW3kxxiq_kg._3_fhm8F5KmLQX4HKwyb6dFOYcRfFHnHHqueX3JaQ5Ag.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex2.png&quot; alt=&quot;convex2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;반시계방향이므로 D를 넣어줍니다. 이때 다시 선분CD를 기준으로 E를 볼때 시계방향이므로 유효하지 않습니다&lt;/p&gt;
 
@@ -1251,13 +1251,13 @@ CAPCAK
 
 &lt;p&gt;이때 C가 빠지기 때문에 , 선분 BC는 유효하지 않게됩니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMTQw/MDAxNTQ5NDUxMTc1MzEw.UPHK9uvaevwusfiXrBSu6tUe6YG1v7_MDxCbGKdIcKYg.K8oYLJ0U1gP4EovuLNv4gBB--LobXoTP19MEXF4Lyx4g.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex3.png&quot; alt=&quot;convex3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;다시 점 A와 B를 기준으로 E를 보면 반시계방향이므로 , 올바르기 때문에 스택에 넣어줍니다&lt;/p&gt;
 
 &lt;p&gt;다음은 점 B와 점 E를 기준으로 F를 봅니다 또 반시계이므로, F도 넣어줍니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMjE5/MDAxNTQ5NDUxMjU2NjYy.-jTIM4uGpJLV7k7yd6c7aAVzB_yjv_EJyyJwhNR8zfcg.7Adbt9VeZ0LEQVxdYMtItwAssQSYKUZ7O8Z3CwLJcGUg.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex4.png&quot; alt=&quot;convex4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이제 끝점까지 갔기 때문에, 아래껍질이 형성 되었음을 알수 있습니다&lt;/p&gt;
 
@@ -1265,31 +1265,31 @@ CAPCAK
 
 &lt;p&gt;우리는 반시계방향으로 형성했기때문에, 윗껍질 또한 그런식으로 반복을 해주면 됩니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfNDUg/MDAxNTQ5NDUxNjA5Mjg5.BtWrkiOXR6jaErYF2f-8f4jcIIVUO8XChi1PSed0dewg.G8lWgKi3WjOOcT3oxWhj4HfvaxuxbMmgNxkxLbWhIS4g.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex5.png&quot; alt=&quot;convex5&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;시계 방향이므로, 점F와 점E이므로, pop을 하면 점 E가 pop이 될것입니다. 즉 선분 EF는 의미가 없다는 뜻입니다.&lt;/p&gt;
 
 &lt;p&gt;그다음, 무조건 항상 스택 사이즈는 2이상 만들어야 하기때문에, 점 D를 넣어줍니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfNzYg/MDAxNTQ5NDUxNjk1OTI3.exOZQcLRGcXJhuvJTX3ao4U8T9ZeovJ3xRg-PkWJBFkg.4SIiVU4DsW6uG15G0XtXo3XgL7X0TgqueOyuwz4dcuUg.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex6.png&quot; alt=&quot;convex6&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;그러면 이상태가 될것입니다&lt;/p&gt;
 
 &lt;p&gt;다시 선분 FD를 기준으로 점 C를 보면 양방향이므로, 넣어줍니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMzcg/MDAxNTQ5NDUxODU0ODA0.1YZRbPkbRE5QxSeRoBKiNUXFkCq5Z9ygEPtfmAyAjAEg.wf39hg5DsTw2NQT_SmMjjivQwJtMk_IxbPp2cBqdsU4g.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex7.png&quot; alt=&quot;convex7&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이제 똑같이 선분 DC를 기준으로 B를 보는데, 시계방향이므로 점C를 빼줍니다(포인터는 스택사이즈가 2미만일때만 이동합니다!!)&lt;/p&gt;
 
 &lt;p&gt;다시 선분FD를 기준으로 점 B를 보면, 반시계이므로 넣어줍니다 그러면 아래와 같이 될것입니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMzIg/MDAxNTQ5NDUxOTk3MjI4.Des0VB1yFGTz9ZXXaCPQwIVvnonh5Ykt6_Z3ylxW-fQg.Zw4OfoFwNFQPRBByYsS7wALXkSTrNVs4509o3xOLtK0g.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex8.png&quot; alt=&quot;convex8&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;다시 선분 DB를 기준으로 점A를 CCW한 값은 시계방향이므로 스택에서 점B를 빼줍니다&lt;/p&gt;
 
 &lt;p&gt;그다음 다시 선분FD를 기준으로 점 A를 볼때, 반시계이므로 넣어주고, 더이상 A보다 작은 정점은 없기때문에 종료됩니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;https://postfiles.pstatic.net/MjAxOTAyMDZfMjk0/MDAxNTQ5NDUyMDkzNjQw.ZDdVXRvQ94Lqt1Bd6qQ-uZV5JJUhT7nOTdIqWv-wzrkg.sE2HlQWp5X0S8me-Za6I45huDADmmOqLTD19hd7dvmgg.PNG.gktgnjftm/image.png?type=w966&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/convex9.png&quot; alt=&quot;convex9&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이런식으로 볼록 껍질이 형성됨을 알수 있습니다&lt;/p&gt;
 
@@ -1551,11 +1551,11 @@ CAPCAK
 
 &lt;p&gt;그림을 통해서 어떻게 가는지 한번 보자&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDdfMjQ3/MDAxNTQ5NDcwMTI4NjQw.tC3ciDP7UNbA8kV3ZuGtTXhf70gTq6j4Y8k358wm0_Eg.UpxOmqjZfNOnmSPORs12IyrHDUqj6tnm2ymTWQF9aUsg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;test&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/단절1.png&quot; alt=&quot;단절1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이런 무향그래프가 있다고 가정할때 아래와 같이 방문을 했다고 가정해보자&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDdfMjcz/MDAxNTQ5NDcwMDUxMjc4.hdOnedy2MscgDYjUXhQlVgXqkeLrIZcAIkq8KmKVVHcg.S6MYb2_bPQzj7DNsYzbcVhuOuR1elI_7B3bd984x0tkg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;test2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/단절2.png&quot; alt=&quot;단절2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;파란글씨는 방문순서&lt;/strong&gt;&lt;br /&gt;
 이제 6번째로 방문한 7번 노드는 주위에 더이상 갈곳이 없으니 5번으로 돌아올것이다&lt;/p&gt;
@@ -1584,22 +1584,25 @@ CAPCAK
 
 &lt;p&gt;이런식으로 진행을 하다보면&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDdfMTEw/MDAxNTQ5NDcwNzcxNDk4.iOkt2mjhZLJ6YIwGDDYB2g622nSXN2UC0zwV3UbaIr0g.AaV8iRGvoJ6St_VWHkQiaMTyjX3NB42QEkPRR6kTBn4g.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;test2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/단절3.png&quot; alt=&quot;단절3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이렇게 5번정점을 단절점으로 체크하게 되는 경우가 생긴다. 그러면 단절점을 체크를 하고, 가장 빠른 방문순서 2(2번노드)를 반환해준다&lt;/p&gt;
 
 &lt;p&gt;그러면 2번 노드 또한 본인의 방문순서와 일치하므로 단절점을 체크해준다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDdfNzgg/MDAxNTQ5NDcwODg1NDM3.0Qt8nlzDtXYy09wcAWRD4LA77Mrqrxm6U-tdGTADBD8g.RCS1wXJ3qr_hxPl3U7-WGG3bqxq5u9WYVA_6ojJm2FIg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;test3&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/단절4.png&quot; alt=&quot;단절4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이런 식으로 계속 진행하면 결국 끝에는 이런 그림이 나오게 된다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://postfiles.pstatic.net/MjAxOTAyMDdfNDcg/MDAxNTQ5NDcxMDc5MDE3.bkDZat9RN-H2WpPe-J0ZCLzT7aI0yGlDNbGtNMvfyzUg.YtyxT96dorlKwkPRMi7hD878sUJ3kjB1M3sJGb4qJdEg.PNG.gktgnjftm/image.png?type=w966&quot; alt=&quot;test4&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/단절5.png&quot; alt=&quot;단절5&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;근데 단절점의 특징중 하나가 있는데, 루트에서 시작(여기서는 1번정점)한 경우는 위와 같은 방식으로 단절점을 체크하지는 않습니다&lt;/p&gt;
 
-&lt;p&gt;루트가 단절점이 되려면, &lt;strong&gt;루트에서 방문한 노드의 갯수가 2개 이상&lt;/strong&gt;이어야 루트가 단절점이 될수 있습니다&lt;br /&gt;
-그러므로, 1번 정점에서 호출한 자식은 2번 정점밖에 없기 때문에, 갯수는 1개가 되고, 단절점으로 판단하지 않는다는 것입니다&lt;/p&gt;
+&lt;p&gt;루트가 단절점이 되려면, &lt;strong&gt;루트에서 방문한 노드의 갯수가 2개 이상&lt;/strong&gt;이어야 루트가 단절점이 될수 있습니다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/단절6.png&quot; alt=&quot;단절6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러므로, 1번 정점에서 호출한 자식은 2번 정점밖에 없기 때문에, 갯수는 1개가 되고, 단절점으로 판단하지 않는다는 것입니다&lt;/p&gt;
 
 &lt;p&gt;관련 문제는 다음과 같습니다. &lt;a href=&quot;https://www.acmicpc.net/problem/11266&quot;&gt;https://www.acmicpc.net/problem/11266&lt;/a&gt;&lt;/p&gt;
 
