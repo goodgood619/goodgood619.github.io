@@ -1,0 +1,126 @@
+I"�3<h2 id="lru-cache-코드">LRU Cache 코드</h2>
+
+<blockquote>
+  <p><strong>DoubleLinkedList</strong> + <strong>HashMap</strong> 이용!!</p>
+</blockquote>
+
+<p>HashMap의 value를 Double LinkedList를 가리키게 한다<br />
+그리고 queue처럼 <strong>put의 경우는 맨 뒤에 삽입</strong>을 하고,<br />
+get의 경우는 값이 있다면 <strong>반환을 하고난뒤에, 그 위치의 값을 제거</strong>한다</p>
+
+<p>그러기 위해서는, Double LinkedList를 삽입 삭제해주는 메소드 2개가 구현되어야한다<br />
+<strong>head가 가장 안쓴거</strong>, <strong>tail이 가장 빈번하게 쓰는거</strong>라고 정의를 하면<br />
+결국 put을 할때는 가장 최근에 들어간거, 즉 가장 최근에 적게 사용이 되었다는 말이므로 맨 뒤에 tail쪽에 넣는거고,<br />
+get을할때는 hashtable에서 특정 위치를 찾은 다음에 그 위치의 앞뒤를 제거하고<br />
+새롭게 get을 했으니까, 사용이 되었다는 의미가 된다. 그래서 맨 앞으로 옮긴다<br />
+즉,<strong>put은 tail쪽에 삽입</strong>을 하고, 삽입을 했으니, map에 (key,Node)를 등록하고<br />
+만약 꽉찼다면, 가장 덜 안중요한 head를 앞으로 옮겨야 하니, 옮기고, map에서 하나 지운다<br />
+그렇지않다면, 새롭게 노드를 만든후 삽입을 하자</p>
+
+<p><strong>get은 Double Linked List에서 위치를 찾은후, 맨 뒤로 옮겨주자!!</strong><br />
+왜냐하면, 가장 최근에 사용이 되었기 때문이다</p>
+
+<h2 id="by-java">by Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LRUCache</span> <span class="o">{</span>
+        <span class="c1">// put의 경우 맨 뒤에 넣는다, 근데 만약에 꽉찼으면, head를 제거하고 맨 뒤에 넣는다</span>
+        <span class="c1">// get의 경우 제거를 하는데, 그 위치값을 제거를 한다</span>
+        
+        <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">key</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+            <span class="nc">Node</span> <span class="n">prev</span><span class="o">;</span>
+            <span class="nc">Node</span> <span class="n">next</span><span class="o">;</span>
+            <span class="nc">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">,</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">Node</span> <span class="n">head</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Node</span> <span class="n">tail</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span> <span class="c1">// initialize</span>
+        <span class="kt">int</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="c1">//initialize</span>
+        <span class="kd">public</span> <span class="nf">LRUCache</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">capacity</span> <span class="o">=</span> <span class="n">capacity</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">)==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            
+            <span class="nc">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+            <span class="n">removeNode</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+            <span class="n">putNode</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">put</span><span class="o">(</span><span class="kt">int</span> <span class="n">key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">)!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//이미 존재를 하니까, 기존에 있는 위치에 있는것을 지우고</span>
+                <span class="c1">// 맨뒤에 새로운 value를 삽입</span>
+                <span class="nc">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+                <span class="n">cur</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                
+                <span class="n">removeNode</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+                <span class="n">putNode</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">//존재를 안하니까 , 그냥 넣으면 되는데, 사이즈가 크면 안됨</span>
+                <span class="c1">//사이즈가 크면, head를 움직인다</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">size</span><span class="o">()&gt;=</span><span class="n">capacity</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">key</span><span class="o">);</span>
+                    <span class="n">removeNode</span><span class="o">(</span><span class="n">head</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="c1">// 그다음에 끝에 넣는다</span>
+                <span class="nc">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">key</span><span class="o">,</span><span class="n">value</span><span class="o">);</span>
+                <span class="n">putNode</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span><span class="n">cur</span><span class="o">);</span>
+            <span class="o">}</span>
+            
+        <span class="o">}</span>
+        
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">removeNode</span><span class="o">(</span><span class="nc">Node</span> <span class="n">cur</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 만약 이전이 null이 아님 -&gt;  </span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">prev</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cur</span><span class="o">.</span><span class="na">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">//null이면 지워야하는 위치가 head임</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 만약 다음이 null이 아님</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">prev</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">//지워야하는 위치가 꼬리</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">tail</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">prev</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">putNode</span><span class="o">(</span><span class="nc">Node</span> <span class="n">cur</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//끝에 넣는다</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">tail</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">tail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
+                <span class="n">cur</span><span class="o">.</span><span class="na">prev</span> <span class="o">=</span> <span class="n">tail</span><span class="o">;</span>
+                <span class="n">cur</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span>
+            <span class="c1">//만약 head가 null이면 head와 tail이 똑같겠지 그리고, head는 가만히 우선은 정지해있지</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">tail</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    
+    <span class="cm">/**
+     * Your LRUCache object will be instantiated and called as such:
+     * LRUCache obj = new LRUCache(capacity);
+     * int param_1 = obj.get(key);
+     * obj.put(key,value);
+     */</span>
+</code></pre></div></div>
+
+<p>참고 : <a href="https://www.programcreek.com/2013/03/leetcode-lru-cache-java/">https://www.programcreek.com/2013/03/leetcode-lru-cache-java/</a></p>
+
+<p>(Thanks for Posting)</p>
+
+:ET

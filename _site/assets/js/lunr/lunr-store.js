@@ -64,4 +64,46 @@ var store = [{
         "tags": ["Dynamic Programming","bitMask","Algorithm"],
         "url": "http://localhost:4000/algorithm/%EB%B9%84%ED%8A%B8%EB%A7%88%EC%8A%A4%ED%82%B9DP/",
         "teaser": null
+      },{
+        "title": "Add Two Numbers",
+        "excerpt":"ListNode를 정확히 사용할줄 알아야 한다 맨앞을 가리키는 헤더는 그대로 냅두고, 계속 뒤로 노드를 만들어서 이어 나가는것이 핵심이다. 그래서 뒤로 계속 향할 수 있게 가는 리스트노드 변수가 하나 더 필요하게 된다. 여기서는 ret가 될것이다. by Java /** * Definition for singly-linked list. * public class ListNode { * int val; *...","categories": ["Algorithm"],
+        "tags": ["ListNode","Algorithm"],
+        "url": "http://localhost:4000/algorithm/AddtwoNumbers/",
+        "teaser": null
+      },{
+        "title": "Container with Most Water",
+        "excerpt":"투 포인터를 사용하자 최대넓이 = (오른쪽위치-왼쪽위치)*(오른쪽위치와 왼쪽위치의 높이중최소) 높이가 더 짧은쪽을 움직이자, 왜냐하면 어차피 투포인터로 인해, 가로너비는 계속 줄고 있고 최대넓이로 만드려면 높이는 최대한 높아야 하기때문 by Java class Solution { public int maxArea(int[] height) { int max =0 , left = 0, right = height.length-1; while(left&lt;right) { max =...","categories": ["Algorithm"],
+        "tags": ["Two Pointer","min max","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ContainerwithMostTwowater/",
+        "teaser": null
+      },{
+        "title": "Group Anagram",
+        "excerpt":"using Map, String 같은 원소로 이루어진것들을 List&lt;List&gt; 타입으로 반환을 시켜줘야함! by Java class Solution { public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) { if(strs.length==0) return new ArrayList&lt;&gt;(); Map&lt;String,List&gt; map = new HashMap&lt;&gt;(); for(String s : strs) { int[] cnt = new int[26]; for(int j=0;j&lt;s.length();j++){ cnt[s.charAt(j)-'a']++; } StringBuilder sb = new StringBuilder(); for(int i=0;i&lt;26;i++){...","categories": ["Algorithm"],
+        "tags": ["Map","String","Algorithm"],
+        "url": "http://localhost:4000/algorithm/GroupAnagram/",
+        "teaser": null
+      },{
+        "title": "LRU cache",
+        "excerpt":"LRU Cache 코드 DoubleLinkedList + HashMap 이용!! HashMap의 value를 Double LinkedList를 가리키게 한다 그리고 queue처럼 put의 경우는 맨 뒤에 삽입을 하고, get의 경우는 값이 있다면 반환을 하고난뒤에, 그 위치의 값을 제거한다 그러기 위해서는, Double LinkedList를 삽입 삭제해주는 메소드 2개가 구현되어야한다 head가 가장 안쓴거, tail이 가장 빈번하게 쓰는거라고 정의를 하면 결국...","categories": ["Algorithm"],
+        "tags": ["LRU Cache","Map","DoubleLinkedList","Algorithm"],
+        "url": "http://localhost:4000/algorithm/LRUcache/",
+        "teaser": null
+      },{
+        "title": "Letter Combinations of a Phone Number",
+        "excerpt":"List 그리고 String 메소드 그리고 Map(HashMap)을 이용해서 풀수있다. 먼저 입력된 번호를 각 번호마다 알파벳에 맞게 설정을 해준다 그다음 Recursion을 돌리긴 하는데, substring 메소드를 적절히 이용하는 것이 중요하다 String+String 연산을 통해 계속 String 문자열을 만들어낸다 (3번 말고 다른 좋은 방법이 충분히 있을수 있으니 참고하길바람) by Java class Solution { public List&lt;String&gt;...","categories": ["Algorithm"],
+        "tags": ["Map","List","String","Algorithm"],
+        "url": "http://localhost:4000/algorithm/LetterCombination/",
+        "teaser": null
+      },{
+        "title": "Remove Nth node from End of List",
+        "excerpt":"맨 앞에 0을 집어넣은다음, 현재 링크드리스트에 연결을 시킨다 그다음 전체 길이를 구한다. 그러면 원래 길이가 k면 k+1이 된다 그다음 k+1에서 n을뺀다음에 1개가 추가가 되었기 때문에, rest가 2가 될때까지 빼준다(n-1번째 노드까지 가면된다) 그다음 현재 위치(n-1번째노드)의 다음번째를 다음번째(n+1)로 연결시킨다 대입으로 같은 reference를 공유하고 있기 때문에 처음의 헤드의 next를 리턴시킨다 by Java /**...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Algorithm"],
+        "url": "http://localhost:4000/algorithm/RemoveNthNode/",
+        "teaser": null
+      },{
+        "title": "Validate Binary Search Tree",
+        "excerpt":"이진 탐색 트리가 유효한지를 판별하는 문제이다. 어떻게 해야할지 고민을 하다가 솔루션을 참고했는데, 항상 현위치에서 왼쪽과 오른쪽값의 존재가 필요하기 때문에, Parameter로 왼쪽과 오른쪽을 추가해서 Recursion을 진행해야 한다는 것이었다 by Java /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode...","categories": ["Algorithm"],
+        "tags": ["Binary Search Tree","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ValidateBST/",
+        "teaser": null
       }]

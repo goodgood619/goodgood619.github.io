@@ -1,0 +1,40 @@
+I"�<p><strong>List</strong> 그리고 <strong>String 메소드</strong> 그리고 <strong>Map(HashMap)</strong>을 이용해서 풀수있다.</p>
+<ol>
+  <li>먼저 입력된 번호를 각 번호마다 알파벳에 맞게 설정을 해준다</li>
+  <li>그다음 Recursion을 돌리긴 하는데, substring 메소드를 적절히 이용하는 것이 중요하다</li>
+  <li>String+String 연산을 통해 계속 String 문자열을 만들어낸다<br />
+(3번 말고 다른 좋은 방법이 충분히 있을수 있으니 참고하길바람)</li>
+</ol>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">letterCombinations</span><span class="o">(</span><span class="nc">String</span> <span class="n">digits</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"2"</span><span class="o">,</span><span class="s">"abc"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"3"</span><span class="o">,</span><span class="s">"def"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"4"</span><span class="o">,</span><span class="s">"ghi"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"5"</span><span class="o">,</span><span class="s">"jkl"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"6"</span><span class="o">,</span><span class="s">"mno"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"7"</span><span class="o">,</span><span class="s">"pqrs"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"8"</span><span class="o">,</span><span class="s">"tuv"</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"9"</span><span class="o">,</span><span class="s">"wxyz"</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">digits</span><span class="o">.</span><span class="na">length</span><span class="o">()!=</span><span class="mi">0</span><span class="o">)</span> <span class="n">go</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="n">digits</span><span class="o">,</span><span class="n">map</span><span class="o">,</span><span class="n">output</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">output</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="nc">String</span> <span class="n">cur</span><span class="o">,</span><span class="nc">String</span> <span class="n">num</span><span class="o">,</span><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">,</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">output</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">.</span><span class="na">length</span><span class="o">()==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">output</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nc">String</span> <span class="n">curnum</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">alphalist</span><span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">curnum</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">alphalist</span><span class="o">.</span><span class="na">length</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">next</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">curnum</span><span class="o">).</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">go</span><span class="o">(</span><span class="n">cur</span><span class="o">+</span><span class="n">next</span><span class="o">,</span><span class="n">num</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span><span class="n">map</span><span class="o">,</span><span class="n">output</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

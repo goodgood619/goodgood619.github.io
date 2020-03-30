@@ -1,0 +1,22 @@
+I"�
+<p>투 포인터를 사용하자</p>
+
+<ol>
+  <li>최대넓이 = (오른쪽위치-왼쪽위치)*(오른쪽위치와 왼쪽위치의 높이중최소)</li>
+  <li>높이가 더 짧은쪽을 움직이자, 왜냐하면 어차피 투포인터로 인해, 가로너비는 계속 줄고 있고 최대넓이로 만드려면 높이는 최대한 높아야 하기때문</li>
+</ol>
+
+<h2 id="by-java">by Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxArea</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span><span class="mi">0</span> <span class="o">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">height</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">max</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span><span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">],</span><span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">])*(</span><span class="n">right</span><span class="o">-</span><span class="n">left</span><span class="o">));</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">height</span><span class="o">[</span><span class="n">left</span><span class="o">]&lt;</span><span class="n">height</span><span class="o">[</span><span class="n">right</span><span class="o">])</span> <span class="n">left</span><span class="o">++;</span>
+            <span class="k">else</span> <span class="n">right</span><span class="o">--;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">max</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

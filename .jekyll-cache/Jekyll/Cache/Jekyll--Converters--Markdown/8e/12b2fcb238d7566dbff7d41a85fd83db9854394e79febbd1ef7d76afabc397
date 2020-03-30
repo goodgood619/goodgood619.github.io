@@ -1,0 +1,34 @@
+I"L<p>이진 탐색 트리가 유효한지를 판별하는 문제이다.</p>
+
+<p>어떻게 해야할지 고민을 하다가 솔루션을 참고했는데, 항상 현위치에서 왼쪽과 오른쪽값의 존재가 필요하기 때문에, Parameter로 왼쪽과 오른쪽을 추가해서 Recursion을 진행해야 한다는 것이었다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isValidBST</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="nf">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">,</span><span class="kc">null</span><span class="o">,</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">traverse</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">here</span><span class="o">,</span><span class="nc">TreeNode</span> <span class="nc">Min</span><span class="o">,</span><span class="nc">TreeNode</span> <span class="nc">Max</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">here</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="nc">Min</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">here</span><span class="o">.</span><span class="na">val</span><span class="o">&lt;=</span><span class="nc">Min</span><span class="o">.</span><span class="na">val</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="nc">Max</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">here</span><span class="o">.</span><span class="na">val</span> <span class="o">&gt;=</span><span class="nc">Max</span><span class="o">.</span><span class="na">val</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="nf">traverse</span><span class="o">(</span><span class="n">here</span><span class="o">.</span><span class="na">left</span><span class="o">,</span><span class="nc">Min</span><span class="o">,</span><span class="n">here</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">traverse</span><span class="o">(</span><span class="n">here</span><span class="o">.</span><span class="na">right</span><span class="o">,</span><span class="n">here</span><span class="o">,</span><span class="nc">Max</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

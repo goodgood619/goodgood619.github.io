@@ -1,0 +1,43 @@
+I"c<p>ListNode를 정확히 사용할줄 알아야 한다
+맨앞을 가리키는 헤더는 그대로 냅두고, 계속 뒤로 노드를 만들어서 이어 나가는것이 핵심이다.<br />
+그래서 뒤로 계속 향할 수 있게 가는 리스트노드 변수가 하나 더 필요하게 된다. 여기서는 ret가 될것이다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">ListNode</span> <span class="nf">addTwoNumbers</span><span class="o">(</span><span class="nc">ListNode</span> <span class="n">l1</span><span class="o">,</span> <span class="nc">ListNode</span> <span class="n">l2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ListNode</span> <span class="n">head</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ListNode</span> <span class="n">ret</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">l1</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">l2</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="o">);</span>
+                <span class="n">sum</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// 처음에는 head와 ret 모두 null이므로, 인스턴스 부여후, 같은 주소를 갖도록 공유(단순대입을 하게 되면 가능해짐)</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="nc">ListNode</span> <span class="n">cur</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="o">);</span>
+                <span class="n">sum</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="n">ret</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">cur</span><span class="o">;</span> <span class="c1">// 뒤에 연결후</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// 뒤로 이동</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">sum</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// l1, l2 노드 둘다 끝이났어도 sum이 남아있을수 있기 때문에, 한번더 로직을 수행</span>
+            <span class="n">ret</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">sum</span> <span class="o">%</span> <span class="mi">10</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
