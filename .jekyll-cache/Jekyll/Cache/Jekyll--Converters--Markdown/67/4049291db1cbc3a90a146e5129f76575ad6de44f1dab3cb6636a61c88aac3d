@@ -1,0 +1,34 @@
+I"`<p>unique-paths 1과 똑같은데 중간에 장애물이 생겼다.</p>
+
+<p><strong>DP</strong>를 적용하되, 중간에 장애물을 만나면 더이상 탐색을 진행하지 않고 돌아가면 된다.</p>
+
+<p>dp[x][y] : <strong>(x,y)로 오는 경우의수</strong>라고 정의를 하자<br />
+dp[x][y] = dp[x+1][y] + dp[x][y+1]<br />
+단 장애물은 예외</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">uniquePathsWithObstacles</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">board</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">m</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">m</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="nf">go</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">board</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="n">m</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span><span class="kt">int</span> <span class="n">y</span><span class="o">,</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">dp</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span><span class="kt">int</span> <span class="n">m</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">n</span> <span class="o">||</span> <span class="n">y</span><span class="o">&gt;=</span><span class="n">m</span> <span class="o">||</span> <span class="n">board</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]==</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">==</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">==</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]!=-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]+=</span><span class="n">go</span><span class="o">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">y</span><span class="o">,</span><span class="n">board</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="n">m</span><span class="o">)+</span><span class="n">go</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">board</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="n">m</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

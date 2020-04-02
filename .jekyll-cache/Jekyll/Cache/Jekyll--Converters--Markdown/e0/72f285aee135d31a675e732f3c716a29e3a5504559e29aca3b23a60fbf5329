@@ -1,0 +1,83 @@
+I"G*<ol>
+  <li>m번째와 n번째가 어느 위치에서끝나는지 계산을 한다</li>
+  <li>그다음  그사이에 있는 값을 list에 넣는다</li>
+  <li>이제 각 3단계를 거쳐서 원소값을 집어넣는다</li>
+  <li>처음부터 m번째 위치전까지</li>
+  <li>그다음은 m번째 위치부터 n번째 위치까지 삽입</li>
+  <li>n번째 다음위치부터 끝까지 삽입(단 여기서 n번째 다음위치가 없을 수있으므로, 예외처리 필요)</li>
+</ol>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode(int x) { val = x; }
+     * }
+     */</span>
+    <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="nc">ListNode</span> <span class="nf">reverseBetween</span><span class="o">(</span><span class="nc">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">m</span><span class="o">==</span><span class="n">n</span><span class="o">)</span> <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
+            <span class="nc">ListNode</span> <span class="n">start</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="nc">ListNode</span> <span class="n">end</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="nc">ListNode</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">m</span><span class="o">,</span><span class="n">q</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">p</span><span class="o">--&gt;</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">q</span><span class="o">--&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="nc">ListNode</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+            <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">==</span><span class="n">end</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+                <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="nc">ListNode</span> <span class="n">goahead</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+            <span class="nc">ListNode</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">goahead</span><span class="o">;</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="c1">// start까지 순차적 삽입</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">temp</span><span class="o">!=</span><span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">goahead</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+                <span class="nc">ListNode</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                <span class="n">goahead</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+                <span class="n">goahead</span> <span class="o">=</span> <span class="n">goahead</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// list 삽입</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+                <span class="n">goahead</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">ListNode</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                    <span class="n">goahead</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+                    <span class="n">goahead</span> <span class="o">=</span> <span class="n">goahead</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+    				<span class="c1">// 만약끝이아니면 다음꺼를 미리 만들어준다</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+                <span class="nc">ListNode</span> <span class="n">bridge</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                <span class="n">goahead</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">;</span>
+                <span class="n">goahead</span> <span class="o">=</span> <span class="n">goahead</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 나머지 끝까지 삽입</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">temp</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">goahead</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+                <span class="nc">ListNode</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+                        <span class="n">goahead</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+                        <span class="n">goahead</span> <span class="o">=</span> <span class="n">goahead</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+        <span class="o">}</span>   
+    <span class="o">}</span>
+</code></pre></div></div>
+:ET

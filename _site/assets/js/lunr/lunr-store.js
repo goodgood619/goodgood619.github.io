@@ -106,4 +106,70 @@ var store = [{
         "tags": ["Binary Search Tree","Algorithm"],
         "url": "http://localhost:4000/algorithm/ValidateBST/",
         "teaser": null
+      },{
+        "title": "Happy Number",
+        "excerpt":"boolean 배열을 써도 되지만, HashMap을 이용해서 구현했다. by Java class Solution { public boolean isHappy(int n) { Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); int p = n; while(map.get(p)==null) { map.put(p,1); int sum=0; while(p&gt;0) { sum += (p%10)*(p%10); p/=10; } p = sum; } if(p==1) return true; else return false; } }...","categories": ["Algorithm"],
+        "tags": ["implementation","Map","Algorithm"],
+        "url": "http://localhost:4000/algorithm/HappyNumber/",
+        "teaser": null
+      },{
+        "title": "reversed-linked-list",
+        "excerpt":"한번 loop를 돌면서 끝까지 가면서 원소를 list에 삽입해준다 이제 새로운 ListNode를 생성한다음, list의 반대 원소부터 시작해서 순차적으로 넣는다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution...","categories": ["Algorithm"],
+        "tags": ["Map","List","String","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ReversedLinkedList/",
+        "teaser": null
+      },{
+        "title": "reversed-linked-list-2",
+        "excerpt":"m번째와 n번째가 어느 위치에서끝나는지 계산을 한다 그다음 그사이에 있는 값을 list에 넣는다 이제 각 3단계를 거쳐서 원소값을 집어넣는다 처음부터 m번째 위치전까지 그다음은 m번째 위치부터 n번째 위치까지 삽입 n번째 다음위치부터 끝까지 삽입(단 여기서 n번째 다음위치가 없을 수있으므로, 예외처리 필요) by Java /** * Definition for singly-linked list. * public class ListNode...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Algorithm"],
+        "url": "http://localhost:4000/algorithm/ReversedLinkedList2/",
+        "teaser": null
+      },{
+        "title": "SingleNumber",
+        "excerpt":"단순 구현문제이다. 중복된 것을 효율적으로 체크하기 위해 맵을 사용한다. 그런데, 메모리를 더 안쓰고 푸는지는 수학적인 개념이 들어가는거같다! by Java class Solution { public int singleNumber(int[] num) { Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;num.length;i++) { if(map.get(num[i])==null) { map.put(num[i],1); } else { int value = map.get(num[i]); value++; map.remove(num[i]); map.put(num[i],value); } }...","categories": ["Algorithm"],
+        "tags": ["Map","Algorithm"],
+        "url": "http://localhost:4000/algorithm/SingleNumber/",
+        "teaser": null
+      },{
+        "title": "Unique Path 2",
+        "excerpt":"unique-paths 1과 똑같은데 중간에 장애물이 생겼다. DP를 적용하되, 중간에 장애물을 만나면 더이상 탐색을 진행하지 않고 돌아가면 된다. dp[x][y] : (x,y)로 오는 경우의수라고 정의를 하자 dp[x][y] = dp[x+1][y] + dp[x][y+1] 단 장애물은 예외 by Java class Solution { public int uniquePathsWithObstacles(int[][] board) { int n= board.length; int m = board[0].length; int[][]...","categories": ["Algorithm"],
+        "tags": ["implementation","Dynamic Programming","Algorithm"],
+        "url": "http://localhost:4000/algorithm/UniquePath2/",
+        "teaser": null
+      },{
+        "title": "add Binary",
+        "excerpt":"이진수가 얼마까지 등장할지 모르므로, BigInteger를 사용하면 간단하게 구현이 가능하다 import를 빼먹지 말자   by Java   import java.math.BigInteger; class Solution {     public String addBinary(String a, String b) {         BigInteger c = new BigInteger(a,2);         BigInteger d = new BigInteger(b,2);         c = c.add(d);         return c.toString(2);     } }  ","categories": ["Algorithm"],
+        "tags": ["implementation","BigInteger","Algorithm"],
+        "url": "http://localhost:4000/algorithm/addBinary/",
+        "teaser": null
+      },{
+        "title": "Remove Duplicate Sorted list",
+        "excerpt":"더 간단한 방법이 있지만, Map을 써서 체크를 하면서 list에 넣은다음 loop를 돌면서 순차적으로 값을 넣는다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution { public ListNode...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Map","Algorithm"],
+        "url": "http://localhost:4000/algorithm/removeDuplicateSortedlist/",
+        "teaser": null
+      },{
+        "title": "Remove Duplicate Sorted list 2",
+        "excerpt":"좀 더 효율적으로 풀어야 되나 생각을 하다가, 정확성을 위해 정확하게 풀려했다 value의 갯수와 동시에 index를 표현하기 위해 HashMap과 List를 사용하였다. boolean 배열을 이용하여 걸러냈고 정답을 만들어 리턴 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) {...","categories": ["Algorithm"],
+        "tags": ["LinkedList","List","Map","Algorithm"],
+        "url": "http://localhost:4000/algorithm/removeDuplicateSortedlist2/",
+        "teaser": null
+      },{
+        "title": "Same Tree",
+        "excerpt":"두 개의 tree가 동일한지 체크를 하는문제이다. 순회를 하면 되는데 틀린것은 3가지의 경우가 존재한다 왼쪽트리가 null 인데, 오른쪽트리가 null이 아닌 경우 왼쪽트리가 null이 아닌데, 오른쪽트리가 null인 경우 왼쪽트리의 val값과 오른쪽트리의 val값이 다른경우 이 경우를 제외하면서 순회를 해주면 된다. 왼쪽트리, 오른쪽트리 둘다 필요하기 때문에, Parameter를 계속 전달을 해준다 by Java /** *...","categories": ["Algorithm"],
+        "tags": ["Binary Tree","Algorithm"],
+        "url": "http://localhost:4000/algorithm/sameTree/",
+        "teaser": null
+      },{
+        "title": "Odd Even LinkedList",
+        "excerpt":"번갈아 가면서 넣어줘야 하기 때문에, 홀수번째 노드를 처음위치, 짝수번째 노드를 처음의 다음위치(2번째)에 놓고 시작을 한다 그다음 홀수번째 노드를 먼저 순차적으로 순회하면서 값을 집어넣는다 단 예외처리를 해줘야 하는것이, 2칸씩 건너가야 하는데, 2칸을 가기전에 1칸만 갔는데도 null인경우는 NullPointerException이 나므로 1칸씩 이동해주면된다. by Java /** * Definition for singly-linked list. * public class...","categories": ["Algorithm"],
+        "tags": ["LinkedList","List","Map","Algorithm"],
+        "url": "http://localhost:4000/algorithm/oddevenLinkedList/",
+        "teaser": null
+      },{
+        "title": "Split LinkedList in parts",
+        "excerpt":"LinkedList 배열을 리턴하는 문제여서 조금 익숙치 않을수 있다. 그 배열의 크기는 k개의 그룹이 필요하다고 하였으니, k개만큼 선언하면 된다 몫과 나머지를 이용하여, 나머지가 존재하는 경우는, 원소를 몫에서 1개를 더 넣어주면 된다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; *...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Array","Algorithm"],
+        "url": "http://localhost:4000/algorithm/splitLinkedlistinParts/",
+        "teaser": null
       }]

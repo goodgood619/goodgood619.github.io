@@ -1,0 +1,38 @@
+I"P<p>두 개의 tree가 동일한지 체크를 하는문제이다.</p>
+
+<p>순회를 하면 되는데 틀린것은 3가지의 경우가 존재한다</p>
+
+<ol>
+  <li>왼쪽트리가 null 인데, 오른쪽트리가 null이 아닌 경우</li>
+  <li>왼쪽트리가 null이 아닌데, 오른쪽트리가 null인 경우</li>
+  <li>왼쪽트리의 val값과 오른쪽트리의 val값이 다른경우</li>
+</ol>
+
+<p>이 경우를 제외하면서 순회를 해주면 된다.</p>
+
+<p>왼쪽트리, 오른쪽트리 둘다 필요하기 때문에, Parameter를 계속 전달을 해준다</p>
+
+<h2 id="by-java">by Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSameTree</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">p</span><span class="o">,</span> <span class="nc">TreeNode</span> <span class="n">q</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">checksame</span><span class="o">(</span><span class="n">p</span><span class="o">,</span><span class="n">q</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">checksame</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">a</span><span class="o">,</span><span class="nc">TreeNode</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">==</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">!=</span><span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">val</span> <span class="o">!=</span> <span class="n">b</span><span class="o">.</span><span class="na">val</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">return</span> <span class="nf">checksame</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">left</span><span class="o">,</span><span class="n">b</span><span class="o">.</span><span class="na">left</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">checksame</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">right</span><span class="o">,</span><span class="n">b</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
