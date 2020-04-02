@@ -1,5 +1,7 @@
 # main links
 main:
+  - title : "Category"
+    url : https://goodgood619.github.io/categories/
   - title: "블로그 방문하기"
     url: https://goodgood619.github.io/
   - title: "About"
