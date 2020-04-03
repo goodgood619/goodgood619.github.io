@@ -172,4 +172,40 @@ var store = [{
         "tags": ["LinkedList","Array","Algorithm"],
         "url": "http://localhost:4000/algorithm/splitLinkedlistinParts/",
         "teaser": null
+      },{
+        "title": "Binary Tree ZigZag Level Order Traversal",
+        "excerpt":"먼저 트리를 순회하면서 총깊이를 구한다 총깊이 만큼 2차원 List에 할당을 해준다 트리를 다시 순회하면서, 각 List의 높이 == index에 맞게 넣어준다 지그재그 순서이므로 예제를 보고 다시 데이터를 만들어 리턴한다 by Java /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left;...","categories": ["Algorithm"],
+        "tags": ["Tree","List","Algorithm"],
+        "url": "http://localhost:4000/algorithm/binaryTreeZigZag/",
+        "teaser": null
+      },{
+        "title": "Count Prime",
+        "excerpt":"입력된 n 미만의 수들중에서 소수의 갯수를 반환하는 문제이다 에라토스테네스의 체를 이용하여 소수를 빠르게 구한후 갯수를 세어주면 된다 by Java class Solution { public int countPrimes(int n) { boolean[] notprime = new boolean[n+1]; for(int i=2;i&lt;=Math.sqrt(n);i++) { if(notprime[i]) continue; for(int j=i*i;j&lt;=n;j+=i) { notprime[j]=true; } } int count=0; for(int i=2;i&lt;n;i++) { if(!notprime[i]) {...","categories": ["Algorithm"],
+        "tags": ["prime","math","에라토스테네스의 체","Algorithm"],
+        "url": "http://localhost:4000/algorithm/countPrime/",
+        "teaser": null
+      },{
+        "title": "Pascals Triangle",
+        "excerpt":"파스칼의 삼각형 문제이다 이 문제는 이항계수를 이용하여 문제를 풀수있다. dp[n][m] : nCm이라고 정의를 하자, 즉 n개중에 m개를 순서없이 고르는 경우의수이다 dp[n][m] = dp[n-1][m]+dp[n-1][m-1], 단 m&gt;=1,n&gt;=1이상이다 그리고 n과 m이 같거나 , m이 0인경우는 1로 처리를 해준다 by Java class Solution { public List&lt;List&lt;Integer&gt;&gt; generate(int numRows) { if(numRows==0) return new ArrayList&lt;&gt;(); int[][]...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Math","Algorithm"],
+        "url": "http://localhost:4000/algorithm/pascalsTriangle/",
+        "teaser": null
+      },{
+        "title": "Pascals Triangle 2",
+        "excerpt":"Pascals Triangle 문제와 거의 흡사하다 by Java class Solution { public List&lt;Integer&gt; getRow(int rowIndex) { int[][] dp = new int[rowIndex+1][rowIndex+1]; for(int i=0;i&lt;=rowIndex;i++) { for(int j=0;j&lt;=rowIndex;j++) { dp[i][j]=-1; } } dp[0][0]=1; for(int i=0;i&lt;=rowIndex;i++) { go(dp,rowIndex,i); } List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); for(int i=0;i&lt;=rowIndex;i++) { list.add(dp[rowIndex][i]); } return list; } private int...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Math","Algorithm"],
+        "url": "http://localhost:4000/algorithm/pascalsTriangle2/",
+        "teaser": null
+      },{
+        "title": "Populating Next Right Pointers In Each Node",
+        "excerpt":"이 문제는 개인적으로는 좀 어려운거 같아서 솔루션을 보고 풀었다. 2가지 경우가 핵심인데 현재 노드의 위치 아래에 왼쪽자식과 오른쪽 자식이 둘다 존재하는 경우 왼쪽자식의 다음을 오른쪽자식으로 잇는다 현재 노드의 오른쪽자식과 현재 노드의 다음위치노드가 둘다 존재하는 경우, 현재 노드의 오른쪽자식의 다음노드를 현재 노드의 다음위치의 왼쪽자식으로 잇는다 말로 하려니 참 긴거같다 코드를 보자...","categories": ["Algorithm"],
+        "tags": ["Tree","A","Algorithm"],
+        "url": "http://localhost:4000/algorithm/populatingRightNode/",
+        "teaser": null
+      },{
+        "title": "Sort list",
+        "excerpt":"LinkedList와 sorting을 이용하면 된다. 한번 ListNode를 순회하면서 원소들을 뽑아냈다 그다음 list의 원소를 정렬한후(Comparator이용) 새롭게 다시 ListNode에 list의 원소들을 집어넣어서 반환하였다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Sorting","Comparator","Algorithm"],
+        "url": "http://localhost:4000/algorithm/sortList/",
+        "teaser": null
       }]
