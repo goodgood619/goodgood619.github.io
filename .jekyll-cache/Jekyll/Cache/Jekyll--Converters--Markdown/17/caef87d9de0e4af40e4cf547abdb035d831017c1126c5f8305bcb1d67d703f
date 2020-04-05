@@ -1,0 +1,55 @@
+I"? <ol>
+  <li>Map으로 숫자갯수를 정확하게 세준다</li>
+  <li>list에 넣고 정렬을 한다</li>
+  <li>k개만큼 원소를 뽑고 리턴을 한다</li>
+</ol>
+
+<p>단 list에 넣을때, 숫자와 숫자갯수가 필요하니 <strong>class를 선언하여 사용</strong>하도록 하자</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">topKFrequent</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="no">P</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">])==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                <span class="n">value</span><span class="o">++;</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">e</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">P</span><span class="o">(</span><span class="n">e</span><span class="o">,</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">e</span><span class="o">)));</span>
+        <span class="o">}</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">sort</span><span class="o">((</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)-&gt;{</span>
+           <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">count</span><span class="o">&gt;</span><span class="n">b</span><span class="o">.</span><span class="na">count</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">count</span><span class="o">&lt;</span><span class="n">b</span><span class="o">.</span><span class="na">count</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">num</span><span class="o">&lt;</span><span class="n">b</span><span class="o">.</span><span class="na">num</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">num</span><span class="o">&gt;</span><span class="n">b</span><span class="o">.</span><span class="na">num</span><span class="o">)</span> <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">else</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">ans</span> <span class="o">=</span><span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="no">P</span> <span class="n">e</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ans</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">num</span><span class="o">);</span>
+            <span class="n">k</span><span class="o">--;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">P</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="o">,</span><span class="n">count</span><span class="o">;</span>
+    <span class="no">P</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">,</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="n">count</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

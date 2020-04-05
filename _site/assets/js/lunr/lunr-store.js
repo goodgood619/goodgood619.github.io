@@ -208,4 +208,64 @@ var store = [{
         "tags": ["LinkedList","Sorting","Comparator","Algorithm"],
         "url": "http://localhost:4000/algorithm/sortList/",
         "teaser": null
+      },{
+        "title": "Linked List Cycle 2",
+        "excerpt":"linked-list-cycle과 똑같은데, 이번에는 ListNode를 반환하면 된다. Set으로 체크를 하다가, 동일한것이 체크되면 그때의 ListNode를 반환하자 Set으로 ListNode를 체크하는건 정말 좋은 아이디어인거같다 by Java /** * Definition for singly-linked list. * class ListNode { * int val; * ListNode next; * ListNode(int x) { * val = x; * next = null;...","categories": ["Algorithm"],
+        "tags": ["Algorithm","LinkedList","Cycle","Set","Implementation"],
+        "url": "http://localhost:4000/algorithm/LinkedListCycle2/",
+        "teaser": null
+      },{
+        "title": "Surrounded Regions",
+        "excerpt":"BFS문제인데, 조건을 break문을 넣어가지고, 제대로 탐색이 안됐었다. O인 지점에서 BFS를 진행하되, X로 바꿔야 하는 조건은 O인 것만 탐색을 하되 경계선까지 가지 않았을때만 X로 바꿔야 하는 문제이다 by Java class Solution { int[] gox = {0,1,-1,0}; int[] goy = {1,0,0,-1}; public void solve(char[][] board) { if(board.length==0) return; boolean[][] visited = new...","categories": ["Algorithm"],
+        "tags": ["Algorithm","BFS","Implementation"],
+        "url": "http://localhost:4000/algorithm/SurroundedRegions/",
+        "teaser": null
+      },{
+        "title": "Number of Islands",
+        "excerpt":"이 문제는 백준의 섬 구하기? 문제랑 똑같은 문제이다 그 형태가 메소드 작성형태로 바뀐 문제이다 DFS 혹은 BFS를 이용하여, DFS와 BFS가 실행된 횟수를 반환하면 된다. 단 DFS와 BFS는 인접한 1인 곳만 갈수있다(동서남북으로) by Java class Solution { int[] gox = {0,1,-1,0}; int[] goy = {1,0,0,-1}; public int numIslands(char[][] grid) { if(grid.length==0)...","categories": ["Algorithm"],
+        "tags": ["Algorithm","DFS,BFS","Implementation"],
+        "url": "http://localhost:4000/algorithm/numberOfIslands/",
+        "teaser": null
+      },{
+        "title": "Palidrome Number",
+        "excerpt":"입력받은 숫자를 StringBuilder로 이용해  거꾸로 만든다음 String과 비교를 해주면 되는 문제이다  by Java   class Solution {     public boolean isPalindrome(int x) {         String s= String.valueOf(x);         StringBuilder sb = new StringBuilder();         for(int i=s.length()-1;i&gt;=0;i--) {             sb.append(s.charAt(i));         }         if(s.equals(sb.toString())) return true;         else return false;     } }  ","categories": ["Algorithm"],
+        "tags": ["Algorithm","String","Implementation"],
+        "url": "http://localhost:4000/algorithm/palindromeNumber/",
+        "teaser": null
+      },{
+        "title": "Remove Linked List Elements",
+        "excerpt":"list에 제거할 값만 빼고 순차적으로 값을 저장한다. 그다음 새롭게 ListNode를 만들어서 list의 원소에 있는값들을 넣으며 만든다음에 리턴한다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution {...","categories": ["Algorithm"],
+        "tags": ["Algorithm","LinkedList","Implementation"],
+        "url": "http://localhost:4000/algorithm/removeListElements/",
+        "teaser": null
+      },{
+        "title": "Reverse String",
+        "excerpt":"단순히 입력배열(char[] 타입을 받아서) 정확히 반을 바꿔주면되는문제이다 오랜만에 기본형 타입을 써서 그런지 String이랑 헷갈렸다 ㅠㅠ by Java class Solution { public void reverseString(char[] s) { for(int i=0,j=s.length-1;i&lt;s.length/2;i++,j--) { // 기본 primitive type인 char형의 경우는 // charAt()메소드는 없다, String에서 주어질뿐.. 항상 헷갈리는듯 ㅇㅇ char c = s[i]; s[i] = s[j]; s[j]...","categories": ["Algorithm"],
+        "tags": ["Algorithm","String","Implementation"],
+        "url": "http://localhost:4000/algorithm/reverseString/",
+        "teaser": null
+      },{
+        "title": "Search a 2d matrix 1 and 2",
+        "excerpt":"1이랑 2가 똑같은 문제다 그냥 이중포문돌면서 체크하면된다..   by Java   class Solution {     public boolean searchMatrix(int[][] matrix, int target) {         for(int i=0;i&lt;matrix.length;i++) {             for(int j=0;j&lt;matrix[i].length;j++) {                 if(target== matrix[i][j]) return true;             }         }         return false;     } }  ","categories": ["Algorithm"],
+        "tags": ["Algorithm","Implementation"],
+        "url": "http://localhost:4000/algorithm/searchMatrix2d/",
+        "teaser": null
+      },{
+        "title": "Top K Frequent Elements",
+        "excerpt":"Map으로 숫자갯수를 정확하게 세준다 list에 넣고 정렬을 한다 k개만큼 원소를 뽑고 리턴을 한다 단 list에 넣을때, 숫자와 숫자갯수가 필요하니 class를 선언하여 사용하도록 하자 by Java class Solution { public List&lt;Integer&gt; topKFrequent(int[] nums, int k) { List&lt;P&gt; list = new ArrayList&lt;&gt;(); Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;nums.length;i++) { if(map.get(nums[i])==null) {...","categories": ["Algorithm"],
+        "tags": ["Algorithm","List","Sort","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/topKFrequentElements/",
+        "teaser": null
+      },{
+        "title": "Top K Frequent Words",
+        "excerpt":"top-k-frequent-elements랑 거의 똑같은 문제이다 단지 체크해주는 것이 int타입에서 String으로 바뀌었을뿐이다 by Java class Solution { public List&lt;String&gt; topKFrequent(String[] words, int k) { Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;words.length;i++) { String s = words[i]; if(map.get(s)==null) { map.put(s,1); } else { int value = map.get(s); value++; map.remove(s); map.put(s,value); } } List&lt;P&gt;...","categories": ["Algorithm"],
+        "tags": ["Algorithm","List","Sort","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/topKFrequentWords/",
+        "teaser": null
+      },{
+        "title": "Web Server VS WAS",
+        "excerpt":"Web Server VS WAS 우선 Static Pages와 Dynamic Pages를 알아야 하는데 이 2개의 차이는 말 그대로 페이지가 바뀌느냐 바뀌지 않느냐의 유무이다 간단한 예를 들면, 인자에따라서 계속 바뀐다면 그건 Dynamic Pages 그렇지 않다면 Static Pages라고 볼수있다. 이 Static Pages들을 처리하는것이 Web Server 반면 Dynamic Pages들을 처리하는것이 WAS(Web Application Server)라는것이다 Web Server...","categories": ["Server"],
+        "tags": ["Server","Web Server","WAS","Servlet"],
+        "url": "http://localhost:4000/server/webServerandWAS/",
+        "teaser": null
       }]
