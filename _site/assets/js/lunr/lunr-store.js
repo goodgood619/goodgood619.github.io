@@ -328,4 +328,10 @@ var store = [{
         "tags": ["Algorithm","Stack","Implementation"],
         "url": "http://localhost:4000/algorithm/validParentheses/",
         "teaser": null
+      },{
+        "title": "인터페이스와 추상클래스와 익명(무명)클래스",
+        "excerpt":"Abstract class VS interface 우선 interface를 살펴보자 Interface 껍데기,설계도, 어떤 틀에 대한 명세 모든 메소드가 추상메소드임 그 의미는 interface를 구현(이행)한 클래스는 강제적으로 interface의 모든 메소드를 강제적으로 구현(이행)해야함 즉, 필요없는 메소드도 구현(이행)해야하는 짜증을 유발할수는 있음 그럼 언제쓰냐 협업을하거나, 큰 프로젝트의 경우 유용하게 쓸수있다. 왜냐하면, 어떤 사람이 무슨 일을 하는지 몰라도, 약속을...","categories": ["language"],
+        "tags": ["Java","Language","Interface","Abstract Class","AnonyMous Class"],
+        "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%A0%95%EB%A6%AC/",
+        "teaser": null
       }]

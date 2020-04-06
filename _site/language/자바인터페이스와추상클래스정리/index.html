@@ -1,0 +1,799 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>인터페이스와 추상클래스와 익명(무명)클래스 - 굿굿</title>
+<meta name="description" content="자바 용어 정리 ">
+
+
+  <meta name="author" content="goodgood619">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="굿굿">
+<meta property="og:title" content="인터페이스와 추상클래스와 익명(무명)클래스">
+<meta property="og:url" content="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%A0%95%EB%A6%AC/">
+
+
+  <meta property="og:description" content="자바 용어 정리 ">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/image.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-04-07T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-04-07T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%A0%95%EB%A6%AC/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yoon Seok Lee",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="굿굿 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          굿굿
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://goodgood619.github.io/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://goodgood619.github.io/">블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/image.png" alt="goodgood619" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">goodgood619</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>열공중 그리고 post 작성 및 정리</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:gktgnjftm@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/goodgood619" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="인터페이스와 추상클래스와 익명(무명)클래스">
+    <meta itemprop="description" content="자바 용어 정리">
+    <meta itemprop="datePublished" content="2020-04-07T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-04-07T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">인터페이스와 추상클래스와 익명(무명)클래스
+</h1>
+          
+          <!--
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          -->
+          <p class="page__date"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated: <time datetime="2020-04-07T00:00:00+09:00">April 07, 2020</time></p>
+
+            
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h3 id="abstract-class-vs-interface">Abstract class VS interface</h3>
+
+<p>우선 interface를 살펴보자</p>
+
+<blockquote>
+  <p>Interface</p>
+</blockquote>
+
+<p>껍데기,설계도, 어떤 틀에 대한 명세</p>
+
+<ul>
+  <li><strong>모든 메소드가 추상메소드</strong>임</li>
+  <li>그 의미는 interface를 구현(이행)한 클래스는 강제적으로 <strong>interface의 모든 메소드를 강제적으로 구현(이행)</strong>해야함</li>
+  <li>즉, 필요없는 메소드도 구현(이행)해야하는 짜증을 유발할수는 있음</li>
+</ul>
+
+<blockquote>
+  <p>그럼 언제쓰냐</p>
+</blockquote>
+
+<p>협업을하거나, 큰 프로젝트의 경우 유용하게 쓸수있다.</p>
+
+<p>왜냐하면, 어떤 사람이 무슨 일을 하는지 몰라도, 약속을 정해놓으면, 즉 <strong>설계도를 짜놓으면, 각 사람들은 그 설계도에 맞게</strong>, 본인의 일을 열심히 하면 되기때문임</p>
+
+<p>즉, <strong>협업과 생산성을 높일수 있다</strong>라는 것이다</p>
+
+<blockquote>
+  <p>Abstract class</p>
+</blockquote>
+
+<p>말 그대로 추상 클래스이다.</p>
+
+<p>해당하는 클래스를 정확하게 정의 하지 못할때 추상클래스를 사용할수 있다.</p>
+
+<p>예를 들면, 동물 클래스를 들수 있다.</p>
+
+<p>동물의 경우, 동물의 특성을 전부 합친다면, 엄밀히 어떤 동물을 가리키는지 알수없다.</p>
+
+<p>그래서 추상클래스는 ?라고 보면된다.</p>
+
+<p>추상클래스가 인터페이스와 다른점이자 장점? 이라함이면</p>
+
+<p><strong>일반적인 클래스처럼 쓸수 있다는 것이다. 단 인스턴스화가 안될뿐</strong></p>
+
+<p>하지만 <strong>익명클래스를 이용해서 마치 인스턴스화 된것처럼 흉내를 낼수있다.</strong></p>
+
+<p>(이건 제 생각이므로, 자세히 알고계신분은 댓글 남겨주시면 정말 감사하겠습니다)</p>
+
+<hr />
+
+<h2 id="익명-클래스">익명 클래스</h2>
+
+<ul>
+  <li>말 그대로 이름이 없는 클래스</li>
+</ul>
+
+<p>그러나 의미를 명확히 생각을 해봐야함!!</p>
+
+<p><strong>익명 클래스는 엄밀히 말해서 상속을 받는 클래스</strong>인데, 이름이 없을뿐인 클래스이다.</p>
+
+<p>왜냐하면, <strong>익명 클래스의 구조를 보면, 메소드를 Override를 받기 때문</strong>임</p>
+
+<p>그럼 익명클래스를 왜 쓰냐?</p>
+
+<ul>
+  <li>상속 받은 클래스가 상당히 많아질 경우에 유용하다</li>
+  <li>왜냐하면, 매번 상속 받은 클래스를 만든다는거 자체가 메모리에 상당히 부담이됨</li>
+  <li>그래서 <strong>상속 받은 클래스를 재사용</strong> 하는 측면에서 상당히 유리</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"toUpperCase: "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">a</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="n">getA</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getA</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a의 결과는?"</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span><span class="n">v</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="no">A</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ok</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// super는 말그대로 부모를 가리킨다.</span>
+                <span class="c1">// 그럼 단순히 super만 하면, 어떻게 메소드를 가리켜서 실행시키게 할수있나?</span>
+                <span class="c1">// 아 super();가 이미 눈에 보이지 않지만, 자동적으로 생성이 된다.</span>
+                <span class="c1">// 그래서, super.메소드()이런식으로 접근이 가능한것이다.</span>
+                <span class="c1">// 여기서 부모의 생성자가 명시되어있지 않은 경우</span>
+                <span class="kd">super</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="mi">213</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">b</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">testAnomy</span><span class="o">(</span><span class="s">"good"</span><span class="o">);</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="no">A</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">interface</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">);</span>
+
+        <span class="k">default</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AB</span> <span class="kd">implements</span> <span class="no">A</span><span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LowerCase : "</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"AB result: "</span><span class="o">+</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ok</span> <span class="kd">extends</span> <span class="no">AB</span><span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">+=</span> <span class="mi">100023</span><span class="o">;</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>보다시피, A가 인터페이스인데, 그 인터페이스를 상속한 익명클래스가 생성이 되었다!</p>
+
+<p>근데 중요한건, 저기서 getA() 메소드의 경우를 보자</p>
+
+<p>저거는 상속을 받은 메소드가 아니다. 직접 추가적으로 만들어졌을뿐</p>
+
+<p>그래서 a라는 익명클래스에서 직접적으로 접근이 안된다.</p>
+
+<p>왜냐하면, 형태가 a 인터페이스 형태이기 때문이다!!</p>
+
+<p>그리고, <strong>super는 바로 상속하는 윗부모</strong>를 가리킨다.</p>
+
+<p>그러면 내가 super에 생성자를 준것도 아닌데, 왜 접근이 가능할까?</p>
+
+<p><strong>자바 컴파일러가 자동적으로 기본 생성자를 만들어주기때문</strong>이다</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#abstract-class" class="page__taxonomy-item" rel="tag">Abstract Class</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#anonymous-class" class="page__taxonomy-item" rel="tag">AnonyMous Class</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#interface" class="page__taxonomy-item" rel="tag">Interface</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#java" class="page__taxonomy-item" rel="tag">Java</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#language" class="page__taxonomy-item" rel="tag">Language</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#language" class="page__taxonomy-item" rel="tag">language</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-04-07">April 7, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80+%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80+%EC%9D%B5%EB%AA%85%28%EB%AC%B4%EB%AA%85%29%ED%81%B4%EB%9E%98%EC%8A%A4%20http%3A%2F%2Flocalhost%3A4000%2Flanguage%2F%25EC%259E%2590%25EB%25B0%2594%25EC%259D%25B8%25ED%2584%25B0%25ED%258E%2598%25EC%259D%25B4%25EC%258A%25A4%25EC%2599%2580%25EC%25B6%2594%25EC%2583%2581%25ED%2581%25B4%25EB%259E%2598%25EC%258A%25A4%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Flanguage%2F%25EC%259E%2590%25EB%25B0%2594%25EC%259D%25B8%25ED%2584%25B0%25ED%258E%2598%25EC%259D%25B4%25EC%258A%25A4%25EC%2599%2580%25EC%25B6%2594%25EC%2583%2581%25ED%2581%25B4%25EB%259E%2598%25EC%258A%25A4%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Flanguage%2F%25EC%259E%2590%25EB%25B0%2594%25EC%259D%25B8%25ED%2584%25B0%25ED%258E%2598%25EC%259D%25B4%25EC%258A%25A4%25EC%2599%2580%25EC%25B6%2594%25EC%2583%2581%25ED%2581%25B4%25EB%259E%2598%25EC%258A%25A4%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/algorithm/validParentheses/" class="pagination--pager" title="Valid Parentheses
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/validParentheses/" rel="permalink">Valid Parentheses
+</a>
+      
+    </h2>
+    <!--
+    devinlife comments :
+        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+        기존에는 read_time이 표기. read_time -> date 변경
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 07 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Leet code Practice
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/minimumDepthOfBinaryTree/" rel="permalink">Minimum Depth Of Binary Tree
+</a>
+      
+    </h2>
+    <!--
+    devinlife comments :
+        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+        기존에는 read_time이 표기. read_time -> date 변경
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 07 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Leet code Practice
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/maximumSubarray/" rel="permalink">Maximum SubArray
+</a>
+      
+    </h2>
+    <!--
+    devinlife comments :
+        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+        기존에는 read_time이 표기. read_time -> date 변경
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 07 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Leet code Practice
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/algorithm/maximumDepthOfBinaryTree/" rel="permalink">Maximum Depth Of Binary Tree
+</a>
+      
+    </h2>
+    <!--
+    devinlife comments :
+        아키이브 싱글 페이지(ex. 카테고리)에 각 포스트 제목 밑에 Updated 시간 표기
+        기존에는 read_time이 표기. read_time -> date 변경
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+
+</p>
+    
+    -->
+    
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 07 2020</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Leet code Practice
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/goodgood619" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Yoon Seok Lee. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%A0%95%EB%A6%AC/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/language/자바인터페이스와추상클래스정리"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://goodgood619-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>
