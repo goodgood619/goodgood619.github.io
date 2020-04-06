@@ -1,0 +1,25 @@
+I"z<p>기본적인 DP문제이다. 다시한번 생각을 해보지만</p>
+
+<p><strong>dp[i] : i를 끝으로 했을때 최대 부분배열의 합</strong>이라고 정의하자</p>
+
+<p>그러면 dp[i-1]과 arr[i]를 더한것이 정의에 맞을수 있다.</p>
+
+<p>그러나 dp[i-1]이 음수이게 되면, 오히려 값이 줄어들게  되므로, <strong>0과 비교를 해서 항상 양수가 될때만을 더해줘야 한다</strong>는 예외처리를 해줘야한다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxSubArray</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="mi">0</span><span class="o">]=</span><span class="n">nums</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">])+</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">ans</span><span class="o">,</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

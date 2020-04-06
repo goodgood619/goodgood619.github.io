@@ -1,0 +1,43 @@
+I"q<p>BOJ의 괄호문제가 method형태로 나왔을뿐이다.</p>
+
+<ol>
+  <li>올바른 괄호를 만들어주기 위해 Stack 혹은 Deque를 쓴다(LIFO를 지키는 자료구조면 사실 뭐든 가능하다.)</li>
+  <li>그다음 여는 괄호(‘(‘,’{‘,’[‘)가 들어오면 Deque에 넣어준다</li>
+  <li>만약 그렇지 않다면, 제일 늦게 들어간 원소를 빼낸다음 괄호의 모양이 맞는지 체크를 한다</li>
+  <li>그런데 만약 비어있으면 불가능하다 혹은 모양이 안맞거나</li>
+  <li>그리고 맨 마지막에, 여는괄호가 더 많을수도있기에, Deque는 항상 비어있어야 한다, 그렇지않다면 불가능하다</li>
+</ol>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">boolean</span> <span class="n">no</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">c</span><span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">c</span><span class="o">==</span><span class="sc">'('</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">'{'</span> <span class="o">||</span> <span class="n">c</span><span class="o">==</span><span class="sc">'['</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">no</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="kt">char</span> <span class="n">top</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">top</span><span class="o">==</span><span class="sc">'('</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="o">==</span><span class="sc">')'</span> <span class="o">||</span> <span class="n">top</span><span class="o">==</span><span class="sc">'{'</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="o">==</span><span class="sc">'}'</span> <span class="o">||</span> <span class="n">top</span><span class="o">==</span><span class="sc">'['</span> <span class="o">&amp;&amp;</span> <span class="n">c</span><span class="o">==</span><span class="sc">']'</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">continue</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">no</span><span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">if</span><span class="o">(!</span><span class="n">no</span> <span class="o">&amp;&amp;</span> <span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

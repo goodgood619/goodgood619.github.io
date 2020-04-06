@@ -1,0 +1,44 @@
+I"y<ol>
+  <li>스택에 숫자가 나올때, 숫자를 계속 쌓는다</li>
+  <li>만약 기호가 나온다면, 기호에 맞게 연산을 진행한후 다시 연산된값을 쌓는다</li>
+  <li>마지막에 스택에 남아있는 한가지 숫자를 뽑아서 리턴한다</li>
+  <li>예외적으로 처리해줘야 하는 부분은 <strong>음수</strong>가 들어갔을때이다</li>
+</ol>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">evalRPN</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">tokens</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">tokens</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">s</span><span class="o">=</span> <span class="n">tokens</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)&gt;=</span><span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)&lt;=</span><span class="sc">'9'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)==</span><span class="sc">'-'</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()&gt;</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+                <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"+"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">+</span><span class="n">second</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"-"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">-</span><span class="n">second</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"*"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">*</span><span class="n">second</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"/"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">/</span><span class="n">second</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

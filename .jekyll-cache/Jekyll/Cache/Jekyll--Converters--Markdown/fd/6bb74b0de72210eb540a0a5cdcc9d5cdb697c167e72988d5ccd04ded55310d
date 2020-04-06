@@ -1,0 +1,34 @@
+I"<p>양 옆원소보다 클때의 그때 인덱스를 반환해주면 되는문제이다.</p>
+
+<p>가장 높은 원소의 인덱스도 아니고, 그냥 아무거나 반환하면 된다.</p>
+
+<p>예외적으로 처리해야하는부분은, <strong>길이가 1인 경우와, 맨 처음과 맨마지막의 경우만 예외처리</strong>를 해줘서 문제를 풀었다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findPeakElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">maxHeight</span> <span class="o">=</span><span class="mi">0</span> <span class="o">,</span> <span class="n">idx</span><span class="o">=-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">i</span><span class="o">==</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">maxHeight</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxHeight</span><span class="o">,</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+                <span class="o">}</span>   
+                <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]){</span>
+                    <span class="n">maxHeight</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxHeight</span><span class="o">,</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">maxHeight</span><span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">maxHeight</span><span class="o">,</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+                <span class="n">idx</span><span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

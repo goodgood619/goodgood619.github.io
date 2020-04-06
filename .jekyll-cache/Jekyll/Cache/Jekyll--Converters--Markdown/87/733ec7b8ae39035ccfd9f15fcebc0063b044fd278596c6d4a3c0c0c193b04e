@@ -1,0 +1,20 @@
+I"f
+<p>loop를 돌면서, 내가 현재지점까지 왔을때 가장싸게 살수 있을때를 계속 안다고 가정해보면</p>
+
+<p>이때 현재지점에 팔수 있다면, 최대이익을 남길수 있는지 없는지를 알수 있을것이다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxProfit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">prices</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">prices</span><span class="o">.</span><span class="na">length</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">buy</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">,</span><span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">prices</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">buy</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">buy</span><span class="o">,</span><span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">res</span><span class="o">,</span><span class="n">prices</span><span class="o">[</span><span class="n">i</span><span class="o">]-</span><span class="n">buy</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

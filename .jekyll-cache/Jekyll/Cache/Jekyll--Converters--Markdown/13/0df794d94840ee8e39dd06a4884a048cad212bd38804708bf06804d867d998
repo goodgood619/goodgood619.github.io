@@ -1,0 +1,28 @@
+I"�<p>트리를 순회하면서, 최대 높이를 구해주면 되는 문제이다</p>
+
+<h2 id="by-java">by Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">ans</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxDepth</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">traverse</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">,</span> <span class="kt">int</span> <span class="n">depth</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">,</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">,</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">ans</span><span class="o">,</span><span class="n">depth</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+:ET

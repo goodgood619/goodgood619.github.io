@@ -1,0 +1,37 @@
+I"D<p>String의 sort를 문제의 조건대로 정확히 할 수 있는지를 물어보는 문제이다.</p>
+
+<p>아래 코드의 예제에서도 언급했지만, 숫자를 크게하기 위해서는, 아스키 코드가 큰 값이 먼저 오게 만들어야 한다. 그러기 위해서는, 여러가지 방법이 있을수 있지만, 숫자를 어떻게 하면 더 크게 할수 있을까? 라는 생각을 가지고 Sorting을 하는것이 방법인것 같다</p>
+
+<p>아래의 코드를 참고해보면 될것 같다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">largestNumber</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">number</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">number</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">number</span><span class="o">,(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)-&gt;</span><span class="n">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">));</span>
+        <span class="nc">StringBuilder</span> <span class="n">sb</span><span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">number</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">number</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)==</span><span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">sb</span><span class="o">.</span><span class="na">length</span><span class="o">()&gt;=</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="s">"0"</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">String</span> <span class="n">a</span><span class="o">,</span><span class="nc">String</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">first</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">second</span> <span class="o">=</span> <span class="n">b</span><span class="o">+</span><span class="n">a</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">second</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+        
+        <span class="c1">//ex)</span>
+        <span class="c1">//a: 2, b: 10</span>
+        <span class="c1">// a+b : 210</span>
+        <span class="c1">// b+a : 102</span>
+        <span class="c1">//(O) 102.compareTo(210)-&gt; -1(a,b 상태유지, a가 b보다 더 앞에있음) -&gt; 2, 10</span>
+        <span class="c1">//(X) 210.compareTo(102) -&gt; 1(a가 b보다 뒤에 있음) -&gt; 10,2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

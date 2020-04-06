@@ -1,0 +1,30 @@
+I":<p>맨처음에는, n!으로 돌려서 일일이 맞는지 체크하려 했다(시간초과가 날꺼를 알면서도)</p>
+
+<p>결국 시간초과가 났고, 풀이를 찾아봤다. 이해를 해보려 하니 항상 ‘(‘로 먼저 시작한다는 것이 주요 특징이다. 그래서 <strong>’(‘를 주요적으로 먼저 넣어줘야 한다</strong>. 그리고, ‘)’닫는괄호를 넣어야 하는데, 닫는 괄호를 넣어줄수 있을때는 항상, <strong>남은 닫는 괄호의 갯수가 남은 여는 괄호의 갯수보다 항상 많아야 한다</strong>는 조건이었다. 생각을 다시 해보면, <strong>유효한 괄호를 만드려면 항상 닫는 괄호의 갯수가 더 많아야 한다</strong>는 특징을 캐치를 해야 하는 문제였다. 이런 아이디어 문제는 알고나면 허전한데, 생각하기는 쉽지는 않은문제인 것 같다 ㅠㅠ</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">generateParenthesis</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">ans</span><span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">backtrack</span><span class="o">(</span><span class="n">ans</span><span class="o">,</span><span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(),</span><span class="n">n</span><span class="o">,</span><span class="n">n</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">backtrack</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">ans</span><span class="o">,</span><span class="nc">StringBuilder</span> <span class="n">sb</span><span class="o">,</span> <span class="kt">int</span> <span class="n">closecnt</span><span class="o">,</span><span class="kt">int</span> <span class="n">opencnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">opencnt</span><span class="o">!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">'('</span><span class="o">);</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">ans</span><span class="o">,</span><span class="n">sb</span><span class="o">,</span><span class="n">closecnt</span><span class="o">,</span><span class="n">opencnt</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">closecnt</span><span class="o">!=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">closecnt</span><span class="o">&gt;</span><span class="n">opencnt</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="sc">')'</span><span class="o">);</span>
+            <span class="n">backtrack</span><span class="o">(</span><span class="n">ans</span><span class="o">,</span><span class="n">sb</span><span class="o">,</span><span class="n">closecnt</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="n">opencnt</span><span class="o">);</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">opencnt</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">closecnt</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">ans</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

@@ -268,4 +268,64 @@ var store = [{
         "tags": ["Server","Web Server","WAS","Servlet"],
         "url": "http://localhost:4000/server/webServerandWAS/",
         "teaser": null
+      },{
+        "title": "Best Time To Buy and Sell Stock",
+        "excerpt":"loop를 돌면서, 내가 현재지점까지 왔을때 가장싸게 살수 있을때를 계속 안다고 가정해보면 이때 현재지점에 팔수 있다면, 최대이익을 남길수 있는지 없는지를 알수 있을것이다. by Java class Solution { public int maxProfit(int[] prices) { if(prices.length==0) return 0; int buy = (int)1e9,res=0; for(int i=0;i&lt;prices.length;i++) { buy = Math.min(buy,prices[i]); res = Math.max(res,prices[i]-buy); } return res;...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/bestTimetoBuyandSellStock/",
+        "teaser": null
+      },{
+        "title": "Evaluate Reverse Polish Notation",
+        "excerpt":"스택에 숫자가 나올때, 숫자를 계속 쌓는다 만약 기호가 나온다면, 기호에 맞게 연산을 진행한후 다시 연산된값을 쌓는다 마지막에 스택에 남아있는 한가지 숫자를 뽑아서 리턴한다 예외적으로 처리해줘야 하는 부분은 음수가 들어갔을때이다 by Java class Solution { public int evalRPN(String[] tokens) { Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;(); for(int i=0;i&lt;tokens.length;i++) { String s= tokens[i];...","categories": ["Algorithm"],
+        "tags": ["Stack","Implementation"],
+        "url": "http://localhost:4000/algorithm/evaluateReversePolishNotation/",
+        "teaser": null
+      },{
+        "title": "Excel Sheet Column Number",
+        "excerpt":"단순하게 자릿수에 26을 곱해서 틀릴수 있는문제이다. 26^n이라는것을 잊지말자   by Java   class Solution {     public int titleToNumber(String s) {         int sum=0,idx=0;         for(int i=s.length()-1;i&gt;=0;i--) {             char c= s.charAt(i);             sum += (c-'A'+1)*Math.pow(26,idx++);         }         return sum;     } }  ","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/excelSheetColumnNumber/",
+        "teaser": null
+      },{
+        "title": "Find Peak Element",
+        "excerpt":"양 옆원소보다 클때의 그때 인덱스를 반환해주면 되는문제이다. 가장 높은 원소의 인덱스도 아니고, 그냥 아무거나 반환하면 된다. 예외적으로 처리해야하는부분은, 길이가 1인 경우와, 맨 처음과 맨마지막의 경우만 예외처리를 해줘서 문제를 풀었다. by Java class Solution { public int findPeakElement(int[] nums) { if(nums.length==1) return 0; int maxHeight =0 , idx=-1; for(int i=0;i&lt;nums.length;i++) {...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/findPeakElement/",
+        "teaser": null
+      },{
+        "title": "Generate Parentheses",
+        "excerpt":"맨처음에는, n!으로 돌려서 일일이 맞는지 체크하려 했다(시간초과가 날꺼를 알면서도) 결국 시간초과가 났고, 풀이를 찾아봤다. 이해를 해보려 하니 항상 ‘(‘로 먼저 시작한다는 것이 주요 특징이다. 그래서 ’(‘를 주요적으로 먼저 넣어줘야 한다. 그리고, ‘)’닫는괄호를 넣어야 하는데, 닫는 괄호를 넣어줄수 있을때는 항상, 남은 닫는 괄호의 갯수가 남은 여는 괄호의 갯수보다 항상 많아야 한다는...","categories": ["Algorithm"],
+        "tags": ["Algorithm","Stack","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/generateParentheses/",
+        "teaser": null
+      },{
+        "title": "Largest Number",
+        "excerpt":"String의 sort를 문제의 조건대로 정확히 할 수 있는지를 물어보는 문제이다. 아래 코드의 예제에서도 언급했지만, 숫자를 크게하기 위해서는, 아스키 코드가 큰 값이 먼저 오게 만들어야 한다. 그러기 위해서는, 여러가지 방법이 있을수 있지만, 숫자를 어떻게 하면 더 크게 할수 있을까? 라는 생각을 가지고 Sorting을 하는것이 방법인것 같다 아래의 코드를 참고해보면 될것 같다...","categories": ["Algorithm"],
+        "tags": ["String","Sort"],
+        "url": "http://localhost:4000/algorithm/largestNumber/",
+        "teaser": null
+      },{
+        "title": "Maximum Depth Of Binary Tree",
+        "excerpt":"트리를 순회(전위, 중위,후위 뭐든 상관없을것 같다)하면서, 최대 높이를 구해주면 되는 문제이다 by Java /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { int...","categories": ["Algorithm"],
+        "tags": ["Graph","Tree","Implementation"],
+        "url": "http://localhost:4000/algorithm/maximumDepthOfBinaryTree/",
+        "teaser": null
+      },{
+        "title": "Maximum SubArray",
+        "excerpt":"기본적인 DP문제이다. 다시한번 생각을 해보지만 dp[i] : i를 끝으로 했을때 최대 부분배열의 합이라고 정의하자 그러면 dp[i-1]과 arr[i]를 더한것이 정의에 맞을수 있다. 그러나 dp[i-1]이 음수이게 되면, 오히려 값이 줄어들게 되므로, 0과 비교를 해서 항상 양수가 될때만을 더해줘야 한다는 예외처리를 해줘야한다 by Java class Solution { public int maxSubArray(int[] nums) { int...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/maximumSubarray/",
+        "teaser": null
+      },{
+        "title": "Minimum Depth Of Binary Tree",
+        "excerpt":"최소 높이를 구하는데 있어서, 조건이 있는 문제인데 왼쪽 오른쪽 자식이 아무도 없을때, 즉 말단 노드일때의 최소높이를 구하는 문제이다. 후위 순회를 돌면서 최소 높이를 구해줬다 by Java /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int...","categories": ["Algorithm"],
+        "tags": ["Graph","Tree","Implementation"],
+        "url": "http://localhost:4000/algorithm/minimumDepthOfBinaryTree/",
+        "teaser": null
+      },{
+        "title": "Valid Parentheses",
+        "excerpt":"BOJ의 괄호문제가 method형태로 나왔을뿐이다. 올바른 괄호를 만들어주기 위해 Stack 혹은 Deque를 쓴다(LIFO를 지키는 자료구조면 사실 뭐든 가능하다.) 그다음 여는 괄호(‘(‘,’{‘,’[‘)가 들어오면 Deque에 넣어준다 만약 그렇지 않다면, 제일 늦게 들어간 원소를 빼낸다음 괄호의 모양이 맞는지 체크를 한다 그런데 만약 비어있으면 불가능하다 혹은 모양이 안맞거나 그리고 맨 마지막에, 여는괄호가 더 많을수도있기에, Deque는...","categories": ["Algorithm"],
+        "tags": ["Algorithm","Stack","Implementation"],
+        "url": "http://localhost:4000/algorithm/validParentheses/",
+        "teaser": null
       }]
