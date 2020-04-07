@@ -1,0 +1,159 @@
+I"2<h3 id="abstract-class-vs-interface">Abstract class VS interface</h3>
+
+<p>우선 interface를 살펴보자</p>
+
+<blockquote>
+  <p>Interface</p>
+</blockquote>
+
+<p>껍데기,설계도, 어떤 틀에 대한 명세</p>
+
+<ul>
+  <li><strong>모든 메소드가 추상메소드</strong>임</li>
+  <li>그 의미는 interface를 구현(이행)한 클래스는 강제적으로 <strong>interface의 모든 메소드를 강제적으로 구현(이행)</strong>해야함</li>
+  <li>즉, 필요없는 메소드도 구현(이행)해야하는 짜증을 유발할수는 있음</li>
+</ul>
+
+<blockquote>
+  <p>그럼 언제쓰냐</p>
+</blockquote>
+
+<p>협업을하거나, 큰 프로젝트의 경우 유용하게 쓸수있다.</p>
+
+<p>왜냐하면, 어떤 사람이 무슨 일을 하는지 몰라도, 약속을 정해놓으면, 즉 <strong>설계도를 짜놓으면, 각 사람들은 그 설계도에 맞게</strong>, 본인의 일을 열심히 하면 되기때문임</p>
+
+<p>즉, <strong>협업과 생산성을 높일수 있다</strong>라는 것이다</p>
+
+<blockquote>
+  <p>Abstract class</p>
+</blockquote>
+
+<p>말 그대로 추상 클래스이다.</p>
+
+<p>해당하는 클래스를 정확하게 정의 하지 못할때 추상클래스를 사용할수 있다.</p>
+
+<p>예를 들면, 동물 클래스를 들수 있다.</p>
+
+<p>동물의 경우, 동물의 특성을 전부 합친다면, 엄밀히 어떤 동물을 가리키는지 알수없다.</p>
+
+<p>그래서 추상클래스는 ?라고 보면된다.</p>
+
+<p>추상클래스가 인터페이스와 다른점이자 장점? 이라함이면</p>
+
+<p><strong>일반적인 클래스처럼 쓸수 있다는 것이다. 단 인스턴스화가 안될뿐</strong></p>
+
+<p>하지만 <strong>익명클래스를 이용해서 마치 인스턴스화 된것처럼 흉내를 낼수있다.</strong><br />
+그러나 인터페이스나 추상 클래스가 인스턴스가 된것은 아니다. 내부적으로 <strong>익명클래스가 인터페이스나 추상 클래스로부터 상속을 받아서 만들어진 형태(인스턴스)가 익명클래스</strong>ㅁ이기 때문이다</p>
+
+<p>(이건 제 생각이므로, 자세히 알고계신분은 댓글 남겨주시면 정말 감사하겠습니다)</p>
+
+<hr />
+
+<h2 id="익명-클래스">익명 클래스</h2>
+
+<ul>
+  <li>말 그대로 이름이 없는 클래스</li>
+</ul>
+
+<p>그러나 의미를 명확히 생각을 해봐야함!!</p>
+
+<p><strong>익명 클래스는 엄밀히 말해서 상속을 받는 클래스</strong>인데, 이름이 없을뿐인 클래스이다.</p>
+
+<p>왜냐하면, <strong>익명 클래스의 구조를 보면, 메소드를 Override를 받기 때문</strong>임</p>
+
+<p>그럼 익명클래스를 왜 쓰냐?</p>
+
+<ul>
+  <li>상속 받은 클래스가 상당히 많아질 경우에 유용하다</li>
+  <li>왜냐하면, 매번 상속 받은 클래스를 만든다는거 자체가 메모리에 상당히 부담이됨</li>
+  <li>그래서 <strong>상속 받은 클래스를 재사용</strong> 하는 측면에서 상당히 유리</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">));</span>
+        <span class="no">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"toUpperCase: "</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">a</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="n">getA</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getA</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"a의 결과는?"</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span><span class="n">v</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="no">A</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ok</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// super는 말그대로 부모를 가리킨다.</span>
+                <span class="c1">// 그럼 단순히 super만 하면, 어떻게 메소드를 가리켜서 실행시키게 할수있나?</span>
+                <span class="c1">// 아 super();가 이미 눈에 보이지 않지만, 자동적으로 생성이 된다.</span>
+                <span class="c1">// 그래서, super.메소드()이런식으로 접근이 가능한것이다.</span>
+                <span class="c1">// 여기서 부모의 생성자가 명시되어있지 않은 경우</span>
+                <span class="kd">super</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="mi">213</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="n">b</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">testAnomy</span><span class="o">(</span><span class="s">"good"</span><span class="o">);</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="no">A</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">interface</span> <span class="nc">A</span> <span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">);</span>
+
+        <span class="k">default</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AB</span> <span class="kd">implements</span> <span class="no">A</span><span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAnomy</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LowerCase : "</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"AB result: "</span><span class="o">+</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ok</span> <span class="kd">extends</span> <span class="no">AB</span><span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGood</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">+=</span> <span class="mi">100023</span><span class="o">;</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">setGood</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>보다시피, A가 인터페이스인데, 그 인터페이스를 상속한 익명클래스가 생성이 되었다!</p>
+
+<p>근데 중요한건, 저기서 getA() 메소드의 경우를 보자</p>
+
+<p>저거는 상속을 받은 메소드가 아니다. 직접 추가적으로 만들어졌을뿐</p>
+
+<p>그래서 a라는 익명클래스에서 직접적으로 접근이 안된다.</p>
+
+<p>왜냐하면, 형태가 a 인터페이스 형태이기 때문이다!!</p>
+
+<p>그리고, <strong>super는 바로 상속하는 윗부모</strong>를 가리킨다.</p>
+
+<p>그러면 내가 super에 생성자를 준것도 아닌데, 왜 접근이 가능할까?</p>
+
+<p><strong>자바 컴파일러가 자동적으로 기본 생성자를 만들어주기때문</strong>이다</p>
+:ET
