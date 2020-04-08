@@ -1,0 +1,44 @@
+I"j<p>기본적인 <strong>동전 문제</strong>이다. 뭐 아니면 배낭문제라고 보셔도 무방하다.</p>
+
+<p>여러개의 동전 중에 동전을 최소로 선택해서 목표치를 만드는 경우의 대표적인 문제이다.</p>
+
+<p>이 문제는 배낭문제와는 좀 다르지만, 최소의 동전을 선택해서 목표인 n을 만드는문제이다.</p>
+
+<p><strong>dp[k] : k원을 만드는데 쓰이는 동전의 최소갯수</strong>라고 정의하면</p>
+
+<p>만약 k원을 만드는데 a라는 동전이 쓰인다면 a라는 동전은 k보다 같거나 작을것이다.</p>
+
+<p>그럼 a라는 동전을 사용했다면, dp[k-a]라는 수로 접근이 되고 그 상태에서 +1을 한것이랑 항상 비교를 해주면 된다.</p>
+
+<p><strong>dp[i] : min(dp[i], dp[i-arr[k]]+1)(단, i≥arr[k]여야 한다)</strong></p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">numSquares</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">coin</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">p</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">)</span> <span class="n">coin</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+            <span class="k">else</span> <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dp</span><span class="o">,-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nf">go</span><span class="o">(</span><span class="n">n</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">coin</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span><span class="o">,</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]!=-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="n">cur</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">],</span><span class="n">go</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="n">cur</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">list</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

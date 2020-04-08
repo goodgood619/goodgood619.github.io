@@ -334,4 +334,46 @@ var store = [{
         "tags": ["Java","Language","Interface","Abstract Class","AnonyMous Class"],
         "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%99%80%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%A0%95%EB%A6%AC/",
         "teaser": null
+      },{
+        "title": "N Queens",
+        "excerpt":"전형적인 n queen 문제이다 1차원배열을 이용해서 2차원 좌표를 저장할수있다. 1차원의 인덱스는 행, 1차원 인덱스의 value값을 열값이라고 칭하면 된다. 그럼 Recursion을 이용하여 각 행마다 퀸을 계속놓는다고 가정할때, 더이상 끝을 놓을수 없을때 그때 답이 된다는 것을 알고있다. 그러면, 각 행마다 열의 위치를 놓아줘야 하는데, 이 경우의수를 다하게되면 시간초과가 난다 그래서 백트래킹을 이용해서...","categories": ["Algorithm"],
+        "tags": ["Recursion","BackTracking","Implementation"],
+        "url": "http://localhost:4000/algorithm/NQueen1/",
+        "teaser": null
+      },{
+        "title": "N Queen 2",
+        "excerpt":"N-Queen과 똑같은데 오히려 문제는 더 쉬워졌다. 경우의수만 체크를 해서 리턴을 하면된다 by Java class Solution { int ans=0; public int totalNQueens(int n) { int[] arr = new int[n]; go(0,n,arr); return ans; } private void go(int index,int depth,int[] arr) { if(index==depth) { ans++; return; } for(int i=1;i&lt;=depth;i++) { arr[index] = i;...","categories": ["Algorithm"],
+        "tags": ["Recursion","BackTracking","Implementation"],
+        "url": "http://localhost:4000/algorithm/NQueen2/",
+        "teaser": null
+      },{
+        "title": "Perfect Sqaures",
+        "excerpt":"기본적인 동전 문제이다. 뭐 아니면 배낭문제라고 보셔도 무방하다. 여러개의 동전 중에 동전을 최소로 선택해서 목표치를 만드는 경우의 대표적인 문제이다. 이 문제는 배낭문제와는 좀 다르지만, 최소의 동전을 선택해서 목표인 n을 만드는문제이다. dp[k] : k원을 만드는데 쓰이는 동전의 최소갯수라고 정의하면 만약 k원을 만드는데 a라는 동전이 쓰인다면 a라는 동전은 k보다 같거나 작을것이다. 그럼...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","KnapSack","Implementation"],
+        "url": "http://localhost:4000/algorithm/PerfectSquares/",
+        "teaser": null
+      },{
+        "title": "Longest Increasing Subsequence",
+        "excerpt":"LIS문제이다. 전통적으로 n^2으로 짜는 경우가 있지만, lowerbound나 upperbound를 이용해서 nlogn으로 구현하는 경우도 있다 이번에는 전통적인 n^2으로 구현을 해보았다. dp[i] : i를 오른쪽끝으로 할때, 최장 증가 부분 수열의 길이를 의미한다 그러면, 현재 위치를 j라고하자 (단 0≤j&lt;i)이다 오른쪽으로 계속 갈수록 수가 커져야 하기에, arr[j]&lt;arr[i]라는 조건이 필요하다 그래서 정리하면, dp[i] = max(dp[0],…dp[j],…,dp[i-1])+1(단, arr[j]&lt;arr[i]일때...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/longestIncreaseingSubsequence/",
+        "teaser": null
+      },{
+        "title": "Middle Of The Linked List",
+        "excerpt":"전체길이를 구한다 다시 처음부터 전체길이의 절반만 포인터를 이동시킨다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x; } * } */ class Solution { public ListNode middleNode(ListNode head) { ListNode temp = head;...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Implementation"],
+        "url": "http://localhost:4000/algorithm/middleOfLinkedList/",
+        "teaser": null
+      },{
+        "title": "Swap Nodes In Pair",
+        "excerpt":"먼저 순회를 하면서 원소를 뽑아낸다 그다음 현재원소와 다음원소를 바꿔준다 그리고 2칸씩 넘어간다 단 다음원소가 존재해야하므로 예외처리가 필요하다 그다음 swap된 리스트를 순회하면서 정답을 만들어 리턴한다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int x) { val = x;...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Implementation"],
+        "url": "http://localhost:4000/algorithm/swapNpdesinPair/",
+        "teaser": null
+      },{
+        "title": "Valid Anagram",
+        "excerpt":"소문자 갯수를 체크를 해준다음, 갯수가 알맞는지 확인을 해주면된다 by Java class Solution { public boolean isAnagram(String s, String t) { int[] cnt = new int[26]; int[] cnt2 = new int[26]; for(int i=0;i&lt;s.length();i++) { char c= s.charAt(i); cnt[c-'a']++; } for(int i=0;i&lt;t.length();i++) { char cc= t.charAt(i); cnt2[cc-'a']++; } for(int i=0;i&lt;26;i++) { if(cnt[i]!=cnt2[i])...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/validAnagram/",
+        "teaser": null
       }]

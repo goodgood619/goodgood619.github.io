@@ -1,0 +1,70 @@
+I"�*<p>전형적인 n queen 문제이다</p>
+
+<p>1차원배열을 이용해서 2차원 좌표를 저장할수있다.</p>
+
+<p><strong>1차원의 인덱스는 행</strong>, <strong>1차원 인덱스의 value값을 열</strong>값이라고 칭하면 된다.</p>
+
+<p>그럼 Recursion을 이용하여 각 행마다 퀸을 계속놓는다고 가정할때, 더이상 끝을 놓을수 없을때 그때 답이 된다는 것을 알고있다.</p>
+
+<p>그러면, 각 행마다 열의 위치를 놓아줘야 하는데, 이 경우의수를 다하게되면 시간초과가 난다</p>
+
+<p>그래서 <strong>백트래킹</strong>을 이용해서 가지치기를 해줘야 한다.</p>
+
+<p>안되는 조건은 2가지를 보면된다.</p>
+
+<ol>
+  <li>열의 좌표가 같은경우(어차피 행은 애초에 다른 행이니까 , 상관이 없다)</li>
+  <li>대각선을 그었을때 퀸에게 잡히는 경우(<strong>현재 새로운위치의(x,y)와 이전 퀸들의 위치(a,b)라고 할때, 절대값 (x-a)와 (y-b)가 일치</strong>하는경우)</li>
+</ol>
+
+<p>이 2가지 조건을 빼면 N queen을 만족할수 있다.<br />
+그때 만족하는 퀸 모양의 형태를 List<String>타입으로 적절하게 뽑아내는 것도 중요하다</String></p>
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="nf">solveNQueens</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">ans</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">go</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">n</span><span class="o">,</span><span class="n">arr</span><span class="o">,</span><span class="n">ans</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span><span class="kt">int</span> <span class="n">depth</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">,</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">ans</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">index</span><span class="o">==</span><span class="n">depth</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">char</span><span class="o">[][]</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">depth</span><span class="o">][</span><span class="n">depth</span><span class="o">];</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">depth</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">depth</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="sc">'.'</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]-</span><span class="mi">1</span><span class="o">]=</span><span class="sc">'Q'</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">depth</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">depth</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]);</span>
+                <span class="o">}</span>
+                <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+            <span class="n">ans</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">depth</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">check</span><span class="o">(</span><span class="n">index</span><span class="o">,</span><span class="n">arr</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">go</span><span class="o">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">depth</span><span class="o">,</span><span class="n">arr</span><span class="o">,</span><span class="n">ans</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">check</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">index</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">||</span> <span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="n">index</span><span class="o">)==</span><span class="nc">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]-</span><span class="n">arr</span><span class="o">[</span><span class="n">index</span><span class="o">]))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

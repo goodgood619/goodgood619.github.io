@@ -1,4 +1,4 @@
-I"	2<h3 id="abstract-class-vs-interface">Abstract class VS interface</h3>
+I"2<h3 id="abstract-class-vs-interface">Abstract class VS interface</h3>
 
 <p>우선 interface를 살펴보자</p>
 
@@ -43,7 +43,7 @@
 <p><strong>일반적인 클래스처럼 쓸수 있다는 것이다. 단 인스턴스화가 안될뿐</strong></p>
 
 <p>하지만 <strong>익명클래스를 이용해서 마치 인스턴스화 된것처럼 흉내를 낼수있다.</strong><br />
-그러나 인터페이스나 추상 클래스가 인스턴스가 된것은 아니다. 내부적으로 <strong>익명클래스가 인터페이스나 추상 클래스로부터 상속을 받아서 만들어진 형태(인스턴스)가 익명클래스</strong>이기 때문이다</p>
+그러나 인터페이스나 추상 클래스가 인스턴스가 된것은 아니다. 내부적으로 <strong>익명클래스가 인터페이스나 추상 클래스로부터 상속을 받아서 만들어진 형태(인스턴스)가 익명클래스</strong>‘이기 때문이다</p>
 
 <p>(이건 제 생각이므로, 자세히 알고계신분은 댓글 남겨주시면 정말 감사하겠습니다)</p>
 
