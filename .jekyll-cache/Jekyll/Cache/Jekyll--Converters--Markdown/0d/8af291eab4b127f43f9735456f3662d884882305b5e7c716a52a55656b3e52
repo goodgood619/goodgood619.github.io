@@ -1,0 +1,25 @@
+I"(<p><strong>DP</strong>문제이다</p>
+
+<p>인접한 것은 <strong>통과해서 인접하지 않은것을 선택해서 최대합을 만드는 중요한 문제</strong>이다</p>
+
+<p>그냥 맨처음에는 단순하게 인접한것을 선택해서 틀렸다. 생각해보니 DP 개념을 집어넣어서 풀어야 하는문제였다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">rob</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dp</span><span class="o">,-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nf">go</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">,</span><span class="n">nums</span><span class="o">,</span><span class="n">dp</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">here</span><span class="o">,</span><span class="kt">int</span> <span class="n">depth</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">here</span><span class="o">&gt;=</span><span class="n">depth</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">here</span><span class="o">]!=-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">here</span><span class="o">];</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">here</span> <span class="o">==</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">nums</span><span class="o">[</span><span class="n">here</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">here</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">here</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">go</span><span class="o">(</span><span class="n">here</span><span class="o">+</span><span class="mi">2</span><span class="o">,</span><span class="n">depth</span><span class="o">,</span><span class="n">nums</span><span class="o">,</span><span class="n">dp</span><span class="o">)+</span><span class="n">nums</span><span class="o">[</span><span class="n">here</span><span class="o">],</span><span class="n">go</span><span class="o">(</span><span class="n">here</span><span class="o">+</span><span class="mi">3</span><span class="o">,</span><span class="n">depth</span><span class="o">,</span><span class="n">nums</span><span class="o">,</span><span class="n">dp</span><span class="o">)+</span><span class="n">nums</span><span class="o">[</span><span class="n">here</span><span class="o">+</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">here</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

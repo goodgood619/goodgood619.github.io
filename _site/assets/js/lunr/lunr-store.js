@@ -376,4 +376,52 @@ var store = [{
         "tags": ["Implementation"],
         "url": "http://localhost:4000/algorithm/validAnagram/",
         "teaser": null
+      },{
+        "title": "Add Two Numbers 2",
+        "excerpt":"Stack(Deque)를 이용하여 l1과 l2에 있는 원소들을 각각 Deque1, Deque2에 넣어준다 그다음 뒤에서부터 새로운 Deque3에 계속 더한다, 단 올림수가 발생할수 있기 때문에 carry 변수를 하나 둬서 관리를 한다 l1 혹은 l2의 길이가 일치 하지 않을수 있기 때문에, Deque1과 Deque2의 원소를 끝까지 뽑아낸다 단 올림수가 여전히 발생할수 있기 때문에, 올림수에 관한 예외처리가...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Stack, Deque","Implementation"],
+        "url": "http://localhost:4000/algorithm/addTwoNumbers2/",
+        "teaser": null
+      },{
+        "title": "Coin Change",
+        "excerpt":"말 그대로 동전문제이다. 주어진 동전의 종류에 맞춰서 최소 동전을 반환해주면 된다 by Java class Solution { public int coinChange(int[] coins, int amount) { int[] dp = new int[amount+1]; Arrays.fill(dp,-1); int ans = go(amount,dp,coins); if(ans==(int)1e9) return -1; else return ans; } private int go(int k,int[] dp,int[] coins) { if(k&lt;0) return (int)1e9;...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","KnapSack","Implementation"],
+        "url": "http://localhost:4000/algorithm/coinChange/",
+        "teaser": null
+      },{
+        "title": "Fizz Buzz",
+        "excerpt":"3과 5로 동시에 나눠지면 FizzBuzz 3로만 나눠지면 Fizz 5로만 나눠지면 Buzz 1,2,3번 이외의 경우면 그냥 숫자를 넣어줌 by Java class Solution { public List&lt;String&gt; fizzBuzz(int n) { List&lt;String&gt; ans = new ArrayList&lt;&gt;(); for(int i=1;i&lt;=n;i++) { if(i%3 ==0 &amp;&amp; i%5==0) { ans.add(\"FizzBuzz\"); } else if(i%3==0) { ans.add(\"Fizz\"); } else if(i%5==0) {...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/fizzBuzz/",
+        "teaser": null
+      },{
+        "title": "House Robber",
+        "excerpt":"DP문제이다 인접한 것은 통과해서 인접하지 않은것을 선택해서 최대합을 만드는 중요한 문제이다 그냥 맨처음에는 단순하게 인접한것을 선택해서 틀렸다. 생각해보니 DP 개념을 집어넣어서 풀어야 하는문제였다 by Java class Solution { public int rob(int[] nums) { int[] dp = new int[nums.length+1]; Arrays.fill(dp,-1); return go(0,nums.length,nums,dp); } private int go(int here,int depth,int[] nums,int[] dp) {...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/houseRobber/",
+        "teaser": null
+      },{
+        "title": "Majority Element",
+        "excerpt":"제일 많은 원소갯수를 체크해서 그때의 원소를 반환해주면 되는 문제이다 by Java class Solution { public int majorityElement(int[] nums) { Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;nums.length;i++) { int num= nums[i]; if(map.get(num)==null) { map.put(num,1); } else { int value = map.get(num); value++; map.remove(num); map.put(num,value); } } int ans=0,temp=0; for(Integer e :...","categories": ["Algorithm"],
+        "tags": ["Data Structure","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/majorityElement/",
+        "teaser": null
+      },{
+        "title": "Majority Element 2",
+        "excerpt":"원소의 갯수가 n/3 + 1개 이상인 경우일때의 모든 원소들을 List에 넣어서 반환하면 되는 문제이다 by Java class Solution { public List&lt;Integer&gt; majorityElement(int[] nums) { int length = nums.length,cnt=0; cnt = length/3+1; Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); for(int i=0;i&lt;nums.length;i++) { int num = nums[i]; if(map.get(num)==null) {...","categories": ["Algorithm"],
+        "tags": ["Data Structure","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/majorityElement2/",
+        "teaser": null
+      },{
+        "title": "Rotate Array",
+        "excerpt":"k번만큼 돌려주면 되는문제이다. 구현에 신경을 써서 하도록하자 by Java class Solution { public void rotate(int[] nums, int k) { for(int i=1;i&lt;=k;i++) { change(nums); } } private void change(int[] nums) { int first = nums[0]; nums[0] = nums[nums.length-1]; int temp = first; for(int i=1;i&lt;nums.length;i++) { int temp2 = nums[i]; nums[i] =...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/rotateArray/",
+        "teaser": null
+      },{
+        "title": "Rotate List",
+        "excerpt":"결국 k번 rotate를 계속 돌려야 한다. 그러면, k가 크다면 전부 다 돌릴필요없이 k mod list의 길이 횟수만큼만 돌려주면 된다. LinkedList이기때문에, List를 이용하여 순서를 맞춘다음, 새롭게 LinkedList를 만들어서 반환을 하였다 by Java /** * Definition for singly-linked list. * public class ListNode { * int val; * ListNode next; * ListNode(int...","categories": ["Algorithm"],
+        "tags": ["LinkedList","Implementation"],
+        "url": "http://localhost:4000/algorithm/rotateList/",
+        "teaser": null
       }]

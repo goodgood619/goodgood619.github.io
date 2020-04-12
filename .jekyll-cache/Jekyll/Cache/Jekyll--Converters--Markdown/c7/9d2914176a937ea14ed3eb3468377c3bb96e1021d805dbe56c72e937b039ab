@@ -1,0 +1,28 @@
+I"�<p>말 그대로 동전문제이다.<br />
+주어진 동전의 종류에 맞춰서 최소 동전을 반환해주면 된다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">coinChange</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coins</span><span class="o">,</span> <span class="kt">int</span> <span class="n">amount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">dp</span><span class="o">,-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">go</span><span class="o">(</span><span class="n">amount</span><span class="o">,</span><span class="n">dp</span><span class="o">,</span><span class="n">coins</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">ans</span><span class="o">==(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">go</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">dp</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coins</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]!=-</span><span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+        <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="mi">1</span><span class="n">e9</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">coins</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="n">coins</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">],</span> <span class="n">go</span><span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="n">coins</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">dp</span><span class="o">,</span><span class="n">coins</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
