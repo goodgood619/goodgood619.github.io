@@ -1,0 +1,20 @@
+I"d<p>String의 입력된 수를 곱해서 반환하는 문제이다.</p>
+
+<p>BigInteger를 쓰지말라고는 하는데, 그렇지 않으면, 일일이 구현하는게 올바른 문제인것같다</p>
+
+<p>그러나, BigInteger를 잘 쓸수 있는사람이 구지 안쓰는것도 웃긴것 같다. 실전의 경우 시간이 많이 걸릴수 있기 때문(연습이 안되어있다면)</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.math.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">multiply</span><span class="o">(</span><span class="nc">String</span> <span class="n">num1</span><span class="o">,</span> <span class="nc">String</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">BigInteger</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="n">num1</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+        <span class="nc">BigInteger</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="n">num2</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">multiply</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

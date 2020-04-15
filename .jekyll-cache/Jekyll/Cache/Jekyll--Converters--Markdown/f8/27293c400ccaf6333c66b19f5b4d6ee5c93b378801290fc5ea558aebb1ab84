@@ -1,0 +1,24 @@
+I"�
+<p>구현문제이다.</p>
+
+<p>숫자 K를 뒤에서부터 한자리씩 보면서 동시에 A의 원소의 합을 더해서 List에 삽입을 해준다
+그 상태에서 List를 뒤집어서 반환을 해주면된다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">addToArrayForm</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="no">A</span><span class="o">,</span> <span class="kt">int</span> <span class="no">K</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="no">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="no">K</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(--</span><span class="n">idx</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">||</span> <span class="n">cur</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">idx</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">)</span> <span class="n">cur</span> <span class="o">+=</span> <span class="no">A</span><span class="o">[</span><span class="n">idx</span><span class="o">];</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cur</span><span class="o">%</span><span class="mi">10</span><span class="o">);</span>
+            <span class="n">cur</span><span class="o">/=</span><span class="mi">10</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

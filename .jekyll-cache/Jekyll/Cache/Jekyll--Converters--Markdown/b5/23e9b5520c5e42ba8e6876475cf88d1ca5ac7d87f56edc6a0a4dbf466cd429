@@ -1,0 +1,18 @@
+I"R<p>큰 수덧셈문제인데, 구현을 목적으로 한 문제인것같다 하하</p>
+
+<p>그냥 BigInteger썼다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.math.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">addStrings</span><span class="o">(</span><span class="nc">String</span> <span class="n">num1</span><span class="o">,</span> <span class="nc">String</span> <span class="n">num2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">BigInteger</span> <span class="n">a</span><span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="n">num1</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+        <span class="nc">BigInteger</span> <span class="n">b</span><span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="n">num2</span><span class="o">,</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

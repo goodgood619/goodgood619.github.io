@@ -424,4 +424,52 @@ var store = [{
         "tags": ["LinkedList","Implementation"],
         "url": "http://localhost:4000/algorithm/rotateList/",
         "teaser": null
+      },{
+        "title": "Backspace String Compare",
+        "excerpt":"Deque를 이용하여 올바른 문자열을 형성한다 만들어진 두문자열이 같은지 확인한다 by Java class Solution { public boolean backspaceCompare(String s, String t) { Deque&lt;Character&gt; d1 = new ArrayDeque&lt;&gt;(); Deque&lt;Character&gt; d2 = new ArrayDeque&lt;&gt;(); for(int i=0;i&lt;s.length();i++) { char c= s.charAt(i); if(c=='#') { if(s.isEmpty()) { continue; } d1.pollLast(); } else { d1.add(c); } }...","categories": ["Algorithm"],
+        "tags": ["Deque","Implementation"],
+        "url": "http://localhost:4000/algorithm/BackspaceStringCompare/",
+        "teaser": null
+      },{
+        "title": "Diameter Of Binary Tree",
+        "excerpt":"임의의 두 노드를 선택했을때, 최대의 길이를 리턴하는 문제이다. 이 문제는 재귀와 리턴값을 이용해야 한다는것이 주요한 문제인것같다. 리턴값이 임의의 루트 노드를 기준으로 할때 왼쪽 노드의 높이 or 오른쪽 노드의 높이의 최대 높이를 계속 리턴을 해준다 이렇게 되면, 모든 임의의 루트 노드를 기준으로할때, 왼쪽자식의 높이 + 오른쪽자식의 높이를 알 수 있게 되고,...","categories": ["Algorithm"],
+        "tags": ["Tree","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/DiameterOfBinaryTree/",
+        "teaser": null
+      },{
+        "title": "Last Stone Weight",
+        "excerpt":"단순 구현문제이다 제일 첫번째 최댓값과 두번째 최댓값을 어찌 구할지 생각을 해보다가 정렬을 해서 빠르게 값을 구했다 그다음 같으면 맨 뒤의 두 요소를 지우고, 다르면 차이값을 넣어주고 맨 뒤의 두 요소를 지운다 이 작업을 요소가 1개남을때 까지 진행한다. 만약 요소가 하나도 안남으면 0을 리턴 by Java class Solution { public int...","categories": ["Algorithm"],
+        "tags": ["List","Implementation"],
+        "url": "http://localhost:4000/algorithm/LastStoneWeight/",
+        "teaser": null
+      },{
+        "title": "Add Strings",
+        "excerpt":"큰 수덧셈문제인데, 구현을 목적으로 한 문제인것같다 하하   그냥 BigInteger썼다   by Java   import java.util.*; import java.math.*; class Solution {     public String addStrings(String num1, String num2) {         BigInteger a= new BigInteger(num1,10);         BigInteger b= new BigInteger(num2,10);         a = a.add(b);         return a.toString(10);     } }  ","categories": ["Algorithm"],
+        "tags": ["BigInteger","Implementation"],
+        "url": "http://localhost:4000/algorithm/addStrings/",
+        "teaser": null
+      },{
+        "title": "Add to Array Form of Integer",
+        "excerpt":"구현문제이다. 숫자 K를 뒤에서부터 한자리씩 보면서 동시에 A의 원소의 합을 더해서 List에 삽입을 해준다 그 상태에서 List를 뒤집어서 반환을 해주면된다. by Java class Solution { public List&lt;Integer&gt; addToArrayForm(int[] A, int K) { int idx = A.length; List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); int cur = K; while(--idx&gt;=0 || cur&gt;0) { if(idx&gt;=0)...","categories": ["Algorithm"],
+        "tags": ["Implementation"],
+        "url": "http://localhost:4000/algorithm/addToArrayFormofInteger/",
+        "teaser": null
+      },{
+        "title": "Min Stack",
+        "excerpt":"Method를 구현하는 문제이다. Stack을 구현하는데, getMin()메소드 구현이 어려울수 있다. 한번 Stack(Deque)를 돌면서 제일 작은값을 리턴해주면된다. by Java class MinStack { Deque&lt;Integer&gt; stack; /** initialize your data structure here. */ public MinStack() { stack = new ArrayDeque&lt;&gt;(); } public void push(int x) { stack.add(x); } public void pop() { stack.pollLast(); }...","categories": ["Algorithm"],
+        "tags": ["Stack","Implementation"],
+        "url": "http://localhost:4000/algorithm/minStack/",
+        "teaser": null
+      },{
+        "title": "Multiply-Strings",
+        "excerpt":"String의 입력된 수를 곱해서 반환하는 문제이다. BigInteger를 쓰지말라고는 하는데, 그렇지 않으면, 일일이 구현하는게 올바른 문제인것같다 그러나, BigInteger를 잘 쓸수 있는사람이 구지 안쓰는것도 웃긴것 같다. 실전의 경우 시간이 많이 걸릴수 있기 때문(연습이 안되어있다면) by Java import java.util.*; import java.math.*; class Solution { public String multiply(String num1, String num2) { BigInteger a...","categories": ["Algorithm"],
+        "tags": ["BigInteger","Implementation"],
+        "url": "http://localhost:4000/algorithm/multiplyStrings/",
+        "teaser": null
+      },{
+        "title": "Plus One",
+        "excerpt":"구현 문제이다. 맨끝에 한 숫자를 더한다음에, 새로운 배열의 결과를 반환해줘야 하는문제이다. 올림수가 발생해서, 자릿수가 한자리 증가할수 있기 때문에 주의해야한다 by Java class Solution { public int[] plusOne(int[] digits) { digits[digits.length-1]++; List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); int carry=0; for(int i=digits.length-1;i&gt;=0;i--) { int num = digits[i]; int newnum = num+carry; if(newnum&gt;=10) {...","categories": ["Algorithm"],
+        "tags": ["List","Implementation"],
+        "url": "http://localhost:4000/algorithm/plusOne/",
+        "teaser": null
       }]

@@ -1,0 +1,50 @@
+I"P<p><strong>Method를 구현</strong>하는 문제이다.</p>
+
+<p>Stack을 구현하는데, getMin()메소드 구현이 어려울수 있다.</p>
+
+<p><strong>한번 Stack(Deque)를 돌면서 제일 작은값을 리턴</strong>해주면된다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MinStack</span> <span class="o">{</span>
+    <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span><span class="o">;</span>
+    <span class="cm">/** initialize your data structure here. */</span>
+    <span class="kd">public</span> <span class="nf">MinStack</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">stack</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">top</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">stack</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMin</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;(</span><span class="n">stack</span><span class="o">);</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">temp</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">min</span><span class="o">&gt;</span><span class="n">temp</span><span class="o">.</span><span class="na">peekLast</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">temp</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">min</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */</span>
+</code></pre></div></div>
+:ET
