@@ -472,4 +472,46 @@ var store = [{
         "tags": ["List","Implementation"],
         "url": "http://localhost:4000/algorithm/plusOne/",
         "teaser": null
+      },{
+        "title": "Counting Elements",
+        "excerpt":"무슨말인지 도저히 몰라서 코드를 보고풀었다. 해석하자면, 주어진 배열에서 x라는 수가 존재하고, x+1이라는 수가 동시에 존재한다면 그때 x라는 수가 등장한 횟수를 전부 더해서 반환해주는 문제이다. Set과 Map을 써서 문제를 풀었다. by Java class Solution { public int countElements(int[] arr) { Set&lt;Integer&gt; set = new HashSet&lt;&gt;(); Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); for(int...","categories": ["Algorithm"],
+        "tags": ["Set","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/CountingElements/",
+        "teaser": null
+      },{
+        "title": "Perform String Shifts",
+        "excerpt":"0이면 왼쪽으로 옮기고, 1이면 오른쪽으로 옮기는데 몇번 움직여야 하는지 구현을 하는 문제이다. 어차피 String의 길이보다 큰경우는 돌려도 순환을 하기 때문에, mod 연산을 이용한 나머지값만 돌려주면 된다. left의 경우는 cnt의 index부터 시작해서 끝(String.length())까지 본다음, 처음부터 cnt까지 보면서 순차적으로 만들면된다 반면에 right의 경우는 String의 length()에서 cnt를 뺀다음부터 끝(String.length())까지 본다음, 다시 처음부터 String.length()-cnt까지...","categories": ["Algorithm"],
+        "tags": ["String","Implementation"],
+        "url": "http://localhost:4000/algorithm/PerformStringShifts/",
+        "teaser": null
+      },{
+        "title": "가장 먼 노드",
+        "excerpt":"BFS를 이용해서 1번 노드로부터의 모든 노드의 길이를 체크하면서 동시에, 그때 길이의 갯수를 체크해준다 HashMap을 이용하여!!, 그리고 나서 가장 먼 거리였을때, 그때 거리를 반환해주면 된다 by Java import java.util.*; class Solution { int D=0; Map&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); public int solution(int n, int[][] edge) { List&lt;Integer&gt;[] graph = new ArrayList[n+1];...","categories": ["Algorithm"],
+        "tags": ["BFS","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EA%B0%80%EC%9E%A5%EB%A8%BC%EB%85%B8%EB%93%9C/",
+        "teaser": null
+      },{
+        "title": "가장 큰 수",
+        "excerpt":"저번에 풀었던 LeetCode의 Largest-Number와 똑같은 문제이다. compare메소드를 적절하게 작성하는것이 아주 중요한 문제이다 by Java import java.util.*; class Solution { public String solution(int[] numbers) { String[] arr = new String[numbers.length]; for(int i=0;i&lt;numbers.length;i++) { arr[i] = String.valueOf(numbers[i]); } Arrays.sort(arr,(a,b)-&gt;compare(a,b)); if(arr[0].equals(\"0\")) return \"0\"; StringBuilder answer = new StringBuilder(); for(int i=0;i&lt;arr.length;i++) { answer.append(arr[i]); }...","categories": ["Algorithm"],
+        "tags": ["Sort","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EA%B0%80%EC%9E%A5%ED%81%B0%EC%88%98/",
+        "teaser": null
+      },{
+        "title": "등굣길",
+        "excerpt":"물 웅덩이인 곳을 먼저 체크를 해준다 시작점(0,0)에서 시작하여, 끝점(m,n)에 도달하면 1을 리턴한다 값이 클 수 있기 때문에 1000000007로 매번 나눠줘야 한다 by Java import java.util.*; class Solution { public int solution(int m, int n, int[][] puddles) { int[][] board = new int[m][n]; for(int i=0;i&lt;puddles.length;i++) { int x = puddles[i][0]; int...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EB%93%B1%EA%B5%A3%EA%B8%B8/",
+        "teaser": null
+      },{
+        "title": "완주하지 못한 선수",
+        "excerpt":"해쉬문제이다. Map을 이용해서 출전명단에 있는 사람의 수를 체크를 한다음 완료명단에 있는 사람을 찾아, Map에서 해당하는 사람의 수를 하나씩 줄였다. 이때 Map에 value로 1이 남아있는 Key값이 답이 된다 by Java import java.util.*; class Solution { public String solution(String[] participant, String[] completion) { Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;participant.length;i++) { String...","categories": ["Algorithm"],
+        "tags": ["Set","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80%EB%AA%BB%ED%95%9C%EC%84%A0%EC%88%98/",
+        "teaser": null
+      },{
+        "title": "위장",
+        "excerpt":"BOJ의 패션왕 신해빈과 동일한 문제이다. 각 clothes에 해당하는 갯수를 세준다(ex) headgear 몇개, eyewear 몇개…) 그다음, 각원소의 갯수를 (a,b,c,…)이라 하면 (a+1)(b+1)(c+1)… 를 한후에 1을 빼준값을 리턴하면 된다 by Java import java.util.*; class Solution { public int solution(String[][] clothes) { Map&lt;String,Integer&gt; map = new HashMap&lt;&gt;(); for(int i=0;i&lt;clothes.length;i++) { String s = clothes[i][1];...","categories": ["Algorithm"],
+        "tags": ["Set","Map","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EC%9C%84%EC%9E%A5/",
+        "teaser": null
       }]

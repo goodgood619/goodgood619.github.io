@@ -1,0 +1,49 @@
+I"A<p>0이면 왼쪽으로 옮기고, 1이면 오른쪽으로 옮기는데</p>
+
+<p>몇번 움직여야 하는지 구현을 하는 문제이다.</p>
+
+<p>어차피 String의 길이보다 큰경우는 돌려도 순환을 하기 때문에, <strong>mod 연산을 이용한 나머지</strong>값만</p>
+
+<p>돌려주면 된다.</p>
+
+<p>left의 경우는 <strong>cnt의 index부터 시작해서 끝(String.length())까지 본다음, 처음부터 cnt까지</strong> 보면서 순차적으로 만들면된다</p>
+
+<p>반면에 right의 경우는 <strong>String의 length()에서 cnt를 뺀다음부터 끝(String.length())까지 본다음, 다시 처음부터 String.length()-cnt</strong>까지 보면서 순차적으로 만들어주면된다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">stringShift</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">shift</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">shift</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">move</span> <span class="o">=</span> <span class="n">shift</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">shift</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+            <span class="n">sb</span> <span class="o">=</span> <span class="n">go</span><span class="o">(</span><span class="n">sb</span><span class="o">,</span><span class="n">move</span><span class="o">,</span><span class="n">cnt</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="nc">StringBuilder</span> <span class="nf">go</span><span class="o">(</span><span class="nc">StringBuilder</span> <span class="n">sb</span><span class="o">,</span> <span class="kt">int</span> <span class="n">move</span><span class="o">,</span><span class="kt">int</span> <span class="n">cnt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">%</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+        <span class="nc">StringBuilder</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">move</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//left</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">cnt</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="o">}</span> 
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">cnt</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span> <span class="c1">//right</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="n">cnt</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="o">}</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="n">cnt</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">ret</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,34 @@
+I"�<p>저번에 풀었던 LeetCode의 Largest-Number와 똑같은 문제이다.<br />
+<strong>compare메소드를 적절하게 작성</strong>하는것이 아주 중요한 문제이다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)-&gt;</span><span class="n">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">));</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">"0"</span><span class="o">))</span> <span class="k">return</span> <span class="s">"0"</span><span class="o">;</span>
+        <span class="nc">StringBuilder</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">String</span> <span class="n">a</span><span class="o">,</span><span class="nc">String</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">b</span><span class="o">+</span><span class="n">a</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">s2</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">s1</span><span class="o">);</span>
+				<span class="c1">// a : "2", b:"10"일때, 우리는 a,b순서를 유지한상태로 리턴해야 한다</span>
+				<span class="c1">// 그러려면 a가 b보다 앞서야 하고 리턴값을 -1로 만들어줘야 한다</span>
+				<span class="c1">// 그러려면 "210".compareTo("102")를 하게 되면 1이 리턴되므로</span>
+				<span class="c1">// "102".compareTo("210")을 해서 -1을 리턴하게 하려면 위의 경우에 맞춰서 코드를 만들어야한다 </span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

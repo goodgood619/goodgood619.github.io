@@ -1,0 +1,60 @@
+I"�(<p>BFS를 이용해서 <strong>1번 노드로부터의 모든 노드의 길이를 체크하면서 동시에, 그때 길이의 갯수를 체크</strong>해준다</p>
+
+<p><strong>HashMap</strong>을 이용하여!!, 그리고 나서 가장 먼 거리였을때, 그때 거리를 반환해주면 된다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="no">D</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">edge</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;[]</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="n">graph</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">edge</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">here</span> <span class="o">=</span> <span class="n">edge</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">0</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="n">edge</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">];</span>
+            <span class="n">graph</span><span class="o">[</span><span class="n">here</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+            <span class="n">graph</span><span class="o">[</span><span class="n">next</span><span class="o">].</span><span class="na">add</span><span class="o">(</span><span class="n">here</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">bfs</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">graph</span><span class="o">,</span><span class="n">visited</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="no">D</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">bfs</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span><span class="kt">int</span> <span class="n">depth</span><span class="o">,</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;[]</span> <span class="n">graph</span><span class="o">,</span><span class="kt">boolean</span><span class="o">[]</span> <span class="n">visited</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="no">P</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">P</span><span class="o">(</span><span class="n">start</span><span class="o">,</span><span class="mi">0</span><span class="o">));</span>
+        <span class="n">visited</span><span class="o">[</span><span class="n">start</span><span class="o">]=</span><span class="kc">true</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">here</span><span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">here</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">dist</span><span class="o">;</span>
+            <span class="no">D</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="no">D</span><span class="o">,</span><span class="n">dist</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">dist</span><span class="o">)==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">dist</span><span class="o">);</span>
+                <span class="n">value</span><span class="o">++;</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">dist</span><span class="o">);</span>
+                <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">dist</span><span class="o">,</span><span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">e</span> <span class="o">:</span> <span class="n">graph</span><span class="o">[</span><span class="n">here</span><span class="o">])</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">e</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="n">visited</span><span class="o">[</span><span class="n">next</span><span class="o">]=</span><span class="kc">true</span><span class="o">;</span>
+                    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">P</span><span class="o">(</span><span class="n">next</span><span class="o">,</span><span class="n">dist</span><span class="o">+</span><span class="mi">1</span><span class="o">));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">P</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">here</span><span class="o">,</span><span class="n">dist</span><span class="o">;</span>
+    <span class="no">P</span><span class="o">(</span><span class="kt">int</span> <span class="n">here</span><span class="o">,</span><span class="kt">int</span> <span class="n">dist</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">here</span> <span class="o">=</span> <span class="n">here</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
