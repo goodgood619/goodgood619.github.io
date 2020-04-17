@@ -1,0 +1,9 @@
+I"q<p><strong>count</strong>명령어는 중복제거를 해줄수는 없다. 그래서 <strong>distinct</strong> 명령어를 이용해서 체크를 해줘야 한다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="k">distinct</span> <span class="n">name</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">animal_ins</span><span class="p">;</span>
+</code></pre></div></div>
+:ET

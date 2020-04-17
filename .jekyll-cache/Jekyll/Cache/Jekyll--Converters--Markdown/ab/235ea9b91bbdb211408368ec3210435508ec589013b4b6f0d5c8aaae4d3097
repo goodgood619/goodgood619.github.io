@@ -1,0 +1,12 @@
+I"2<p><strong>like</strong> 옵션을 줘서 문제를 풀어야 한다.</p>
+
+<p>똑같이 <strong>left join</strong> 명령을 해주면 된다.</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">animal_id</span> <span class="k">as</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">animal_type</span> <span class="k">AS</span> <span class="n">ANIMAL_TYPE</span> <span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">NAME</span>
+<span class="k">from</span> <span class="n">animal_ins</span> <span class="n">a</span> <span class="k">left</span> <span class="k">join</span> <span class="n">animal_outs</span> <span class="n">b</span> <span class="k">on</span> <span class="n">a</span><span class="p">.</span><span class="n">animal_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">animal_id</span>
+<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">sex_upon_intake</span> <span class="k">like</span> <span class="s1">'Intact%'</span> <span class="k">and</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">sex_upon_outcome</span> <span class="k">like</span> <span class="s1">'Spayed%'</span> <span class="k">or</span> <span class="n">b</span><span class="p">.</span><span class="n">sex_upon_outcome</span> <span class="k">like</span> <span class="s1">'Neutered%'</span><span class="p">)</span>
+</code></pre></div></div>
+:ET

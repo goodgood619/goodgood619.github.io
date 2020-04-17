@@ -1,0 +1,14 @@
+I"�<p>가장 오랜 기간 보호된 동물의 차이를 구해야 하는데, 시간단위차이를 빼주는 명령어가 있다고 한다</p>
+
+<p><strong>datediff</strong>라는 명령어이다. datediff(시간a,시간b)라고 쓴다. 시간a가 시간b보다 반드시 빠르지않아도된다. <br />
+<strong>시간 순서는 상관없음!!</strong></p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">NAME</span>
+<span class="k">from</span> <span class="n">animal_ins</span> <span class="n">a</span><span class="p">,</span> <span class="n">animal_outs</span> <span class="n">b</span>
+<span class="k">where</span> <span class="n">a</span><span class="p">.</span><span class="n">animal_id</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">animal_id</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">datediff</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="nb">datetime</span><span class="p">,</span><span class="n">b</span><span class="p">.</span><span class="nb">datetime</span><span class="p">)</span> <span class="k">limit</span> <span class="mi">2</span>
+</code></pre></div></div>
+:ET

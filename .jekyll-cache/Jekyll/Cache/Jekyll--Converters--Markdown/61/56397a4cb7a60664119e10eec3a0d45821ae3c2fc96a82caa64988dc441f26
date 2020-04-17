@@ -1,0 +1,14 @@
+I"�<p>Null인경우는 No name으로 처리를 해줘야 하는데</p>
+
+<p><strong>IFNULL</strong>명령어를 통해서 처리를 해준다고 하자</p>
+
+<p><strong>IFNULL</strong>을 기억하자</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">ANIMAL_TYPE</span><span class="p">,</span> <span class="n">IFNULL</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span><span class="nv">"No name"</span><span class="p">)</span> <span class="k">As</span> <span class="n">NAME</span> <span class="p">,</span> <span class="n">SEX_UPON_INTAKE</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">animal_id</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,12 @@
+I"�<p>말 그대로 DATETIME타입을 DATE로 어떻게 형 변환을 할수 있을지에 대한 문제이다</p>
+
+<p><strong>DATE_FORMAT(DATE,형식)</strong>으로 입력을 해주면 된다고 한다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">DATE_FORMAT</span><span class="p">(</span><span class="nb">datetime</span><span class="p">,</span> <span class="s1">'%Y-%m-%d'</span><span class="p">)</span> <span class="k">AS</span> <span class="err">날짜</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+<span class="o">//</span> <span class="o">%</span><span class="n">Y</span> <span class="p">:</span> <span class="mi">4</span><span class="err">자리</span> <span class="err">연도</span><span class="p">,</span> <span class="o">%</span><span class="n">y</span> <span class="p">:</span> <span class="mi">2</span><span class="err">자리</span> <span class="err">연도</span><span class="p">,</span> <span class="o">%</span><span class="n">m</span> <span class="p">:</span> <span class="err">월</span><span class="p">,</span> <span class="o">%</span><span class="n">d</span> <span class="p">:</span> <span class="err">일</span><span class="p">,</span> <span class="o">%</span><span class="n">H</span> <span class="p">:</span> <span class="mi">24</span><span class="err">시간</span><span class="p">,</span> <span class="o">%</span><span class="n">h</span> <span class="p">:</span> <span class="mi">12</span><span class="err">시간</span><span class="p">,</span> <span class="o">%</span><span class="n">i</span> <span class="p">:</span> <span class="err">분</span><span class="p">,</span> <span class="o">%</span><span class="n">s</span> <span class="p">:</span> <span class="err">초</span>
+</code></pre></div></div>
+:ET

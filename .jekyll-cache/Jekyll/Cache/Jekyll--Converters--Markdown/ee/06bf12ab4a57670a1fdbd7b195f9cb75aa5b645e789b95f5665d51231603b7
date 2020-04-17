@@ -1,0 +1,9 @@
+I"<p><strong>count</strong>명령어를 이용해서 구해주면 된다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="k">count</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+</code></pre></div></div>
+:ET

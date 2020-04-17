@@ -514,4 +514,130 @@ var store = [{
         "tags": ["Set","Map","Implementation"],
         "url": "http://localhost:4000/algorithm/%EC%9C%84%EC%9E%A5/",
         "teaser": null
+      },{
+        "title": "DATETIME에서 DATE로 형변환",
+        "excerpt":"말 그대로 DATETIME타입을 DATE로 어떻게 형 변환을 할수 있을지에 대한 문제이다 DATE_FORMAT(DATE,형식)으로 입력을 해주면 된다고 한다 by SQL -- 코드를 입력하세요 SELECT ANIMAL_ID, NAME, DATE_FORMAT(datetime, '%Y-%m-%d') AS 날짜 from animal_ins // %Y : 4자리 연도, %y : 2자리 연도, %m : 월, %d : 일, %H : 24시간, %h :...","categories": ["SQL"],
+        "tags": ["MySQL","DATE_FORMAT"],
+        "url": "http://localhost:4000/sql/DATETIME%EC%97%90%EC%84%9CDATE%EB%A1%9C%ED%98%95%EB%B3%80%ED%99%98/",
+        "teaser": null
+      },{
+        "title": "NULL 처리하기",
+        "excerpt":"Null인경우는 No name으로 처리를 해줘야 하는데   IFNULL명령어를 통해서 처리를 해준다고 하자   IFNULL을 기억하자   by SQL   -- 코드를 입력하세요 SELECT ANIMAL_TYPE, IFNULL(NAME,\"No name\") As NAME , SEX_UPON_INTAKE from animal_ins order by animal_id  ","categories": ["SQL"],
+        "tags": ["MySQL","check null","order by"],
+        "url": "http://localhost:4000/sql/NULL%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "고양이와 개는 몇 마리 있을까",
+        "excerpt":"group by로 묶은 다음, 그때, 총 몇 마리가 있는지 count를 이용해서 세어주면 된다   by SQL   SELECT animal_type, count(*) from animal_ins group by animal_type  ","categories": ["SQL"],
+        "tags": ["MySQL","group by"],
+        "url": "http://localhost:4000/sql/%EA%B3%A0%EC%96%91%EC%9D%B4%EC%99%80%EA%B0%9C%EB%8A%94%EB%AA%87%EB%A7%88%EB%A6%AC%EC%9E%88%EC%9D%84%EA%B9%8C/",
+        "teaser": null
+      },{
+        "title": "동명 동물의 수 찾기",
+        "excerpt":"group by로 묶은 다음, having 옵션을 이용하여 조건에 맞게 체크를 해준다   이름이 동일한 것이 2개이상인것만 체크를 해줘야한다   그리고 name으로 정렬을 하라고 했으므로 name으로 정렬을 해준다   by SQL   -- 코드를 입력하세요 SELECT NAME, count(*) as count from animal_ins group by name having count(name)&gt;=2 order by name  ","categories": ["SQL"],
+        "tags": ["MySQL","group by","having"],
+        "url": "http://localhost:4000/sql/%EB%8F%99%EB%AA%85%EB%8F%99%EB%AC%BC%EC%9D%98%EC%88%98%EC%B0%BE%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "동물 수 구하기",
+        "excerpt":"count명령어를 이용해서 구해주면 된다   by SQL   -- 코드를 입력하세요 SELECT count(*) AS count from animal_ins  ","categories": ["SQL"],
+        "tags": ["MySQL","count"],
+        "url": "http://localhost:4000/sql/%EB%8F%99%EB%AC%BC%EC%88%98%EA%B5%AC%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "루시와 엘사 찾기",
+        "excerpt":"by SQL -- 코드를 입력하세요 SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE from animal_ins where name like 'Lucy' or name like 'Ella' or name like 'Pickle' or name like 'Rogan' or name like 'Sabrina' or name like 'Mitty' order by animal_id 혹은 in 옵션을 이용하여 나열을 할수도 있다 -- 코드를 입력하세요 SELECT ANIMAL_ID,...","categories": ["SQL"],
+        "tags": ["MySQL","like","order by"],
+        "url": "http://localhost:4000/sql/%EB%A3%A8%EC%8B%9C%EC%99%80%EC%97%98%EC%82%AC%EC%B0%BE%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "멀쩡한 사각형",
+        "excerpt":"GCD문제이겠거니 눈치는 챘는데, 정확한 식 도출에는 실패하였다. 설명은 여기가 아주 잘되어있다. 수학 문제에 상당히 가까운 문제이다 https://leedakyeong.tistory.com/entry/프로그래머스-멀쩡한-사각형-in-python by Java class Solution { public long solution(int w,int h) { long answer = (long)w*h; int res = gcd(w,h); return answer - res*((w/res)+(h/res)-1); } private int gcd(int a,int b) { if(a%b==0) return b;...","categories": ["Algorithm"],
+        "tags": ["Math","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EB%A9%80%EC%A9%A1%ED%95%9C%EC%82%AC%EA%B0%81%ED%98%95/",
+        "teaser": null
+      },{
+        "title": "보행자 천국",
+        "excerpt":"Dynamic Programming 문제이다. 카카오 코드 페스티벌 문제이다. DP가 약해서 그런것도 있었지만, 하나의 2차원 배열에 풀려고 했던것이 시작부터 난관에 빠진느낌이었다. 하나의 2차원배열에 풀려다 보니, 중복된 경로가 체크되어 정확한 답이 도출이 되지않았다. 그래서 풀이를 보니, 2개의 2차원 배열이 필요했다. 그다음 입력된 cityMap이 0,1,2에 따라 값이 달랐는데 0의 경우는 어디든지 이동이 가능하므로, 이전방향에서...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/%EB%B3%B4%ED%96%89%EC%9E%90%EC%B2%9C%EA%B5%AD/",
+        "teaser": null
+      },{
+        "title": "보호소에서 중성화한 동물",
+        "excerpt":"like 옵션을 줘서 문제를 풀어야 한다. 똑같이 left join 명령을 해주면 된다. by SQL -- 코드를 입력하세요 SELECT a.animal_id as ANIMAL_ID, a.animal_type AS ANIMAL_TYPE , a.name as NAME from animal_ins a left join animal_outs b on a.animal_id = b.animal_id where a.sex_upon_intake like 'Intact%' and (b.sex_upon_outcome like 'Spayed%' or b.sex_upon_outcome like...","categories": ["SQL"],
+        "tags": ["MySQL","JOIN","like"],
+        "url": "http://localhost:4000/sql/%EB%B3%B4%ED%98%B8%EC%86%8C%EC%97%90%EC%84%9C%EC%A4%91%EC%84%B1%ED%99%94%ED%95%9C%EB%8F%99%EB%AC%BC/",
+        "teaser": null
+      },{
+        "title": "없어진 기록 찾기",
+        "excerpt":"JOIN류의 기본문제인것 같다. JOIN을 아예 까먹어서 한번 보고 풀었다. animal_ins 테이블과 animal_outs테이블을 합치는데, animal_outs의 animal_id가 없는 동시에, animal_ins의 animal_id가 있어야 하므로, left join명령어를 이용하고, where옵션을 이용해 체크를 해줬다. 마지막으로, animal_id에 의해 정렬이 되어야 하므로 아래와 같이 썼다. by SQL -- 코드를 입력하세요 SELECT A.ANIMAL_ID, A.NAME from animal_outs A left join...","categories": ["SQL"],
+        "tags": ["MySQL","JOIN","order by"],
+        "url": "http://localhost:4000/sql/%EC%97%86%EC%96%B4%EC%A7%84%EA%B8%B0%EB%A1%9D%EC%B0%BE%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "오랜기간 보호한 동물(2)",
+        "excerpt":"가장 오랜 기간 보호된 동물의 차이를 구해야 하는데, 시간단위차이를 빼주는 명령어가 있다고 한다   datediff라는 명령어이다. datediff(시간a,시간b)라고 쓴다. 시간a가 시간b보다 반드시 빠르지않아도된다.   시간 순서는 상관없음!!   by SQL   -- 코드를 입력하세요 SELECT a.ANIMAL_ID, a.NAME from animal_ins a, animal_outs b where a.animal_id = b.animal_id order by datediff(a.datetime,b.datetime) limit 2  ","categories": ["SQL"],
+        "tags": ["MySQL","datediff"],
+        "url": "http://localhost:4000/sql/%EC%98%A4%EB%9E%9C%EA%B8%B0%EA%B0%84%EB%B3%B4%ED%98%B8%ED%95%9C%EB%8F%99%EB%AC%BC(2)/",
+        "teaser": null
+      },{
+        "title": "오랜 기간 보호한 동물",
+        "excerpt":"a 테이블과 b 테이블을 합쳐줘야 한다. 그다음 입양을 가지 못한 동물들을 선택해야 하기 때문에, b테이블에 animal_id가 없는 옵션을 넣어줘야 한다. 이때 가장 오래 머문 동물 3마리만 출력을 하는것이므로, order by옵션을 주되 limit를 이용하여 갯수를 제한해주면 된다. by SQL -- 코드를 입력하세요 SELECT a.NAME as NAME , a.DATETIME from animal_ins a...","categories": ["SQL"],
+        "tags": ["MySQL","JOIN","datetime","limit"],
+        "url": "http://localhost:4000/sql/%EC%98%A4%EB%9E%9C%EA%B8%B0%EA%B0%84%EB%B3%B4%ED%98%B8%ED%95%9C%EB%8F%99%EB%AC%BC/",
+        "teaser": null
+      },{
+        "title": "이름에 el 들어가는 동물찾기",
+        "excerpt":"like옵션을 줘서 문제를 풀수 있다. %는 와일드카드 *과 동일하다는 것을 기억하자   by SQL   -- 코드를 입력하세요 SELECT ANIMAL_ID, NAME from animal_ins where name like '%el%' and animal_type like 'Dog' order by name  ","categories": ["SQL"],
+        "tags": ["MySQL","like"],
+        "url": "http://localhost:4000/sql/%EC%9D%B4%EB%A6%84%EC%97%90el%EB%93%A4%EC%96%B4%EA%B0%80%EB%8A%94%EB%8F%99%EB%AC%BC%EC%B0%BE%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "이름이 없는 동물의 아이디",
+        "excerpt":"is null 옵션을 이용하여 문제를 출력해주면 된다   by SQL   -- 코드를 입력하세요 SELECT animal_id as ANIMAL_ID from animal_ins where name is null  ","categories": ["SQL"],
+        "tags": ["MySQL","check null"],
+        "url": "http://localhost:4000/sql/%EC%9D%B4%EB%A6%84%EC%9D%B4%EC%97%86%EB%8A%94%EB%8F%99%EB%AC%BC%EC%9D%98%EC%95%84%EC%9D%B4%EB%94%94/",
+        "teaser": null
+      },{
+        "title": "이름이 있는 동물의 아이디",
+        "excerpt":"is not null옵션을 이용하고, 오름차순을 해줘야 하기 때문에 오름차순을 해주는 것이 중요하다   by SQL   -- 코드를 입력하세요 SELECT ANIMAL_ID from animal_ins where name is not null order by animal_id  ","categories": ["SQL"],
+        "tags": ["MySQL","check null"],
+        "url": "http://localhost:4000/sql/%EC%9D%B4%EB%A6%84%EC%9D%B4%EC%9E%88%EB%8A%94%EB%8F%99%EB%AC%BC%EC%9D%98%EC%95%84%EC%9D%B4%EB%94%94/",
+        "teaser": null
+      },{
+        "title": "입양 시각 구하기(1)",
+        "excerpt":"이번에는 시간을 기준으로 구해보는 것이다.   문제를 보면 1시간 단위로 간격이 나뉘어지는 것을 알수 있다. 그래서 hour메소드를 써줘야한다   그안에는 DATETIME관련 Column을 넣어주면 되는것 같다   by SQL   -- 코드를 입력하세요 SELECT hour(datetime) as HOUR, count(*) as COUNT from animal_outs where hour(datetime) &gt;= 9 and hour(datetime)&lt;=19 group by hour(datetime) order by hour(datetime)  ","categories": ["SQL"],
+        "tags": ["MySQL","group by","order by","hour"],
+        "url": "http://localhost:4000/sql/%EC%9E%85%EC%96%91%EC%8B%9C%EA%B0%81%EA%B5%AC%ED%95%98%EA%B8%B0(1)/",
+        "teaser": null
+      },{
+        "title": "입양 시각 구하기(2)",
+        "excerpt":"이번 문제는 좀 신세계였다. 정말 프로그래밍 하는 듯한 기분이 들었다. 그냥 입양 시각 구하기(1)의 경우처럼 할때는, 0~6시, 20~23시까지 0이어서 count가 되지않는다 그러므로, 변수를 하나둬서 증가를 시켜줘야 한다. 변수는 set명령어를 이용하고, @를 이용하여 선언한다, 마지막에는 ;이 들어가줘야 한다 그다음 count명령어를 이용하기 보다, select문을 이용하여 쿼리를 다시 계산을 해준다 왜냐하면 0개인 경우의...","categories": ["SQL"],
+        "tags": ["MySQL","hour","set"],
+        "url": "http://localhost:4000/sql/%EC%9E%85%EC%96%91%EC%8B%9C%EA%B0%81%EA%B5%AC%ED%95%98%EA%B8%B0(2)/",
+        "teaser": null
+      },{
+        "title": "있었는데요 없었습니다",
+        "excerpt":"시간을 비교를 해줘야 하는데, 더 큰경우가 시간이 더빠른경우이다.   먼저 Join을 하는데, animal_id가 일치하는 것끼리 묶어준다. 그다음 시간을 비교한다   그리고 시간이 빠른순으로 정렬을 해준다   by SQL   -- 코드를 입력하세요 SELECT animal_ins.animal_id as ANIMAL_ID, animal_ins.name as NAME from animal_ins left join animal_outs on animal_ins.animal_id = animal_outs.animal_id where animal_ins.datetime&gt;animal_outs.datetime order by animal_ins.datetime  ","categories": ["SQL"],
+        "tags": ["MySQL","JOIN","datetime"],
+        "url": "http://localhost:4000/sql/%EC%9E%88%EC%97%88%EB%8A%94%EB%8D%B0%EC%9A%94%EC%97%86%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4/",
+        "teaser": null
+      },{
+        "title": "중복 제거하기",
+        "excerpt":"count명령어는 중복제거를 해줄수는 없다. 그래서 distinct 명령어를 이용해서 체크를 해줘야 한다   by SQL   -- 코드를 입력하세요 SELECT count(distinct name) from animal_ins;  ","categories": ["SQL"],
+        "tags": ["MySQL","count","distinct"],
+        "url": "http://localhost:4000/sql/%EC%A4%91%EB%B3%B5%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "중성화 여부 파악하기",
+        "excerpt":"if else를 MYSQL에서는 어떻게 표현해야 할까 case를 시작으로 WHEN … THEN이 한 묶음이 된다 by SQL -- 코드를 입력하세요 SELECT ANIMAL_ID, NAME, case when sex_upon_intake like '%Neutered%' or sex_upon_intake like '%Spayed%' then \"O\" else \"X\" end AS 중성화 from animal_ins CASE관련 문법 CASE WHEN 조건 THEN '반환 값' WHEN 조건...","categories": ["SQL"],
+        "tags": ["MySQL","case ... when ... then"],
+        "url": "http://localhost:4000/sql/%EC%A4%91%EC%84%B1%ED%99%94%EC%97%AC%EB%B6%80%ED%8C%8C%EC%95%85%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "크레인 인형 뽑기",
+        "excerpt":"시뮬레이션 문제이다. 스택을 이용해서 문제를 풀면된다 by Java import java.util.*; class Solution { public int solution(int[][] board, int[] moves) { int score=0; Deque&lt;Integer&gt; stack = new ArrayDeque&lt;&gt;(); for(int j=0;j&lt;moves.length;j++) { int sy = moves[j]; sy--; int pick = -1; for(int i=0;i&lt;board.length;i++) { if(board[i][sy] !=0) { pick = board[i][sy]; board[i][sy]=0; break;...","categories": ["Algorithm"],
+        "tags": ["Simulation","Implementation"],
+        "url": "http://localhost:4000/algorithm/%ED%81%AC%EB%A0%88%EC%9D%B8%EC%9D%B8%ED%98%95%EB%BD%91%EA%B8%B0/",
+        "teaser": null
       }]

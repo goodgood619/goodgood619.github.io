@@ -1,0 +1,10 @@
+I";<p>is null 옵션을 이용하여 문제를 출력해주면 된다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">animal_id</span> <span class="k">as</span> <span class="n">ANIMAL_ID</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+<span class="k">where</span> <span class="n">name</span> <span class="k">is</span> <span class="k">null</span>
+</code></pre></div></div>
+:ET

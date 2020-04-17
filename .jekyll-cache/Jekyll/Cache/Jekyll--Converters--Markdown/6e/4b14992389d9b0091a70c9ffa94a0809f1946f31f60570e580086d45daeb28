@@ -1,0 +1,16 @@
+I"z<p>이번에는 시간을 기준으로 구해보는 것이다.</p>
+
+<p>문제를 보면 <strong>1시간 단위로 간격이 나뉘어지는 것</strong>을 알수 있다. 그래서 <strong>hour메소드</strong>를 써줘야한다</p>
+
+<p>그안에는 DATETIME관련 Column을 넣어주면 되는것 같다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">hour</span><span class="p">(</span><span class="nb">datetime</span><span class="p">)</span> <span class="k">as</span> <span class="n">HOUR</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="k">COUNT</span>
+<span class="k">from</span> <span class="n">animal_outs</span>
+<span class="k">where</span> <span class="n">hour</span><span class="p">(</span><span class="nb">datetime</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">9</span> <span class="k">and</span> <span class="n">hour</span><span class="p">(</span><span class="nb">datetime</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">19</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">hour</span><span class="p">(</span><span class="nb">datetime</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">hour</span><span class="p">(</span><span class="nb">datetime</span><span class="p">)</span>
+</code></pre></div></div>
+:ET

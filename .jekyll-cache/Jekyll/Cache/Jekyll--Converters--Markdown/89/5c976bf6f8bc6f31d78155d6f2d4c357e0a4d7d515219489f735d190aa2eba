@@ -1,0 +1,14 @@
+I"<p>if else를 MYSQL에서는 어떻게 표현해야 할까</p>
+
+<p><strong>case를 시작으로 WHEN … THEN</strong>이 한 묶음이 된다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span><span class="p">,</span>
+<span class="k">case</span> <span class="k">when</span> <span class="n">sex_upon_intake</span> <span class="k">like</span> <span class="s1">'%Neutered%'</span> <span class="k">or</span> <span class="n">sex_upon_intake</span> <span class="k">like</span> <span class="s1">'%Spayed%'</span> <span class="k">then</span> <span class="nv">"O"</span>
+<span class="k">else</span> <span class="nv">"X"</span> 
+<span class="k">end</span> <span class="k">AS</span> <span class="err">중성화</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+</code></pre></div></div>
+:ET

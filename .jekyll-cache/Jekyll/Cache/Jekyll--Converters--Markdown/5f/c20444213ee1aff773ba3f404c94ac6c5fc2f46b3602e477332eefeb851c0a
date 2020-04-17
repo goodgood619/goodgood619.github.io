@@ -1,0 +1,15 @@
+I"I<p><strong>시간을 비교를 해줘야 하는데, 더 큰경우가 시간이 더빠른경우</strong>이다.</p>
+
+<p>먼저 Join을 하는데, animal_id가 일치하는 것끼리 묶어준다. 그다음 시간을 비교한다</p>
+
+<p>그리고 시간이 빠른순으로 정렬을 해준다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">animal_ins</span><span class="p">.</span><span class="n">animal_id</span> <span class="k">as</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">animal_ins</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">NAME</span>
+<span class="k">from</span> <span class="n">animal_ins</span> <span class="k">left</span> <span class="k">join</span> <span class="n">animal_outs</span> <span class="k">on</span> <span class="n">animal_ins</span><span class="p">.</span><span class="n">animal_id</span> <span class="o">=</span> <span class="n">animal_outs</span><span class="p">.</span><span class="n">animal_id</span>
+<span class="k">where</span> <span class="n">animal_ins</span><span class="p">.</span><span class="nb">datetime</span><span class="o">&gt;</span><span class="n">animal_outs</span><span class="p">.</span><span class="nb">datetime</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">animal_ins</span><span class="p">.</span><span class="nb">datetime</span>
+</code></pre></div></div>
+:ET

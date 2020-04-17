@@ -1,0 +1,38 @@
+I"V<p><strong>시뮬레이션</strong> 문제이다. <strong>스택</strong>을 이용해서 문제를 풀면된다</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">board</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">moves</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">score</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">moves</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">sy</span> <span class="o">=</span> <span class="n">moves</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+            <span class="n">sy</span><span class="o">--;</span>
+            <span class="kt">int</span> <span class="n">pick</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">sy</span><span class="o">]</span> <span class="o">!=</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">pick</span> <span class="o">=</span> <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">sy</span><span class="o">];</span>
+                    <span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">sy</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            
+            <span class="k">if</span><span class="o">(</span><span class="n">pick</span><span class="o">==-</span><span class="mi">1</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span> <span class="c1">//인형이 없는 경우</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>  <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pick</span><span class="o">);</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">top</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">peekLast</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">top</span><span class="o">==</span> <span class="n">pick</span><span class="o">){</span> 
+                    <span class="n">score</span> <span class="o">+=</span><span class="mi">2</span><span class="o">;</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="na">pollLast</span><span class="o">();</span>
+                    <span class="k">continue</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pick</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">score</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

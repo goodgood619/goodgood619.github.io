@@ -1,0 +1,9 @@
+I"^<p>group by로 묶은 다음, 그때, 총 몇 마리가 있는지 count를 이용해서 세어주면 된다</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">animal_type</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">animal_type</span>
+</code></pre></div></div>
+:ET

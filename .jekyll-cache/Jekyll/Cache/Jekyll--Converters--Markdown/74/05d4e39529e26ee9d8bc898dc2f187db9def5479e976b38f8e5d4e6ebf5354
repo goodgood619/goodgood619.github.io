@@ -1,0 +1,11 @@
+I"R<p><strong>like</strong>옵션을 줘서 문제를 풀수 있다. <strong>%는 와일드카드 *과 동일하다</strong>는 것을 기억하자</p>
+
+<h2 id="by-sql">by SQL</h2>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
+<span class="k">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span>
+<span class="k">from</span> <span class="n">animal_ins</span>
+<span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'%el%'</span> <span class="k">and</span> <span class="n">animal_type</span> <span class="k">like</span> <span class="s1">'Dog'</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">name</span>
+</code></pre></div></div>
+:ET

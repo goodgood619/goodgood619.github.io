@@ -1,0 +1,56 @@
+I"&$<p>Dynamic Programming 문제이다.</p>
+
+<p>카카오 코드 페스티벌 문제이다. DP가 약해서 그런것도 있었지만, 하나의 2차원 배열에 풀려고 했던것이 시작부터 난관에 빠진느낌이었다. 하나의 2차원배열에 풀려다 보니, 중복된 경로가 체크되어 정확한 답이 도출이 되지않았다.</p>
+
+<p>그래서 풀이를 보니, <strong>2개의 2차원 배열이 필요</strong>했다.</p>
+
+<p>그다음 입력된 cityMap이 0,1,2에 따라 값이 달랐는데</p>
+
+<p>0의 경우는 어디든지 이동이 가능하므로, 이전방향에서 오는 2개의 2차원 배열의 경우의 수를 더해주면 된다.</p>
+
+<p>1의 경우는 이동이 불가능하므로, 0을 채워야 한다</p>
+
+<p>2의 경우는 이전방향을 유지하면서 계속 가줘야 하기때문에, 이전방향의 2차원 배열을 그대로 옮긴다.</p>
+
+<p>마지막으로 예외처리를 하지 않기 위해서 (0,0)이 아닌 (1,1)에서 시작을 했기 때문에, 목표지점은 (m,n)이 된다.</p>
+
+<p>그래서 해당하는 <strong>답은 (m,n)으로 가는 경우의 수</strong>이다.</p>
+
+<p>그 경우의 수는 <strong>(m-1,n)에서 아래로 가는 경우 + (m,n-1)에서 오른쪽으로 가는 경우</strong>이다</p>
+
+<p>이것을 그대로 옮기면 <strong>down[m-1][n] + right[m][n-1]</strong>이 된다.</p>
+
+<p>단 중간에 값이 커질수 있기 때문에, <strong>MOD연산</strong>을 계속 해줘야한다!!</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="no">MOD</span> <span class="o">=</span> <span class="mi">20170805</span><span class="o">;</span>
+  <span class="kt">int</span> <span class="n">gox</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">,-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">};</span>
+  <span class="kt">int</span> <span class="n">goy</span><span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">,-</span><span class="mi">1</span><span class="o">};</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">cityMap</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kt">int</span><span class="o">[][]</span> <span class="n">down</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+      <span class="kt">int</span><span class="o">[][]</span> <span class="n">right</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+      <span class="n">down</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+      <span class="n">right</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+          <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+              <span class="k">if</span><span class="o">(</span><span class="n">cityMap</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]==</span><span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=(</span><span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">]+</span><span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">])%</span><span class="no">MOD</span><span class="o">;</span>
+                  <span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=(</span><span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">]+</span><span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">])%</span><span class="no">MOD</span><span class="o">;</span>
+              <span class="o">}</span>
+              <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">cityMap</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]==</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+                  <span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="mi">0</span><span class="o">;</span>
+              <span class="o">}</span>
+              <span class="k">else</span> <span class="o">{</span>
+                  <span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="n">down</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">]%</span><span class="no">MOD</span><span class="o">;</span>
+                  <span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="n">right</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]%</span><span class="no">MOD</span><span class="o">;</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="k">return</span> <span class="o">(</span><span class="n">down</span><span class="o">[</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="o">][</span><span class="n">n</span><span class="o">]%</span><span class="no">MOD</span><span class="o">+</span><span class="n">right</span><span class="o">[</span><span class="n">m</span><span class="o">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]%</span><span class="no">MOD</span><span class="o">)%</span><span class="no">MOD</span><span class="o">;</span> <span class="c1">// 위에서 아래로 내려오는 경우의수 + 왼쪽에서 오른쪽으로 가는 경우의수</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
