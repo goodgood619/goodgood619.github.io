@@ -640,4 +640,34 @@ var store = [{
         "tags": ["Simulation","Implementation"],
         "url": "http://localhost:4000/algorithm/%ED%81%AC%EB%A0%88%EC%9D%B8%EC%9D%B8%ED%98%95%EB%BD%91%EA%B8%B0/",
         "teaser": null
+      },{
+        "title": "Search in a Binary Tree",
+        "excerpt":"목표로 하는 target값과 일치할때, 그때의 TreeNode를 리턴해주면 된다. TreeNode를 리턴해줘야하기때문에, Recursion을 돌릴때 TreeNode도 추가적으로 같이 Recursion을 돌려줘야 한다. by Java /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; }...","categories": ["Algorithm"],
+        "tags": ["Tree","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/SearchinaBinaryTree/",
+        "teaser": null
+      },{
+        "title": "Construct Binary Search Tree from Preorder Traversal",
+        "excerpt":"preorder의 기본적인 순서에 집중해야 하는문제이다. 결국 preorder는 현재위치, 왼쪽,오른쪽 순서로 확인을 하기때문에 현재위치가 만약 null이면 새롭게 트리노드를 만들어 반환하고 그렇지않다면, 왼쪽 혹은 오른쪽으로 순회를 해주면된다. 현재노드의 val값과 target값의 비교를 통해서, 왼쪽으로 갈지 오른쪽으로 갈지 정해주면된다. by Java /** * Definition for a binary tree node. * public class TreeNode {...","categories": ["Algorithm"],
+        "tags": ["Tree","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/constructBinaryTreeFromInorder/",
+        "teaser": null
+      },{
+        "title": "Construct Binary Tree From Preorder and Inorder Traversal",
+        "excerpt":"postorder가 아닌 이번에는 preorder의 순서에 집중을 하면된다. 현재위치,왼쪽,오른쪽 순서로 탐방하기 때문에 이 경우를 그대로 적용을 해주면된다. 왼쪽부터 만들어줘야 하기때문에, postorder and inorder와는 반대로 순회를 하면된다 Construct Binary Tree From Inorder and Postorder Traversal문제를 반대로 적용을 해주면된다. 자세한 풀이는 위의 코드에 있다. by Java /** * Definition for a binary tree...","categories": ["Algorithm"],
+        "tags": ["Tree","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/constructBinaryTreeFromPreorderInorder/",
+        "teaser": null
+      },{
+        "title": "Construct Binary Tree From Inorder and Postorder Traversal",
+        "excerpt":"이 문제는 postorder의 순회방법을 거꾸로 탐색해서 만드는 문제이다. postorder는 왼쪽,오른쪽,현재위치를 순서로 탐색한다. 이걸 반대로 하면, 현재위치,오른쪽,왼쪽 순서로 진행을 할수 있게된다. 반대로 하기때문에, postorder값을 이용해 반대로 값을 넣어주면서, 오른쪽자식부터 먼저 Tree를 만들면서 진행을 하면된다. 그리고 inorder를 통해서 현재 index의 위치를 알아야 한다 순서를 보면, 맨처음에 루트노드를 먼저 만들게 되는데, postorder의 맨마지막...","categories": ["Algorithm"],
+        "tags": ["Tree","Recursion","Implementation"],
+        "url": "http://localhost:4000/algorithm/constructBinaryTreefromInorderandPostorder/",
+        "teaser": null
+      },{
+        "title": "Minimum Path Sum",
+        "excerpt":"(0,0)에서 시작해서 (n-1,m-1)에 도달하는데 있어서 최소 가중치를 만들어서 도달하는 문제이다. 아마 BFS로 문제를 풀어도 되지만, DP로 한번 접근을 해보았다. by Java class Solution { public int minPathSum(int[][] grid) { int n = grid.length; int m = grid[0].length; int[][] dp = new int[n][m]; for(int i=0;i&lt;n;i++) { for(int j=0;j&lt;m;j++){ dp[i][j]=-1; } }...","categories": ["Algorithm"],
+        "tags": ["Dynamic Programming","Implementation"],
+        "url": "http://localhost:4000/algorithm/minimumPathSum/",
+        "teaser": null
       }]

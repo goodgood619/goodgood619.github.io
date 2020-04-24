@@ -1,0 +1,42 @@
+I"(<p>preorder의 기본적인 순서에 집중해야 하는문제이다.</p>
+
+<p>결국 <strong>preorder는 현재위치, 왼쪽,오른쪽 순서</strong>로 확인을 하기때문에</p>
+
+<p>현재위치가 만약 null이면 새롭게 트리노드를 만들어 반환하고</p>
+
+<p>그렇지않다면, 왼쪽 혹은 오른쪽으로 순회를 해주면된다. <strong>현재노드의 val값과 target값의 비교</strong>를 통해서, 왼쪽으로 갈지 오른쪽으로 갈지 정해주면된다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">TreeNode</span> <span class="nf">bstFromPreorder</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">preorder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TreeNode</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="o">(</span><span class="n">preorder</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">//첫번째 루트노드</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">preorder</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">,</span><span class="n">preorder</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span> <span class="c1">// 현재 루트노드와 target값을 계속 보내준다</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">root</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="nc">TreeNode</span> <span class="nf">traverse</span><span class="o">(</span><span class="nc">TreeNode</span> <span class="n">root</span><span class="o">,</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">root</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">TreeNode</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">val</span><span class="o">&gt;</span><span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">,</span><span class="n">target</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">traverse</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">,</span><span class="n">target</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">root</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

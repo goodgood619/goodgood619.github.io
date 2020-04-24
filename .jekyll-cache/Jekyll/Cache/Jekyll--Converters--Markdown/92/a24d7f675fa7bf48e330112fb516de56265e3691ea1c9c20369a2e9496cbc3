@@ -1,0 +1,39 @@
+I"h<p>postorder가 아닌 이번에는 preorder의 순서에 집중을 하면된다.</p>
+
+<p>현재위치,왼쪽,오른쪽 순서로 탐방하기 때문에</p>
+
+<p>이 경우를 그대로 적용을 해주면된다. 왼쪽부터 만들어줘야 하기때문에, postorder and inorder와는 반대로 순회를 하면된다</p>
+
+<p><strong>Construct Binary Tree From Inorder and Postorder Traversal</strong>문제를 반대로 적용을 해주면된다.
+자세한 풀이는 위의 코드에 있다.</p>
+
+<h2 id="by-java">by Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">postIndex</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">TreeNode</span> <span class="nf">buildTree</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">inorder</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">postorder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">postIndex</span> <span class="o">=</span> <span class="n">inorder</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">postIndex</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">inorder</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">i</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nf">traverse</span><span class="o">(</span><span class="n">inorder</span><span class="o">,</span><span class="n">postorder</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">postIndex</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="nc">TreeNode</span> <span class="nf">traverse</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">inorder</span><span class="o">,</span><span class="kt">int</span><span class="o">[]</span> <span class="n">postorder</span><span class="o">,</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span><span class="kt">int</span> <span class="n">end</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">start</span><span class="o">&gt;</span><span class="n">end</span> <span class="o">||</span> <span class="n">postIndex</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">TreeNode</span> <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeNode</span><span class="o">(</span><span class="n">postorder</span><span class="o">[</span><span class="n">postIndex</span><span class="o">--]);</span>
+        <span class="kt">int</span> <span class="n">curIndex</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+        <span class="n">root</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">traverse</span><span class="o">(</span><span class="n">inorder</span><span class="o">,</span><span class="n">postorder</span><span class="o">,</span><span class="n">curIndex</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">end</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
+				<span class="n">root</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">traverse</span><span class="o">(</span><span class="n">inorder</span><span class="o">,</span><span class="n">postorder</span><span class="o">,</span><span class="n">start</span><span class="o">,</span><span class="n">curIndex</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>        
+				<span class="k">return</span> <span class="n">root</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

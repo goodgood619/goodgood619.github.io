@@ -1,9 +1,0 @@
-I"�<h2 id="by-sql">by SQL</h2>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 코드를 입력하세요</span>
-<span class="k">SELECT</span> <span class="n">ANIMAL_ID</span><span class="p">,</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">SEX_UPON_INTAKE</span>
-<span class="k">from</span> <span class="n">animal_ins</span>
-<span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Lucy'</span> <span class="k">or</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Ella'</span> <span class="k">or</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Pickle'</span> <span class="k">or</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Rogan'</span> <span class="k">or</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Sabrina'</span> <span class="k">or</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">'Mitty'</span>
-<span class="k">order</span> <span class="k">by</span> <span class="n">animal_id</span>
-</code></pre></div></div>
-:ET
