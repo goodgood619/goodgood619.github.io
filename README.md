@@ -1,2 +1,2 @@
 # goodgood619.github.io
-learning markdown language!!
+temporarily not working ... sorry 
