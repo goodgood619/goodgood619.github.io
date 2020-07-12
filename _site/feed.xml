@@ -1,4 +1,261 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-24T23:32:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">굿굿</title><subtitle>MarkDown + 여러가지 공부용</subtitle><author><name>goodgood619</name></author><entry><title type="html">Search in a Binary Tree</title><link href="http://localhost:4000/algorithm/SearchinaBinaryTree/" rel="alternate" type="text/html" title="Search in a Binary Tree" /><published>2020-04-24T00:00:00+09:00</published><updated>2020-04-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/SearchinaBinaryTree</id><content type="html" xml:base="http://localhost:4000/algorithm/SearchinaBinaryTree/">&lt;p&gt;목표로 하는 target값과 일치할때, 그때의 TreeNode를 리턴해주면 된다.&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-07-12T18:17:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">굿굿</title><subtitle>MarkDown + 여러가지 공부용</subtitle><author><name>goodgood619</name></author><entry><title type="html">Java Lambda 관련 정리 from 이것이 자바다(책)</title><link href="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EB%9E%8C%EB%8B%A4/" rel="alternate" type="text/html" title="Java Lambda 관련 정리 from 이것이 자바다(책)" /><published>2020-07-12T00:00:00+09:00</published><updated>2020-07-12T00:00:00+09:00</updated><id>http://localhost:4000/language/%EC%9E%90%EB%B0%94%EB%9E%8C%EB%8B%A4</id><content type="html" xml:base="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EB%9E%8C%EB%8B%A4/">&lt;h2 id=&quot;java-lambda&quot;&gt;Java Lambda&lt;/h2&gt;
+
+&lt;p&gt;Lambda : &lt;strong&gt;익명 함수(anonymous function)을 생성하기 위한 식&lt;/strong&gt;으로, 객체 지향 언어보다는 함수 지향 언어에 가까움&lt;/p&gt;
+
+&lt;p&gt;그런데 왜 자바에서 이런 람다식을 수용한 것인가?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;자바 코드가 매우 간결해짐&lt;/li&gt;
+  &lt;li&gt;컬렉션의 요소를 필터링하거나 매핑해서 결과 집계를 쉽게 가능하게 함&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c1&quot;&gt;// 람다식 -&amp;gt; 매개 변수를 가진 코드 블록 -&amp;gt; 익명 구현 객체&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runnable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// new 부터의 형태가 익명 구현객체이다&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//어쩌고..&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 그러나 람다식으로 가게 되면&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runnable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{...};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;기본-문법&quot;&gt;기본 문법&lt;/h3&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// (타입 매개변수, ...)-&amp;gt;{실행문; ...}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 매개변수타입은 런타임시에 자동으로 인식되어서, 일반적으로는 매개변수타입은 넣지 않는다&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)-&amp;gt;{&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 매개변수가 1개이고, 만약 실행문이 한개면 ()괄호와 {}괄호는 생략이 가능하다&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)-&amp;gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 만약 리턴문이 있는데, 리턴문만 있다면&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 로 바꿀수있다.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;람다식은 하나의 메소드를 정의하기 때문에, &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;두 개 이상의 추상 메소드가 선언된 인터페이스는 람다식을 이용해서 구현 객체를 생성할수 없다. 그래서 하나의 추상 메소드만 가능하다.&lt;/strong&gt;&lt;/span&gt; (여기서 착각하지 말아야 할 부분은 디폴트 메소드나 정적 메소드는 포함이 되지않는다. &lt;span style=&quot;color:blue&quot;&gt;&lt;strong&gt;즉, 디폴트 메소드와 정적 메소드는 몇개 이상이 추가되어도 상관이 없다는 말&lt;/strong&gt;&lt;/span&gt;임)&lt;/p&gt;
+
+&lt;p&gt;이 때, 함수적 인터페이스를 작성할때, &lt;strong&gt;두 개 이상의 추상 메소드가 선언되지 않도록 컴파일러가 체킹해주는 기능&lt;/strong&gt;이 있다. &lt;strong&gt;@Functional 이라는 annotation&lt;/strong&gt;을 붙이면 된다&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@FunctionalInterface&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyFunctionalInterface&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;otherMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 컴파일 에러&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;함수적 인터페이스는 크게 Consumer, Supplier, Function, Operator, Predicate로 구분된다. 구분 기준은 인터페이스에 선언된 추상 메소드의 매개값과 리턴값의 유무이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Lambda_Interface.png&quot; alt=&quot;Lambda_대표적인터페이스&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;저 인터페이스들을 이용해서 그냥 각각의 경우만 처리하면 그닥 큰 쓸모가 없을수도 있다. 그래서 Consumer, Function, Operator 종류의 함수적 인터페이스는 andThen()과 compose() 디폴트 메소드를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;먼저 andThen()의 경우는, 첫번째 인터페이스의 일을 먼저 처리한후, 두 번째 매개값으로 제공해 최종 결과를 얻을 때 사용&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;인터페이스AB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인터페이스A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;andThen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;인터페이스B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인터페이스A의 메소드를 먼저 실행한뒤에 인터페이스 B의 메소드를 실행&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;최종결과&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인터페이스AB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; 
+
+&lt;span class=&quot;n&quot;&gt;인터페이스AB&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인터페이스A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;인터페이스B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인터페이스B의 메소드를 먼저 실행한뒤에 인터페이스 A의 메소드를 실행&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;최종결과&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;인터페이스AB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Lambda_andThen_compose.png&quot; alt=&quot;Lambda_andThen_compose&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;메소드 참조(Method References) : 말 그대로 &lt;strong&gt;메소드를 참조&lt;/strong&gt;해서 &lt;strong&gt;매개 변수의 정보 및 리턴 타입을 알아내어, 람다식에서 불필요한 매개 변수를 제거&lt;/strong&gt;하는 것이 목적이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Lambda Expression&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;Math:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Method References&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메소드 참조도 람다식과 마찬가지로 인터페이스의 익명 구현 객체로 생성이 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;클래스이름&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;메소드&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// static(정적) 메소드를 참조할 경우&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;참조변수&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;메소드&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 인스턴스 메소드를 참조할경우, 저기서 참조변수는 사실상, new 연산자로 할당된 인스턴스 이름을 의미할것이다.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;클래스&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// (a,b) -&amp;gt; return new 클래스(a,b); 만약 해당 생성자가 존재하지 않으면 컴파일 에러!!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 관련한 모든 예제들은 아래 링크 주소에 있으니 참고해주시면 감사하겠습니다.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/goodgood619/ThisIsJava&quot;&gt;https://github.com/goodgood619/ThisIsJava&lt;/a&gt;&lt;/p&gt;</content><author><name>goodgood619</name></author><category term="Java" /><category term="language" /><category term="Lambda" /></entry><entry><title type="html">Java Thread 관련 정리 from 이것이 자바다(책)</title><link href="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="alternate" type="text/html" title="Java Thread 관련 정리 from 이것이 자바다(책)" /><published>2020-07-12T00:00:00+09:00</published><updated>2020-07-12T00:00:00+09:00</updated><id>http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%EB%A0%88%EB%93%9C</id><content type="html" xml:base="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%EB%A0%88%EB%93%9C/">&lt;h2 id=&quot;java-thread-관련-정리&quot;&gt;Java Thread 관련 정리&lt;/h2&gt;
+
+&lt;h3 id=&quot;thread&quot;&gt;Thread&lt;/h3&gt;
+
+&lt;p&gt;스레드의 &lt;strong&gt;동시성(Concurrency)&lt;/strong&gt;과 &lt;strong&gt;병렬성(Parallelism)&lt;/strong&gt;의 단어 차이&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;동시성(Concurrency)&lt;/strong&gt; : &lt;strong&gt;하나의 코어에서 멀티 스레드가 번갈아 가면서 실행&lt;/strong&gt;하는 것을 의미&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;병렬성(Parallelism)&lt;/strong&gt; : 멀티 작업을 위해, &lt;strong&gt;멀티 코어에서 개별 스레드를 동시에 실행&lt;/strong&gt;하는 것을 의미&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;즉, 싱글 코어 CPU를 이용한 멀티 스레드 작업은 병렬적으로 실행되는 것처럼 보이지만, 실제로는 번갈아 가면서 실행하는 동시성 작업이다.&lt;/p&gt;
+
+&lt;p&gt;만약, 스레드의 갯수 &amp;gt; 코어의 수 이면, 스레드를 어떤 순서에 의해 동시성으로 실행할 것인가를 결정해야함, 이것을 스레드 스케줄링이라 한다.&lt;/p&gt;
+
+&lt;p&gt;자바의 스케줄링은 &lt;strong&gt;우선순위(Priority) 방식과 순환 할당(Round Robin) 방식&lt;/strong&gt;이 있다. 근데, &lt;strong&gt;우선순위 방식은, 개발자가 코드로 제어가능, 그러나 순환 할당은 불가능&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;우선 순위변경 → thread.setPriority(우선순위)&lt;/p&gt;
+
+&lt;p&gt;공유 객체를 사용할때, 여러 스레드가 접근을 하는 경우가 생길 수 있다. 이때, 여러개의 스레드를 동시에 접근하게 되면, 각 스레드가 작업했던 결과물이 제대로 반영이 되지않게 될것이다. 그래서 synchronized 키워드를 이용하여, 하나의 스레드만 실행할수 있게 제한한다&lt;/p&gt;
+
+&lt;p&gt;synchronized 키워드는 인스턴스와 정적 메소드 어디든 붙일수있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sleep : 주어진 시간동안 일시정지&lt;/li&gt;
+  &lt;li&gt;yield : 다른 스레드에게 실행 양보&lt;/li&gt;
+  &lt;li&gt;join : 다른 스레드의 종료를 기다림&lt;/li&gt;
+  &lt;li&gt;wait, notify, notifyAll : 스레드 간 협업, 단 이 메소드들은 동기화 메소드 혹은 동기화 블록 내에서만 사용이 가능함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;데몬 스레드(Daemon Thread) : &lt;strong&gt;주 스레드의 작업을 돕는 보조적인 역할을 수행&lt;/strong&gt;하는 스레드,  그래서 주 스레드가 종료되면 데몬 스레드는 강제적으로 종료된다, 왜냐하면 주 스레드의 보조 역할을 수행해야 하는데, 주 스레드가 없으니까 ㅇㅇ&lt;/p&gt;
+
+&lt;p&gt;ex) 워드프로세스의 자동 저장, 미디어 플레이어 동영상 및 음악 재생, 가비지 컬렉터 등&lt;/p&gt;
+
+&lt;p&gt;이 기닝들은 주 스레드(워드 프로세스, 미디어 플레이어, JVM)이 종료되면 같이 종료 됨&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;daemonthread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setDaemon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 데몬 스레드 설정&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;daemonthread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 데몬 스레드 스타트&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;daemonthread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isDaemon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 데몬 스레드인지 아닌지 ㅇㅇ&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;단, start()를 호출하고 나서, setDaemon(true)를 설정하면 IllegalThreadStateException이 발생한다고 한다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;스레드 그룹(ThreadGroup) : 스레드를 묶어서 관리할 목적으로 이용된다. JVM이 실행 되면 system 스레드 그룹 만들고, JVM 운영에 필요한 스레드들을 생성해서 system 스레드 그룹에 포함시킴&lt;/p&gt;
+
+&lt;p&gt;우리가 생성하는 작업 스레드는 대부분 main 스레드가 생성하므로, 기본적으로는 main 스레드 그룹에 속함&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//name을 가진 ThreadGroup을 만든다, 단 만들어진 위치의 스레드가 속한 그룹의 하위그룹으로 생성이 된다&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 부모 스레드 그룹을 지정해서, 부모 스레드 하위 그룹으로 생성이 된다&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 부모 스레드 그룹이 있으면, 부모 스레드 그룹이 죽으면 뭐 같이 죽나? (의문)&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stackSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ThreadGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// String 타입의 name은 스레드의 이름, long 타입의 stackSize는 JVM이 이 스레드에 할당할 stack 크기&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;스레드풀(ThreadPool) : &lt;strong&gt;작업 처리에 사용되는 스레드를 제한된 갯수만큼 정해놓고 작업 큐(Queue)에 들어오는 작업들을 하나씩 스레드가 맡아 처리&lt;/strong&gt;한다. 그래서 작업 처리 요청이 폭증되어도 스레드의 전체 갯수가 늘어나지 않으므로 애플리케이션의 성능이 급격히 저하되지 않는다&lt;/p&gt;
+
+&lt;p&gt;java.util.concurrent 패키지에서 ExecutorService 인터페이스와 Executors 클래스를 제공한다. Executors의 정적 메소드를 이용해 ExecutorService 구현 객체를 만들 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ExecutorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threadPool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+				&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 코어 스레드 갯수&lt;/span&gt;
+				&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 최대 스레드 갯수&lt;/span&gt;
+				&lt;span class=&quot;mi&quot;&gt;120L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 놀고 있는 시간&lt;/span&gt;
+				&lt;span class=&quot;nc&quot;&gt;TimeUnit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SECONDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 놀고 있는 시간 단위&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SynchronousQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;()&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// 작업큐&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 초기 스레드 갯수 0개, 코어 스레드 갯수 3개, 최대 스레드 갯수가 100개, 코어 스레드 3개를 제외한&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 나머지 추가된 스레드가 120초 동안 놀고 있을 경우 해당 스레드를 제거해서 스레드 수를 관리한다&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;스레드풀의 스레드는 기본적으로 데몬 스레드가 아니니까, main Thread가 종료되어도 작업을 처리하기 위해 계속 실행 상태로 남아있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ThreadPoolMethod.png&quot; alt=&quot;Java_ThreadPool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;작업 생성 : Runnable or Callable 구현 클래스로 표현한다. 둘의 차이는 작업 처리 완료 후 리턴값이 있느냐, 없느냐의 차이이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;// 스레드가 처리할 작업 내용&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;Callable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Callable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+							&lt;span class=&quot;c1&quot;&gt;// 스레드가 처리할 작업 내용&lt;/span&gt;
+							&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ThreadPool_Future.png&quot; alt=&quot;Java_ThreadPool_Future&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Future 객체는 작업 결과가 아니라 &lt;span style=&quot;color:blue&quot;&gt;&lt;strong&gt;작업이 완료될때까지 기다렸다가(지연했다가 = 블로킹되었다가) 최종 결과를 얻는데 사용&lt;/strong&gt;&lt;/span&gt;됨, 흔히 그래서 Future를 지연 완료(pending completion) 객체라고 부르기도한다. get()메소드를 이용하면 된다.&lt;/p&gt;
+
+&lt;p&gt;여기서 get메소드를 실행한 스레드는 작업을 완료할때까지는 블로킹이 된다. 그래서 또다른 get메소드를 실행을 동시에 할때는 새로운 스레드가 필요하게 된다는것을 알아야 한다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;스레드 풀에서 작업 완료순으로 먼저 된것들을 통보해주는 방법 : CompletionService를 이용하는것&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ExecutorService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;es&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Executors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newFixedThreadPool&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRuntime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;availableProcessors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;CompletionService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completionService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ExecutorCompletionService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;es&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;completionService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Callable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;completionService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;submit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Runnable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;V&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Callback&lt;/strong&gt; : 애플리케이션이 스레드에게 작업 처리를 요청 한후, 스레드가 작업을 완료하면 특정 메소드를 자동으로 실행하는 기법&lt;br /&gt;
+마치 커피숍에 가서, 커피를 주문하고 진동벨을 받는것을, 콜백이 등록되었다라고 보면된다. 그리고 커피가 완료되서 진동벨이 울리는것을&lt;br /&gt;
+콜백이 완료되어 이벤트로 호출이 된다는 것이라 보면 된다.&lt;/p&gt;
+
+&lt;p&gt;위와 관련한 모든 예제들은 아래 링크 주소에 있으니 참고해주시면 감사하겠습니다.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/goodgood619/ThisIsJava&quot;&gt;https://github.com/goodgood619/ThisIsJava&lt;/a&gt;&lt;/p&gt;</content><author><name>goodgood619</name></author><category term="Java" /><category term="language" /><category term="Thread" /></entry><entry><title type="html">Java Generic 관련 정리 from 이것이 자바다(책)</title><link href="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD/" rel="alternate" type="text/html" title="Java Generic 관련 정리 from 이것이 자바다(책)" /><published>2020-07-12T00:00:00+09:00</published><updated>2020-07-12T00:00:00+09:00</updated><id>http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD</id><content type="html" xml:base="http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD/">&lt;h2 id=&quot;java-generic-관련-정리&quot;&gt;Java Generic 관련 정리&lt;/h2&gt;
+
+&lt;p&gt;왜 제네릭을 사용해야 하는가?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;컴파일 시 강한 타입 체크&lt;/strong&gt;를 할 수 있다. 실행 시 타입 에러가 나는 것보다는 컴파일 시에 미리 타입을 강하게 체크를 해서 에러를 사전에 방지하기 위함&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;타입 변환(casting)을 제거&lt;/strong&gt;한다. 비제네릭 코드는 불필요한 타입 변환을 하기 때문에, 프로그램 성능에 악영향을 미친다. 요소를 찾아 올때, 반드시 String으로 타입 변환을 해야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 제네릭을 사용하지 않았음 &lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lisd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// String으로 casting(타입변환)을 해야함&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// new ArrayList&amp;lt;String&amp;gt;에서 String은 생략 가능하다. List&amp;lt;String&amp;gt;으로 부터 추론이 가능하기 때문에, 컴파일러가 자동으로 인식해줌&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 타입 변환을 하지 않음&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//public class 클래스명&amp;lt;T&amp;gt; {...}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//public interface 인터페이스명&amp;lt;T&amp;gt; {...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;제네릭 메소드(Generic method) : &amp;lt;T,R&amp;gt; R method(T t) 의 형태&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;타입파라미터&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,...&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;리턴타입&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;메소드명&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;매개변수&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{...}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;boxing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;제한된 타입 파라미터(&lt;T extends=&quot;&quot; 최상위타입=&quot;&quot;&gt;) : 타입 파라미터(T)에 지정되는 구체적인 타입을 제한할 필요가 종종 있을 수 있다.&lt;/T&gt;&lt;/p&gt;
+
+&lt;p&gt;ex) 숫자를 연산하는 제네릭 메소드는 매개값으로 Number 타입 or 하위 클래스 타입(Byte, Short, Integer,Long, Double)의 인스턴스만 가져야 함&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;상위타입&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;리턴타입&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;메소드&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;매개변수&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...){...}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{...}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;와일드카드 타입(&amp;lt;?&amp;gt;, &amp;lt;? extends …&amp;gt;,&amp;lt;? super …&amp;gt;)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&amp;lt;?&amp;gt; : Unbounded Wildcards(제한 없음)&lt;/li&gt;
+  &lt;li&gt;&amp;lt;? extends 상위타입&amp;gt; : Upper Bounded WildCards(상위 클래스 제한)&lt;/li&gt;
+  &lt;li&gt;&amp;lt;? super 하위타입&amp;gt; : Lower Bounded WildCards(하위 클래스 제한)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;예시&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Generic.png&quot; alt=&quot;Generic&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Course&amp;lt;?&amp;gt; : 수강생은 모든 타입(Person, Worker, Student, HighStudent) 가능&lt;/li&gt;
+  &lt;li&gt;Course&amp;lt;? extends Student&amp;gt; : 수강생은 Student와 HighStudent만 가능(Student이하 아래 모든 하위클래스)&lt;/li&gt;
+  &lt;li&gt;Course&amp;lt;? super Worker&amp;gt; : 수강생은 Worker와 Person만 가능(Worker 클래스와 Worker 클래스가 상속하는 모든 타입)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위와 관련한 모든 예제들은 아래 링크 주소에 있으니 참고해주시면 감사하겠습니다.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/goodgood619/ThisIsJava&quot;&gt;https://github.com/goodgood619/ThisIsJava&lt;/a&gt;&lt;/p&gt;</content><author><name>goodgood619</name></author><category term="Java" /><category term="language" /><category term="Generic" /></entry><entry><title type="html">Search in a Binary Tree</title><link href="http://localhost:4000/algorithm/SearchinaBinaryTree/" rel="alternate" type="text/html" title="Search in a Binary Tree" /><published>2020-04-24T00:00:00+09:00</published><updated>2020-04-24T00:00:00+09:00</updated><id>http://localhost:4000/algorithm/SearchinaBinaryTree</id><content type="html" xml:base="http://localhost:4000/algorithm/SearchinaBinaryTree/">&lt;p&gt;목표로 하는 target값과 일치할때, 그때의 TreeNode를 리턴해주면 된다.&lt;br /&gt;
 TreeNode를 리턴해줘야하기때문에, Recursion을 돌릴때 TreeNode도 추가적으로 같이 Recursion을 돌려줘야 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;by-java&quot;&gt;by Java&lt;/h2&gt;
@@ -192,32 +449,4 @@ TreeNode를 리턴해줘야하기때문에, Recursion을 돌릴때 TreeNode도 �
 &lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ANIMAL_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IFNULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;No name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;As&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SEX_UPON_INTAKE&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_ins&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_id&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>goodgood619</name></author><category term="MySQL" /><category term="check null" /><category term="order by" /><summary type="html">SQL Practice in Programmers</summary></entry><entry><title type="html">고양이와 개는 몇 마리 있을까</title><link href="http://localhost:4000/sql/%EA%B3%A0%EC%96%91%EC%9D%B4%EC%99%80%EA%B0%9C%EB%8A%94%EB%AA%87%EB%A7%88%EB%A6%AC%EC%9E%88%EC%9D%84%EA%B9%8C/" rel="alternate" type="text/html" title="고양이와 개는 몇 마리 있을까" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/sql/%EA%B3%A0%EC%96%91%EC%9D%B4%EC%99%80%EA%B0%9C%EB%8A%94%EB%AA%87%EB%A7%88%EB%A6%AC%EC%9E%88%EC%9D%84%EA%B9%8C</id><content type="html" xml:base="http://localhost:4000/sql/%EA%B3%A0%EC%96%91%EC%9D%B4%EC%99%80%EA%B0%9C%EB%8A%94%EB%AA%87%EB%A7%88%EB%A6%AC%EC%9E%88%EC%9D%84%EA%B9%8C/">&lt;p&gt;group by로 묶은 다음, 그때, 총 몇 마리가 있는지 count를 이용해서 세어주면 된다&lt;/p&gt;
-
-&lt;h2 id=&quot;by-sql&quot;&gt;by SQL&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_ins&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_type&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>goodgood619</name></author><category term="MySQL" /><category term="group by" /><summary type="html">SQL Practice in Programmers</summary></entry><entry><title type="html">동명 동물의 수 찾기</title><link href="http://localhost:4000/sql/%EB%8F%99%EB%AA%85%EB%8F%99%EB%AC%BC%EC%9D%98%EC%88%98%EC%B0%BE%EA%B8%B0/" rel="alternate" type="text/html" title="동명 동물의 수 찾기" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/sql/%EB%8F%99%EB%AA%85%EB%8F%99%EB%AC%BC%EC%9D%98%EC%88%98%EC%B0%BE%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/sql/%EB%8F%99%EB%AA%85%EB%8F%99%EB%AC%BC%EC%9D%98%EC%88%98%EC%B0%BE%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;group by&lt;/strong&gt;로 묶은 다음, &lt;strong&gt;having 옵션을 이용하여 조건에 맞게 체크&lt;/strong&gt;를 해준다&lt;/p&gt;
-
-&lt;p&gt;이름이 동일한 것이 2개이상인것만 체크를 해줘야한다&lt;/p&gt;
-
-&lt;p&gt;그리고 name으로 정렬을 하라고 했으므로 &lt;strong&gt;name으로 정렬&lt;/strong&gt;을 해준다&lt;/p&gt;
-
-&lt;h2 id=&quot;by-sql&quot;&gt;by SQL&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- 코드를 입력하세요&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_ins&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;having&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>goodgood619</name></author><category term="MySQL" /><category term="group by" /><category term="having" /><summary type="html">SQL Practice in Programmers</summary></entry><entry><title type="html">동물 수 구하기</title><link href="http://localhost:4000/sql/%EB%8F%99%EB%AC%BC%EC%88%98%EA%B5%AC%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="동물 수 구하기" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>http://localhost:4000/sql/%EB%8F%99%EB%AC%BC%EC%88%98%EA%B5%AC%ED%95%98%EA%B8%B0</id><content type="html" xml:base="http://localhost:4000/sql/%EB%8F%99%EB%AC%BC%EC%88%98%EA%B5%AC%ED%95%98%EA%B8%B0/">&lt;p&gt;&lt;strong&gt;count&lt;/strong&gt;명령어를 이용해서 구해주면 된다&lt;/p&gt;
-
-&lt;h2 id=&quot;by-sql&quot;&gt;by SQL&lt;/h2&gt;
-
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- 코드를 입력하세요&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal_ins&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>goodgood619</name></author><category term="MySQL" /><category term="count" /><summary type="html">SQL Practice in Programmers</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>goodgood619</name></author><category term="MySQL" /><category term="check null" /><category term="order by" /><summary type="html">SQL Practice in Programmers</summary></entry></feed>

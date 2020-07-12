@@ -670,4 +670,22 @@ var store = [{
         "tags": ["Dynamic Programming","Implementation"],
         "url": "http://localhost:4000/algorithm/minimumPathSum/",
         "teaser": null
+      },{
+        "title": "Java Lambda 관련 정리 from 이것이 자바다(책)",
+        "excerpt":"Java Lambda Lambda : 익명 함수(anonymous function)을 생성하기 위한 식으로, 객체 지향 언어보다는 함수 지향 언어에 가까움 그런데 왜 자바에서 이런 람다식을 수용한 것인가? 자바 코드가 매우 간결해짐 컬렉션의 요소를 필터링하거나 매핑해서 결과 집계를 쉽게 가능하게 함 // 람다식 -&gt; 매개 변수를 가진 코드 블록 -&gt; 익명 구현 객체 Runnable...","categories": ["language"],
+        "tags": ["Java","language","Lambda"],
+        "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EB%9E%8C%EB%8B%A4/",
+        "teaser": null
+      },{
+        "title": "Java Thread 관련 정리 from 이것이 자바다(책)",
+        "excerpt":"Java Thread 관련 정리 Thread 스레드의 동시성(Concurrency)과 병렬성(Parallelism)의 단어 차이 동시성(Concurrency) : 하나의 코어에서 멀티 스레드가 번갈아 가면서 실행하는 것을 의미 병렬성(Parallelism) : 멀티 작업을 위해, 멀티 코어에서 개별 스레드를 동시에 실행하는 것을 의미 즉, 싱글 코어 CPU를 이용한 멀티 스레드 작업은 병렬적으로 실행되는 것처럼 보이지만, 실제로는 번갈아 가면서 실행하는...","categories": ["language"],
+        "tags": ["Java","language","Thread"],
+        "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%EB%A0%88%EB%93%9C/",
+        "teaser": null
+      },{
+        "title": "Java Generic 관련 정리 from 이것이 자바다(책)",
+        "excerpt":"Java Generic 관련 정리 왜 제네릭을 사용해야 하는가? 컴파일 시 강한 타입 체크를 할 수 있다. 실행 시 타입 에러가 나는 것보다는 컴파일 시에 미리 타입을 강하게 체크를 해서 에러를 사전에 방지하기 위함 타입 변환(casting)을 제거한다. 비제네릭 코드는 불필요한 타입 변환을 하기 때문에, 프로그램 성능에 악영향을 미친다. 요소를 찾아 올때,...","categories": ["language"],
+        "tags": ["Java","language","Generic"],
+        "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD/",
+        "teaser": null
       }]
