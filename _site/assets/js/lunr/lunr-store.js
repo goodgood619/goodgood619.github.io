@@ -688,4 +688,10 @@ var store = [{
         "tags": ["Java","language","Generic"],
         "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD/",
         "teaser": null
+      },{
+        "title": "Java Stream 관련 정리 from 이것이 자바다(책)",
+        "excerpt":"Stream Stream : 자바 8부터 추가된 컬렉션(배열 포함)의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자 내부 반복자를 사용하므로 병렬 처리가 쉽다 내부 반복자들은 멀티 코어 CPU를 활용하기 위해 요소들을 분배시켜 병렬 작업을 할 수있게 도와준다는 특징이 있다. 중간 처리와 최종 처리 작업을 수행한다 위의 그림처럼 중간처리에서 학생의...","categories": ["language"],
+        "tags": ["Java","Stream","Parallel"],
+        "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%8A%B8%EB%A6%BC/",
+        "teaser": null
       }]
