@@ -1,0 +1,54 @@
+I"�<p><strong>현재 있는 위치의 인덱스가 계속 바뀔수 있기 때문에, 우선순위와 인덱스를 동시에 가질수있는 Class를 만들어 문제를 풀었다.</strong> Class를 Deque의 타입 파라미터로 지정하고, 문제의 사이즈가 크지 않기 때문에,시뮬레이션을 구현을 했다.</p>
+<ol>
+  <li>현재 위치의 우선순위와 그 뒤의 우선순위들을 전부 체크를 해주고</li>
+  <li>만약 우선순위가 더큰것이 존재하면 맨뒤에 push를 하고, 그렇지 않다면 맨앞에서 하나씩 빼준다</li>
+  <li>1과 2를 정답이 있는 인덱스를 만날때까지 계속 해준다</li>
+</ol>
+
+<h2 id="by-java">By Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">priorities</span><span class="o">,</span> <span class="kt">int</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span><span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        <span class="nc">Deque</span><span class="o">&lt;</span><span class="no">P</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span> <span class="o">:</span> <span class="n">priorities</span><span class="o">){</span>
+            <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">P</span><span class="o">(</span><span class="n">value</span><span class="o">,</span><span class="n">idx</span><span class="o">++));</span>
+        <span class="o">}</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">Deque</span><span class="o">&lt;</span><span class="no">P</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;(</span><span class="n">q</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">curvalue</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">value</span><span class="o">,</span><span class="n">curorigin</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">origin</span><span class="o">;</span>
+            <span class="kt">boolean</span> <span class="n">check</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="k">while</span><span class="o">(!</span><span class="n">temp</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">nextvalue</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">peek</span><span class="o">().</span><span class="na">value</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">curvalue</span><span class="o">&lt;</span><span class="n">nextvalue</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">check</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">temp</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">check</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="no">P</span><span class="o">(</span><span class="n">curvalue</span><span class="o">,</span><span class="n">curorigin</span><span class="o">));</span>
+                <span class="n">q</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">answer</span><span class="o">++;</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">curorigin</span> <span class="o">==</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">q</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">P</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">origin</span><span class="o">;</span>
+    <span class="no">P</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">,</span><span class="kt">int</span> <span class="n">origin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">origin</span> <span class="o">=</span> <span class="n">origin</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

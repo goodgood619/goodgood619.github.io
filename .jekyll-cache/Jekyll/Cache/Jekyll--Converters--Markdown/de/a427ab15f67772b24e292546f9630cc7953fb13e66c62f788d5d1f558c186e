@@ -1,0 +1,39 @@
+I"�<p>이 문제는 Parsing을 어떻게 할것인가가 가장 큰 문제였던거 같다.<br />
+그래서 다음과 같이 3가지 방법을 가지고 해결을 했다</p>
+<ol>
+  <li><strong>parsing을 어떻게 할지</strong>가 가장 큰 문제</li>
+  <li>파싱을 하고 나면 <strong>길이순으로 오름차순 정렬</strong></li>
+  <li>그다음 <strong>list의 contains메소드를 써서 중복적으로 포함이 되었는지 안되었는지를 체크</strong>를 해준다</li>
+</ol>
+
+<h2 id="by-java">By Java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">2</span><span class="o">).</span><span class="na">replace</span><span class="o">(</span><span class="s">"},{"</span><span class="o">,</span><span class="s">"-"</span><span class="o">);</span> 
+<span class="c1">// 2부터 시작을 한거는 맨앞에 가 있어서 그 length()-2까지를 잘라야했다</span>
+        <span class="c1">// System.out.println(s);</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"-"</span><span class="o">);</span>
+        <span class="nc">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,(</span><span class="n">o1</span><span class="o">,</span><span class="n">o2</span><span class="o">)-&gt;</span> <span class="n">o1</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="n">o2</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">temp</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
+            <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="nl">t:</span><span class="n">strArr</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
+                <span class="k">if</span><span class="o">(!</span><span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">value</span><span class="o">))</span> <span class="o">{</span> <span class="c1">//있는지 없는지 체크</span>
+                    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

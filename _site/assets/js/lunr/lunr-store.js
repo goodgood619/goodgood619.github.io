@@ -694,4 +694,16 @@ var store = [{
         "tags": ["Java","Stream","Parallel"],
         "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%8A%B8%EB%A6%BC/",
         "teaser": null
+      },{
+        "title": "튜플",
+        "excerpt":"이 문제는 Parsing을 어떻게 할것인가가 가장 큰 문제였던거 같다. 그래서 다음과 같이 3가지 방법을 가지고 해결을 했다 parsing을 어떻게 할지가 가장 큰 문제 파싱을 하고 나면 길이순으로 오름차순 정렬 그다음 list의 contains메소드를 써서 중복적으로 포함이 되었는지 안되었는지를 체크를 해준다 By Java import java.util.*; class Solution { public int[] solution(String s)...","categories": ["algorithm"],
+        "tags": ["Java","String","Parsing"],
+        "url": "http://localhost:4000/algorithm/%ED%8A%9C%ED%94%8C/",
+        "teaser": null
+      },{
+        "title": "프린터",
+        "excerpt":"현재 있는 위치의 인덱스가 계속 바뀔수 있기 때문에, 우선순위와 인덱스를 동시에 가질수있는 Class를 만들어 문제를 풀었다. Class를 Deque의 타입 파라미터로 지정하고, 문제의 사이즈가 크지 않기 때문에,시뮬레이션을 구현을 했다. 현재 위치의 우선순위와 그 뒤의 우선순위들을 전부 체크를 해주고 만약 우선순위가 더큰것이 존재하면 맨뒤에 push를 하고, 그렇지 않다면 맨앞에서 하나씩 빼준다 1과...","categories": ["algorithm"],
+        "tags": ["Java","Queue","Data Structure"],
+        "url": "http://localhost:4000/algorithm/%ED%94%84%EB%A6%B0%ED%84%B0/",
+        "teaser": null
       }]

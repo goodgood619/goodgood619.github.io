@@ -1,6 +1,6 @@
-I"9"<h2 id="stream">Stream</h2>
+I"p#<h2 id="stream">Stream</h2>
 
-<p>Stream : 자바 8부터 추가된 컬렉션(배열 포함)의 저장 요소를 하나씩 참조해서 <span color="red"><strong>람다식으로 처리할 수 있도록 해주는 반복자</strong></span></p>
+<p>Stream : 자바 8부터 추가된 컬렉션(배열 포함)의 저장 요소를 하나씩 참조해서 <span style="color:red"><strong>람다식으로 처리할 수 있도록 해주는 반복자</strong></span></p>
 
 <ol>
   <li>내부 반복자를 사용하므로 병렬 처리가 쉽다</li>
@@ -38,10 +38,10 @@
 <p>그리고 이것을 코드로 표현을 해보면 이렇게 표현이 된다</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">ageAvg</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span> <span class="c1">// 오리지널 스트림</span>
-								<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">m</span><span class="o">.</span><span class="na">getSex</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Member</span><span class="o">.</span><span class="na">MALE</span><span class="o">)</span> <span class="c1">//중간처리</span>
-								<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Member:</span><span class="o">:</span><span class="n">getAge</span><span class="o">)</span> <span class="c1">// 중간처리</span>
-								<span class="o">.</span><span class="na">average</span><span class="o">()</span> <span class="c1">//최종처리</span>
-								<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
+				<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">m</span><span class="o">.</span><span class="na">getSex</span><span class="o">()</span> <span class="o">==</span> <span class="nc">Member</span><span class="o">.</span><span class="na">MALE</span><span class="o">)</span> <span class="c1">//중간처리</span>
+				<span class="o">.</span><span class="na">mapToInt</span><span class="o">(</span><span class="nl">Member:</span><span class="o">:</span><span class="n">getAge</span><span class="o">)</span> <span class="c1">// 중간처리</span>
+			    <span class="o">.</span><span class="na">average</span><span class="o">()</span> <span class="c1">//최종처리</span>
+				<span class="o">.</span><span class="na">getAsDouble</span><span class="o">();</span>
 
 </code></pre></div></div>
 
@@ -51,7 +51,7 @@
 
 <p>우선은 기본적으로 주로 쓰이는 메소드들을 써보았다. Stream의 collect()메소드는 경우도 많고, 내용도 어려우니, 우선은 다음번에 따로 제대로 이해해서 작성을 하도록 하겠습니다.</p>
 
-<p>map과 flatMap메소드의 차이점은 map의 경우는 타입 파라미터로 주어진 요소들을 하나씩 그대로 일대일로 매핑하여 그 결과를 하나의 스트림으로 리턴을 하는것이고, 반면에 flatMap 같은 경우는 주어진 요소들을 하나씩 Stream<R> 타입으로 전환이 되는 것이다. 그리고 그것들을 합쳐서 최종적으로 하나의 스트림으로 리턴을 하는것이다.</R></p>
+<p>map과 flatMap메소드의 차이점은 map의 경우는 <span style="color:red">타입 파라미터로 주어진 요소들을 하나씩 그대로 일대일로 매핑하여 그 결과를 하나의 스트림으로 리턴을 하는것</span>이고, 반면에 flatMap 같은 경우는 <span style="color:blue">주어진 요소들을 하나씩 Stream<R> 타입으로 전환이 되는 것이다. 그리고 그것들을 합쳐서 최종적으로 하나의 스트림으로 리턴을 하는것&lt;/span&gt;이다.</R></span></p>
 
 <p>그래서 결과적으로는 차이가 안날수도 있다. 그러나 flatMap의 경우는 n차원배열을 처리할때 상당히 효과적일수 있다.</p>
 
@@ -64,7 +64,7 @@
 <span class="n">flatmap</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>collecct()메소드는 스트림의 최종처리 메소드로서, 필요한 요소만 컬렉션으로 담거나, 요소들을 그룹핑을 해서 집계(reduction)을 할수 있는 기능을 제공한다.</p>
+<p>collecct()메소드는 <strong>스트림의 최종처리 메소드로서, 필요한 요소만 컬렉션으로 담거나, 요소들을 그룹핑을 해서 집계(reduction)을 할수 있는 기능을 제공</strong>한다.</p>
 
 <p>기본적으로 대표적인 메소드를 써보면</p>
 
@@ -75,4 +75,7 @@
 <p><img src="/assets/스트림병렬.png" alt="Stream Parallel" /></p>
 
 <p>위처럼 병렬처리 메소드를 실행을 할 경우에는, 각자 개발 환경에 맞는 코어CPU에 맞게 요소를 나누어서, 각각의 나누어진 요소들을 분리된 스레드에서 병렬처리를 한다. 예를 들면, 듀얼 코어(Dual Core)의 경우 2개의 요소들로 나누어져, 2개의 스레드가 병렬처리를 한다고 생각하면된다.</p>
+
+<p>위와 관련한 모든 예제들은 아래 링크 주소에 있으니 참고해주시면 감사하겠습니다.<br />
+<a href="https://github.com/goodgood619/ThisIsJava">https://github.com/goodgood619/ThisIsJava</a></p>
 :ET
