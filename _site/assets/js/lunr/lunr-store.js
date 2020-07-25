@@ -689,6 +689,12 @@ var store = [{
         "url": "http://localhost:4000/language/%EC%9E%90%EB%B0%94%EC%A0%9C%EB%84%A4%EB%A6%AD/",
         "teaser": null
       },{
+        "title": "오픈 채팅방",
+        "excerpt":"이 문제는 Enter나 Change를 통해 계속 닉네임이 바뀔수 있다는 것이다. 최종적인 닉네임으로 값을 출력해야 하므로, uid값을 키로 가지고, nickname을 value로 가지는 HashMap을 사용하였다. 최종적으로 uid가 어떤 닉네임인지를 구분한다(Enter,Change), 동시에 Change의 경우는 정답에 출력할필요가 없기때문에, Change의 경우는 전체 출력해야할 횟수에 더하지 않는다 그다음 루프를 돌면서, Enter와 Leave를 통해 정답을 채운다 By...","categories": ["algorithm"],
+        "tags": ["Java","String","Parsing","Map"],
+        "url": "http://localhost:4000/algorithm/%EC%98%A4%ED%94%88%EC%B1%84%ED%8C%85%EB%B0%A9/",
+        "teaser": null
+      },{
         "title": "Java Stream 관련 정리 from 이것이 자바다(책)",
         "excerpt":"Stream Stream : 자바 8부터 추가된 컬렉션(배열 포함)의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자 내부 반복자를 사용하므로 병렬 처리가 쉽다 내부 반복자들은 멀티 코어 CPU를 활용하기 위해 요소들을 분배시켜 병렬 작업을 할 수있게 도와준다는 특징이 있다. 중간 처리와 최종 처리 작업을 수행한다 위의 그림처럼 중간처리에서 학생의...","categories": ["language"],
         "tags": ["Java","Stream","Parallel"],

@@ -1,0 +1,49 @@
+I"� <p>이 문제는 Enter나 Change를 통해 계속 닉네임이 바뀔수 있다는 것이다. 최종적인 닉네임으로 값을 출력해야 하므로, <span style="color:red"><strong>uid값을 키로 가지고, nickname을 value로 가지는 HashMap을 사용하였다.</strong></span></p>
+<ol>
+  <li>최종적으로 <strong>uid가 어떤 닉네임인지를 구분한다(Enter,Change)</strong>, 동시에 Change의 경우는 정답에 출력할필요가 없기때문에, Change의 경우는 전체 출력해야할 횟수에 더하지 않는다</li>
+  <li>그다음 루프를 돌면서, Enter와 Leave를 통해 정답을 채운다</li>
+</ol>
+
+<h2 id="by-java">By Java</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span><span class="o">[]</span> <span class="nf">solution</span> <span class="o">(</span><span class="nc">String</span><span class="o">[]</span><span class="n">record</span><span class="o">){</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+            <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+            <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">value</span> <span class="o">:</span> <span class="n">record</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">menu</span> <span class="o">=</span> <span class="n">strArr</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">strArr</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">menu</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Enter"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="nc">String</span> <span class="n">nickname</span> <span class="o">=</span> <span class="n">strArr</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">uid</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">nickname</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+                        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">nickname</span><span class="o">);</span>
+                    <span class="o">}</span>
+                    <span class="n">cnt</span><span class="o">++;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">menu</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Change"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+                    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">uid</span><span class="o">,</span> <span class="n">strArr</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="n">cnt</span><span class="o">++;</span>
+            <span class="o">}</span>
+
+            <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">cnt</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">record</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">menu</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">uid</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">menu</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Enter"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="nc">String</span> <span class="n">enterNickname</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+                    <span class="n">answer</span><span class="o">[</span><span class="n">idx</span><span class="o">++]</span> <span class="o">=</span> <span class="n">enterNickname</span> <span class="o">+</span> <span class="s">"님이 들어왔습니다."</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">menu</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Leave"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="nc">String</span> <span class="n">leaveNickname</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">uid</span><span class="o">);</span>
+                    <span class="n">answer</span><span class="o">[</span><span class="n">idx</span><span class="o">++]</span> <span class="o">=</span> <span class="n">leaveNickname</span> <span class="o">+</span> <span class="s">"님이 나갔습니다."</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
