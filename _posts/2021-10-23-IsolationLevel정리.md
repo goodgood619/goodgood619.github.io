@@ -1,5 +1,5 @@
 ---
-title : "Linux에서 Local로 파일 쉽게 옮기는 법 (command Line)"
+title : "Transactional LEVEL과 그 원인에 대하여"
 excerpt : ""
 
 categories:
