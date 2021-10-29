@@ -1,5 +1,5 @@
 ---
-title : "mac에서 JDK Version 쉽게 설치 하는 법"
+title : "Process & Thread 기본개념"
 excerpt : ""
 
 categories:
@@ -19,7 +19,6 @@ last_modified_at: 2021-10-30
 
 ## Process & Thread 기본개념 다시 보기
 
----
 
 - 프로세스 : 프로그램을 메모리 상에서 실행중인 작업 (`실행 되고있는 프로그램`)
 - 스레드 : 프로세스 안에서 실행되는 여러 흐름 단위(`프로세스 내부에서 실행되는 단위`)
