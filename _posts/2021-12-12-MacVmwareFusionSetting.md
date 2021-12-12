@@ -1,5 +1,5 @@
 ---
-title : "Mac VmWare Fusion 세팅 (Window 11)"
+title : "Mac VMWare Fusion 세팅 (Window 11)"
 excerpt : ""
 
 categories:
