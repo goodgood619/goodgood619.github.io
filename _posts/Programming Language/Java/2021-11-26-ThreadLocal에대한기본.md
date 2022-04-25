@@ -3,7 +3,7 @@ title : "ThreadLocal에 대하여 (기본)"
 excerpt : ""
 
 categories:
-    - language
+    - Java
 
 tags:
         - Java

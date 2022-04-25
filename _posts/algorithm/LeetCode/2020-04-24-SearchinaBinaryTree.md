@@ -3,7 +3,7 @@ title : "Search in a Binary Tree"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Tree

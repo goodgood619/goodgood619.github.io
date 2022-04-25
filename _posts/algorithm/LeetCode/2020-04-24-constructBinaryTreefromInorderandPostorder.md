@@ -3,7 +3,7 @@ title : "Construct Binary Tree From Inorder and Postorder Traversal"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Tree

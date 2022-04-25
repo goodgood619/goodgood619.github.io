@@ -3,7 +3,7 @@ title : "Construct Binary Search Tree from Preorder Traversal"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Tree

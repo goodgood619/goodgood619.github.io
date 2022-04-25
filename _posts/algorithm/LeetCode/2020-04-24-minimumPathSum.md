@@ -3,7 +3,7 @@ title : "Minimum Path Sum"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Dynamic Programming
