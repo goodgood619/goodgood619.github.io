@@ -3,7 +3,7 @@ title : "DATETIME에서 DATE로 형변환"
 excerpt : "SQL Practice in Programmers"
 
 categories:
-    - SQL
+    - Programmers SQL
 
 tags:
     - MySQL
