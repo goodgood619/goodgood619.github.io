@@ -3,7 +3,7 @@ title : "Odd Even LinkedList"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

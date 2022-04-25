@@ -3,7 +3,7 @@ title : "Diameter Of Binary Tree"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Tree

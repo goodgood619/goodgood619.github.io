@@ -3,7 +3,7 @@ title : "Best Time To Buy and Sell Stock"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Implementation

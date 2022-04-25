@@ -3,7 +3,7 @@ title : "Evaluate Reverse Polish Notation"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Stack

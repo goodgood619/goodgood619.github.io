@@ -3,7 +3,7 @@ title : "Majority Element"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Data Structure

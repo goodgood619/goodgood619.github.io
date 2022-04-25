@@ -3,7 +3,7 @@ title : "Maximum Depth Of Binary Tree"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Graph

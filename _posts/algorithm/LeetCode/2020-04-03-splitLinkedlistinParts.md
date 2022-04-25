@@ -3,7 +3,7 @@ title : "Split LinkedList in parts"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

@@ -3,7 +3,7 @@ title : "Letter Combinations of a Phone Number"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Map

@@ -3,7 +3,7 @@ title : "add Binary"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - implementation

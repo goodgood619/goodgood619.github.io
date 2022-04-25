@@ -3,7 +3,7 @@ title : "Generate Parentheses"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

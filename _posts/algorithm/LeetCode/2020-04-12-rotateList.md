@@ -3,7 +3,7 @@ title : "Rotate List"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - LinkedList

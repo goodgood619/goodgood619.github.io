@@ -3,7 +3,7 @@ title : "Multiply-Strings"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - BigInteger

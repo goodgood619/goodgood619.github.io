@@ -3,7 +3,7 @@ title : "Add to Array Form of Integer"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Implementation

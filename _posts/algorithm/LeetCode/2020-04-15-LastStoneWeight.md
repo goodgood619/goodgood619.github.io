@@ -3,7 +3,7 @@ title : "Last Stone Weight"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - List

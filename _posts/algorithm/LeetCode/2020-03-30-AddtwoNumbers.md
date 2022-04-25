@@ -3,7 +3,7 @@ title : "Add Two Numbers"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - ListNode

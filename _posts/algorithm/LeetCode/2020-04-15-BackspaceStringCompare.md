@@ -3,7 +3,7 @@ title : "Backspace String Compare"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Deque

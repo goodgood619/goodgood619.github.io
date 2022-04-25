@@ -3,7 +3,7 @@ title : "Rotate Array"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Implementation

@@ -3,7 +3,7 @@ title : "Valid Anagram"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Implementation

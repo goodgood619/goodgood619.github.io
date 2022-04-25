@@ -3,7 +3,7 @@ title : "Coin Change"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Dynamic Programming

@@ -3,7 +3,7 @@ title : "Count Prime"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - prime

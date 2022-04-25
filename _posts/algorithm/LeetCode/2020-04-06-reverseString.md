@@ -3,7 +3,7 @@ title : "Reverse String"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

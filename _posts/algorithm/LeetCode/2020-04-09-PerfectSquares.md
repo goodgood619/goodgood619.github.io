@@ -3,7 +3,7 @@ title : "Perfect Sqaures"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Dynamic Programming

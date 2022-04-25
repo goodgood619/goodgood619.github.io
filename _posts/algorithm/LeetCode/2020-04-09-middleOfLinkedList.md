@@ -3,7 +3,7 @@ title : "Middle Of The Linked List"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

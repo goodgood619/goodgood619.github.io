@@ -3,7 +3,7 @@ title : "Longest Increasing Subsequence"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Dynamic Programming

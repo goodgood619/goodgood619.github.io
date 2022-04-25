@@ -3,7 +3,7 @@ title : "Happy Number"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - implementation

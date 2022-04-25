@@ -3,7 +3,7 @@ title : "Remove Duplicate Sorted list"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

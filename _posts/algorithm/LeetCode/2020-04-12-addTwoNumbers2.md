@@ -3,7 +3,7 @@ title : "Add Two Numbers 2"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - LinkedList

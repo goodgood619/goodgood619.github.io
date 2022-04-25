@@ -3,7 +3,7 @@ title : "Pascals Triangle 2"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Dynamic Programming

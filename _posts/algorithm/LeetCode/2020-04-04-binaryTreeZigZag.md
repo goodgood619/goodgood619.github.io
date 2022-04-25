@@ -3,7 +3,7 @@ title : "Binary Tree ZigZag Level Order Traversal"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Tree

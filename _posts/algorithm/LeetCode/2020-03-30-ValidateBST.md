@@ -3,7 +3,7 @@ title : "Validate Binary Search Tree"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Binary Search Tree

@@ -3,7 +3,7 @@ title : "Swap Nodes In Pair"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

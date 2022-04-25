@@ -3,7 +3,7 @@ title : "Remove Linked List Elements"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

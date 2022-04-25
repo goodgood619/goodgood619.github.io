@@ -3,7 +3,7 @@ title : "Perform String Shifts"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - String

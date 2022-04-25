@@ -3,7 +3,7 @@ title : "Find Peak Element"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Implementation

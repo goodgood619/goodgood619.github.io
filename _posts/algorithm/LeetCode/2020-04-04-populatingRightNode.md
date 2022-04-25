@@ -3,11 +3,10 @@ title : "Populating Next Right Pointers In Each Node"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Tree
-        - A
         - Algorithm
 last_modified_at: 2020-04-04
 ---

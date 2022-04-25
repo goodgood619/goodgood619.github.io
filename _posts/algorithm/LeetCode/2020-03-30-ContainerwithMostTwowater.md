@@ -3,7 +3,7 @@ title : "Container with Most Water"
 excerpt : "Leet code"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Two Pointer

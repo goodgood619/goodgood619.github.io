@@ -3,7 +3,7 @@ title : "Remove Nth node from End of List"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList

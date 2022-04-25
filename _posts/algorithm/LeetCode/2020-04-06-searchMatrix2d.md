@@ -3,7 +3,7 @@ title : "Search a 2d matrix 1 and 2"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

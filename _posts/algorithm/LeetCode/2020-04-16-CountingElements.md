@@ -3,7 +3,7 @@ title : "Counting Elements"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
     - Set

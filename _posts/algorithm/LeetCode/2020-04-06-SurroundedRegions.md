@@ -3,7 +3,7 @@ title : "Surrounded Regions"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

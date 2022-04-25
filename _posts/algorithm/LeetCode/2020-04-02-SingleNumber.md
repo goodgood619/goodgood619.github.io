@@ -3,7 +3,7 @@ title : "SingleNumber"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Map

@@ -3,7 +3,7 @@ title : "Palidrome Number"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

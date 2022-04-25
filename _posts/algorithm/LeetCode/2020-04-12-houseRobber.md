@@ -3,7 +3,7 @@ title : "House Robber"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Dynamic Programming

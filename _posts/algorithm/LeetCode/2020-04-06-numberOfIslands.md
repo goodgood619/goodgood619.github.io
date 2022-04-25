@@ -3,7 +3,7 @@ title : "Number of Islands"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

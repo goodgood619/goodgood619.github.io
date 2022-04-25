@@ -3,7 +3,7 @@ title : "Largest Number"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - String

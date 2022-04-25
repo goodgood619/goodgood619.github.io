@@ -3,7 +3,7 @@ title : "Top K Frequent Elements"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

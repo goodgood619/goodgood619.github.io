@@ -3,7 +3,7 @@ title : "Linked List Cycle 2"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Algorithm

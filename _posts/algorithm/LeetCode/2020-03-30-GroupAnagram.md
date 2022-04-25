@@ -3,7 +3,7 @@ title : "Group Anagram"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - Map

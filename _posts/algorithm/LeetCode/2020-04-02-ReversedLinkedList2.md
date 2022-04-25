@@ -3,7 +3,7 @@ title : "reversed-linked-list-2"
 excerpt : "Leet code Practice"
 
 categories:
-    - Algorithm
+    - LeetCode
 
 tags:
         - LinkedList
