@@ -1,5 +1,5 @@
 ---
-title : "JPA N+1문제에 대한 고찰"
+title : "JPA update문제에 대한 고찰"
 excerpt : ""
 
 categories:
