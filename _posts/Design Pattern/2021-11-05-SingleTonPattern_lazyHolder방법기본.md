@@ -19,6 +19,7 @@ Singleton Pattern은 인스턴스를 단 하나만 만들어서 사용하려는 
 
 - 여러가지 방법이 있는데 그중에서 제일 권장되고 자주 쓰는 방법은 `JVM의 Class Load시점을 이용`하는 것이다.
     - 즉, 싱글턴 패턴을 이용해 객체를 생성하는데 있어서 `JVM에게 할일을 떠넘겨서` 생성시키게 하는 것임
+    - (내부 코드를 보면서 흐름을 따라가보자)
     - Singleton class 내부에서 SingletonHolder로 직접 접근을 할수가 없다.
     - 즉, 외부에서 getSingletonObject Method를 호출해야 가능하다.
     - 그래서, getSingletonObject Method를 호출 할때 (Runtime)에 내부 클래스 (SingletonHolder)를 JVM에 올리게 된다.
